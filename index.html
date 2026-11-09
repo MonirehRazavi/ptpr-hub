@@ -58,7 +58,7 @@ header.site{background:linear-gradient(180deg,var(--sky) 0%,var(--surface) 100%)
 nav.tabs{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
 nav.tabs ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;justify-content:center}
 @media (max-width:1000px){nav.tabs ul{justify-content:flex-start}}
-@media (max-width:640px){#nav1{flex-wrap:wrap;justify-content:center;gap:0}#nav1 a{padding:8px 9px;font-size:.86rem}nav.tabs ul.sub a{padding:7px 9px;font-size:.82rem}}
+@media (max-width:640px){#nav1{flex-wrap:wrap;justify-content:center;gap:0}#nav1 a{padding:8px 9px;font-size:.86rem}nav.tabs ul.sub{flex-wrap:wrap;justify-content:center}nav.tabs ul.sub a{padding:7px 9px;font-size:.82rem}}
 nav.tabs ul::-webkit-scrollbar{display:none}
 nav.tabs a{display:block;padding:12px 13px;color:var(--ink-2);text-decoration:none;font-weight:600;font-size:.93rem;border-bottom:3px solid transparent;white-space:nowrap}
 nav.tabs a:hover{color:var(--ink)} nav.tabs a[aria-current="page"]{color:var(--accent);border-bottom-color:var(--accent)}
