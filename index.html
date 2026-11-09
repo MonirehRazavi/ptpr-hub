@@ -58,6 +58,7 @@ header.site{background:linear-gradient(180deg,var(--sky) 0%,var(--surface) 100%)
 nav.tabs{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
 nav.tabs ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;justify-content:center}
 @media (max-width:1000px){nav.tabs ul{justify-content:flex-start}}
+@media (max-width:640px){#nav1{flex-wrap:wrap;justify-content:center;gap:0}#nav1 a{padding:8px 9px;font-size:.86rem}nav.tabs ul.sub a{padding:7px 9px;font-size:.82rem}}
 nav.tabs ul::-webkit-scrollbar{display:none}
 nav.tabs a{display:block;padding:12px 13px;color:var(--ink-2);text-decoration:none;font-weight:600;font-size:.93rem;border-bottom:3px solid transparent;white-space:nowrap}
 nav.tabs a:hover{color:var(--ink)} nav.tabs a[aria-current="page"]{color:var(--accent);border-bottom-color:var(--accent)}
@@ -134,6 +135,7 @@ dl.gloss{display:grid;grid-template-columns:max-content 1fr;gap:8px 20px;margin:
 .jvm-tooltip.active{display:block}
 .jvm-zoom-btn{position:absolute;left:10px;width:28px;height:28px;border-radius:6px;background:var(--surface);border:1px solid var(--line);color:var(--ink);display:grid;place-items:center;cursor:pointer;font-weight:700;box-sizing:border-box;line-height:1;user-select:none}
 .jvm-zoomin{top:10px}.jvm-zoomout{top:44px}
+#map circle,#casemap circle{cursor:pointer}
 .sidelist{display:grid;gap:8px;max-height:500px;overflow:auto;padding-right:4px}
 .sidelist button{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;color:var(--ink);cursor:pointer}
 .sidelist button:hover,.sidelist button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
@@ -210,6 +212,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
       <div><h1>PTPR Hub</h1><p class="sub">Papillary tumor of the pineal region — made by people who've been through it, for the next person who will be</p></div>
     </div>
   </div>
+</header>
   <nav class="tabs" aria-label="Sections"><div class="wrap">
     <ul id="nav1">
       <li><a href="#home" data-group="home">Just diagnosed</a></li>
@@ -220,7 +223,6 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     </ul>
     <ul id="nav2" class="sub" hidden></ul>
   </div></nav>
-</header>
 
 <main class="wrap">
 
@@ -466,7 +468,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     </div>
   </section>
   <section>
-    <p class="eyebrow mint"><span id="casecount2"></span> cases shown</p>
+    <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px"><p class="eyebrow mint" style="margin:0"><span id="casecount2"></span> cases shown</p><button class="btn" id="casefocus" type="button" hidden style="padding:6px 14px;font-size:.85rem">← Show all cases</button></div>
     <div class="casegrid" id="casegrid"></div>
   </section>
 </div>
@@ -664,11 +666,16 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
       markers, markerStyle:{ initial:{ fill, stroke:'#ffffff', strokeWidth:2, r:7 }, hover:{ r:9 } },
       onMarkerClick:(e,i)=>onClick(+i), onRegionTooltipShow:(e)=>{ e.preventDefault(); } });
   }
+  function delegateMarkers(sel, handler){ const el=$(sel); if(!el||el.dataset.deleg) return; el.dataset.deleg='1'; let lastTouch=0;
+    const pick=t=>{ const c=t.closest&&t.closest('circle[data-index]'); return c?+c.getAttribute('data-index'):null; };
+    el.addEventListener('touchend',e=>{ const i=pick(e.target); if(i!=null){ lastTouch=Date.now(); e.preventDefault(); el._h(i); } },{passive:false});
+    el.addEventListener('click',e=>{ if(Date.now()-lastTouch<700) return; const i=pick(e.target); if(i!=null){ e.stopPropagation(); el._h(i); } }, true);
+    el._h=handler; }
   function buildMap(){ mapBuilt=true;
     $('#casecount').textContent=D.cases.length;
     $('#caselist').innerHTML=D.cases.map((c,i)=>`<button type="button" aria-pressed="false" data-i="${i}"><b>${esc(c.country)}</b><span>${esc(c.city)} · ${c.sources.length} publication${c.sources.length>1?'s':''}</span></button>`).join('');
     $('#caselist').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) centreDetail(+b.dataset.i);});
-    try { vmap('#map', D.cases.map(c=>({name:c.country+' · '+c.city, coords:c.coords})), tok('--accent'), centreDetail); }
+    try { vmap('#map', D.cases.map(c=>({name:c.country+' · '+c.city, coords:c.coords})), tok('--accent'), ()=>{}); delegateMarkers('#map', centreDetail); }
     catch(err){ $('#map').innerHTML='<p class="muted" style="padding:20px">The map could not be drawn in this browser; the list beside it has the same information.</p>'; }
     const rs=D.regionSummary;
     $('#regiontable').innerHTML='<thead><tr><th>Region</th><th>Patients</th></tr></thead><tbody>'+rs.rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${r[1]}</td></tr>`).join('')+'</tbody>';
@@ -680,13 +687,13 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   const outColor = o => ({'o-clear':tok('--mint-ink'),'o-stable':tok('--sky-ink'),'o-recur':tok('--butter-ink'),'o-died':tok('--blush-ink')}[outClass(o)]||tok('--line'));
   function personLabel(c){ const num=c.age!=null&&/^\d+$/.test(String(c.ageText||c.age)); const who=c.sex==='F'?(c.age!=null&&c.age<18?'girl':'woman'):c.sex==='M'?(c.age!=null&&c.age<18?'boy':'man'):'person'; return num?`${esc(c.age)}-year-old ${who}`:`${esc(c.ageText||'Age not stated')}, ${who}`; }
   const ageGroup = c => c.age==null ? 'unknown' : c.age<18 ? 'child' : c.age<40 ? 'young' : 'older';
-  let caseMap=null, shownCases=[];
+  let caseMap=null, shownCases=[], focusCase=null;
   function filteredCases(){
     const a=$('#f-age').value, s=$('#f-sex').value, o=$('#f-out').value, t=$('#f-tx').value;
     return CASES.filter(c => (a==='all'||ageGroup(c)===a) && (s==='all'||c.sex===s) && (o==='all'||c.outcome===o) && (t==='all'||(c.treatment||[]).includes(t)));
   }
   function median(arr){ const a=arr.filter(x=>x!=null).sort((x,y)=>x-y); if(!a.length) return null; const m=Math.floor(a.length/2); return a.length%2?a[m]:(a[m-1]+a[m])/2; }
-  function caseDetail(i){ const c=shownCases[i]; if(!c) return;
+  function caseDetail(i){ const c=shownCases[i]; if(!c) return; focusCase=c; renderCases(true);
     $('#casedetail2').innerHTML=`<p class="eyebrow mint">${esc(c.country)}${c.city?' · '+esc(c.city):''} · reported ${esc(c.year)}</p>
       <h3 style="margin:0 0 6px">${personLabel(c)}</h3>
       ${c.presentation?`<p><b>How it started:</b> ${esc(c.presentation)}${c.hydrocephalus?' Hydrocephalus was present.':''}</p>`:''}
@@ -694,16 +701,20 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
       <p><b>Outcome at last report:</b> <span class="${outClass(c.outcome)}"><span class="out" style="font-weight:700">${esc(c.outcome)}</span></span>. ${esc(c.outcomeText||'')}</p>
       ${c.notes?`<p class="muted">${esc(c.notes)}</p>`:''}
       <p class="small" style="margin:0">Source: <a href="${esc(c.source.url)}" target="_blank" rel="noopener">${esc(c.source.label)}</a></p>`;
-    $$('#casegrid .case').forEach((b,j)=>b.setAttribute('aria-pressed',j===i));
+    $$('#casegrid .case').forEach(b=>b.setAttribute('aria-pressed','true'));
     $('#casedetail2').scrollIntoView({behavior:'smooth',block:'nearest'});
   }
-  function renderCases(){
-    shownCases=filteredCases();
-    $('#casecount2').textContent=shownCases.length;
-    const ages=shownCases.map(c=>c.age), med=median(ages), f=shownCases.filter(c=>c.sex==='F').length, m=shownCases.filter(c=>c.sex==='M').length;
-    const known=shownCases.filter(c=>c.outcome&&c.outcome!=='Not reported'), alive=known.filter(c=>c.outcome!=='Died').length, clear=known.filter(c=>c.outcome==='Alive, no recurrence').length;
+  const DETAIL_EMPTY='<p class="muted" style="margin:0">Click a marker or a card to read one person\'s story in the literature.</p>';
+  function clearFocus(){ focusCase=null; $('#casedetail2').innerHTML=DETAIL_EMPTY; renderCases(); }
+  function renderCases(keepDetail){
+    const all=filteredCases(); if(focusCase && !all.includes(focusCase)) focusCase=null; shownCases = focusCase ? [focusCase] : all;
+    if(!keepDetail && !focusCase && typeof DETAIL_EMPTY!=='undefined') $('#casedetail2').innerHTML=DETAIL_EMPTY;
+    $('#casefocus').hidden=!focusCase;
+    $('#casecount2').textContent=focusCase?`1 of ${all.length}`:shownCases.length;
+    const ages=all.map(c=>c.age), med=median(ages), f=all.filter(c=>c.sex==='F').length, m=all.filter(c=>c.sex==='M').length;
+    const known=all.filter(c=>c.outcome&&c.outcome!=='Not reported'), alive=known.filter(c=>c.outcome!=='Died').length, clear=known.filter(c=>c.outcome==='Alive, no recurrence').length;
     $('#casestats').innerHTML=`
-      <div class="fact sky"><p class="big">${shownCases.length}</p><p class="lbl">individual cases in the registry${shownCases.length!==CASES.length?' (filtered)':''}</p></div>
+      <div class="fact sky"><p class="big">${all.length}</p><p class="lbl">individual cases in the registry${all.length!==CASES.length?' (filtered)':''}</p></div>
       <div class="fact sky"><p class="big">${med!=null?med:'–'}</p><p class="lbl">median age at diagnosis (years)</p></div>
       <div class="fact sky"><p class="big">${f} / ${m}</p><p class="lbl">women / men</p></div>
       <div class="fact sky"><p class="big">${known.length?Math.round(alive/known.length*100)+'%':'–'}</p><p class="lbl">alive at last report, where stated (${clear} with no recurrence)</p></div>`;
@@ -718,8 +729,9 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
       const markers=pts.map(c=>{ const k=c.coords.join(','); seen[k]=(seen[k]||0)+1; const n=seen[k]-1; const jit=n?[(Math.cos(n*2.4)*0.9*n), (Math.sin(n*2.4)*0.9*n)]:[0,0]; return { name:`${c.ageText||c.age}${c.sex==='F'?' F':c.sex==='M'?' M':''} · ${c.country} · ${c.outcome}`, coords:[c.coords[0]+jit[0], c.coords[1]+jit[1]], style:{ initial:{ fill: outColor(c.outcome) } }, _i: shownCases.indexOf(c) }; });
       caseMap=new jsVectorMap({ selector:'#casemap', map:'world', zoomButtons:true, zoomOnScroll:false, backgroundColor:'transparent',
         regionStyle:{ initial:{ fill: tok('--surface-2'), stroke: tok('--line'), strokeWidth:0.6 }, hover:{ fill: tok('--mint') } },
-        markers, markerStyle:{ initial:{ stroke:'#ffffff', strokeWidth:2, r:6 }, hover:{ r:9 } },
-        onMarkerClick:(e,i)=>caseDetail(markers[+i]._i), onRegionTooltipShow:(e)=>{ e.preventDefault(); } });
+        markers, markerStyle:{ initial:{ stroke:'#ffffff', strokeWidth:2, r: focusCase?11:6 }, hover:{ r: focusCase?12:9 } },
+        onRegionTooltipShow:(e)=>{ e.preventDefault(); } });
+      delegateMarkers('#casemap', ()=>{}); $('#casemap')._h = i=>{ const mk=markers[i]; if(mk) caseDetail(mk._i); };
     } catch(err){ $('#casemap').innerHTML='<p class="muted" style="padding:20px">The map could not be drawn here; the cards below carry the same information.</p>'; }
   }
   function drawCountChart(){
@@ -744,8 +756,9 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   function buildCases(){ caseMapBuilt=true;
     const tx=[...new Set(CASES.flatMap(c=>c.treatment||[]))].sort();
     $('#f-tx').innerHTML='<option value="all">Any</option>'+tx.map(t=>`<option>${esc(t)}</option>`).join('');
-    ['#f-age','#f-sex','#f-out','#f-tx'].forEach(s=>$(s).addEventListener('change',renderCases));
+    ['#f-age','#f-sex','#f-out','#f-tx'].forEach(s=>$(s).addEventListener('change',()=>{ focusCase=null; renderCases(); }));
     $('#casegrid').addEventListener('click',e=>{const b=e.target.closest('.case'); if(b) caseDetail(+b.dataset.i);});
+    $('#casefocus').addEventListener('click',clearFocus);
     if(!CASES.length){ $('#casegrid').innerHTML='<div class="empty">The case registry is being compiled from the published literature. Check back soon.</div>'; return; }
     renderCases();
   }
