@@ -141,6 +141,16 @@ dl.gloss{display:grid;grid-template-columns:max-content 1fr;gap:8px 20px;margin:
 .sidelist button:hover,.sidelist button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
 .sidelist b{display:block} .sidelist span{font-size:.85rem;color:var(--ink-2)}
 .detail{margin-top:18px}
+.rm-note{background:var(--butter);border-radius:10px;padding:10px 12px;font-size:.86rem;color:var(--ink-2);margin:10px 0 14px}
+.rm-filter{width:100%;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit;margin:6px 0 10px}
+.rm-people,.rm-papers{list-style:none;margin:0;padding:0}
+.rm-people li,.rm-papers li{padding:10px 0;border-top:1px solid var(--line)}
+.rm-people li:first-child,.rm-papers li:first-child{border-top:0}
+.rm-people .aff{display:block;color:var(--ink-2);font-size:.88rem;margin-top:2px}
+.rm-people .em{display:inline-block;font-size:.88rem;margin-top:3px;word-break:break-all}
+.rm-papers .yr{font-weight:700;color:var(--mint-ink);margin-right:6px}
+.rm-papers .m{display:block;color:var(--ink-2);font-size:.86rem}
+#casedetail h4{margin:18px 0 4px}
 table.plain{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
 table.plain th,table.plain td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)} table.plain td:last-child,table.plain th:last-child{text-align:right}
 
@@ -478,11 +488,12 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   <section class="prose">
     <p class="eyebrow mint">Where it's studied</p>
     <h2>A map of the research</h2>
-    <p class="muted">Each marker is a centre that has published PTPR cases or research. Click a marker or a name to read what came from there.</p>
+    <p class="muted">Every paper in PubMed that mentions papillary tumour of the pineal region is placed in each country where its authors work, using the addresses printed in the paper. Click a country, on the map or in the list, to see the doctors and researchers there, their hospitals and universities, and what they have published.</p>
+    <p class="small muted" id="rmstatus" aria-live="polite">Loading the latest list from PubMed…</p>
   </section>
   <section class="maplayout">
-    <div><div class="map" id="map" role="img" aria-label="World map with markers on centres that have published PTPR research"></div><div id="casedetail" class="card detail" hidden></div></div>
-    <div><p class="eyebrow mint">Reporting centres (<span id="casecount"></span>)</p><div class="sidelist" id="caselist"></div></div>
+    <div><div class="map" id="map" role="img" aria-label="World map shaded by the number of PTPR publications from each country"></div><div id="casedetail" class="card detail" hidden></div></div>
+    <div><p class="eyebrow mint">Countries (<span id="casecount">…</span>)</p><div class="sidelist" id="caselist"></div></div>
   </section>
   <section class="prose">
     <h3>Where the first 73 published patients came from</h3>
@@ -609,6 +620,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
 <script src="data.js"></script>
 <script src="cases.js"></script>
 <script src="pubs.js"></script>
+<script src="research.js"></script>
 <script src="vendor/jsvectormap.min.js"></script>
 <script src="vendor/world.js"></script>
 <script>
@@ -671,15 +683,52 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     el.addEventListener('touchend',e=>{ const i=pick(e.target); if(i!=null){ lastTouch=Date.now(); e.preventDefault(); el._h(i); } },{passive:false});
     el.addEventListener('click',e=>{ if(Date.now()-lastTouch<700) return; const i=pick(e.target); if(i!=null){ e.stopPropagation(); el._h(i); } }, true);
     el._h=handler; }
-  function buildMap(){ mapBuilt=true;
+  let RM=null;
+  function rmDetail(i){ const c=RM.countries[i]; if(!c) return; const el=$('#casedetail'); el.hidden=false;
+    const person=p=>`<li><b>${esc(p.name)}</b> <span class="small muted">· ${p.papers} paper${p.papers>1?'s':''}${p.latest?', latest '+p.latest:''}</span>
+      ${p.aff?`<span class="aff">${esc(p.aff)}${p.affYear?` <span class="muted">(as listed in ${p.affYear})</span>`:''}</span>`:''}
+      ${p.email?`<a class="em" href="mailto:${esc(p.email)}">${esc(p.email)}</a> <span class="small muted">(published ${p.emailYear||''})</span>`:''}</li>`;
+    const paper=r=>`<li><span class="yr">${esc(r.year||'')}</span><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a><span class="m">${esc(r.lead||'')}${r.journal?' · <i>'+esc(r.journal)+'</i>':''}</span></li>`;
+    const N=12;
+    el.innerHTML=`<p class="eyebrow mint">Research from</p><h3 style="margin:0">${esc(c.name)}</h3>
+      <p class="muted" style="margin:4px 0 0">${c.papers.length} publication${c.papers.length>1?'s':''} · ${c.people.length} doctor${c.people.length===1?'':'s'} and researcher${c.people.length===1?'':'s'}</p>
+      <div class="rm-note">Names, addresses and emails are copied from the published papers, so they may be out of date. Being listed here is not a recommendation: please talk to your own care team before contacting anyone, and remember that many authors are pathologists or researchers rather than treating doctors.</div>
+      ${c.people.length?`<h4>Doctors and researchers</h4>${c.people.length>N?'<input class="rm-filter" id="rmfind" type="search" placeholder="Search by name, hospital or city" aria-label="Search people in '+esc(c.name)+'">':''}<ul class="rm-people" id="rmpeople"></ul>${c.people.length>N?'<button class="btn" type="button" id="rmmore" style="margin-top:8px;padding:6px 14px;font-size:.85rem">Show all '+c.people.length+'</button>':''}`:''}
+      <h4>Publications</h4><ul class="rm-papers">${c.papers.map(paper).join('')}</ul>`;
+    let all=false; const draw=()=>{ const q=(($('#rmfind')||{}).value||'').toLowerCase(); const list=c.people.filter(p=>!q||(p.name+' '+p.aff+' '+p.email).toLowerCase().includes(q)); const ul=$('#rmpeople'); if(!ul) return; ul.innerHTML=(all||q?list:list.slice(0,N)).map(person).join('')||'<li class="muted">No match.</li>'; const m=$('#rmmore'); if(m) m.hidden=all||!!q; };
+    draw(); if($('#rmfind')) $('#rmfind').addEventListener('input',draw); if($('#rmmore')) $('#rmmore').addEventListener('click',()=>{all=true;draw();});
+    $$('#caselist button').forEach((b,j)=>b.setAttribute('aria-pressed',j===i));
+    if(window.innerWidth<900) el.scrollIntoView({behavior:'smooth',block:'start'}); }
+  function drawResearchMap(){
+    const cs=RM.countries; const vals={}; cs.forEach(c=>vals[c.code]=c.papers.length);
+    $('#casecount').textContent=cs.length;
+    $('#rmstatus').textContent=`${RM.total} publications from ${cs.length} countries${RM.unplaced?` (${RM.unplaced} more could not be placed because no address was printed)`:''}. Updated from PubMed ${new Date(RM.built).toLocaleDateString()}.`;
+    $('#caselist').innerHTML=cs.map((c,i)=>`<button type="button" aria-pressed="false" data-i="${i}"><b>${esc(c.name)}</b><span>${c.papers.length} publication${c.papers.length>1?'s':''} · ${c.people.length} ${c.people.length===1?'person':'people'}</span></button>`).join('');
+    $('#caselist').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) rmDetail(+b.dataset.i);});
+    const max=Math.max(...cs.map(c=>c.papers.length));
+    try { new jsVectorMap({ selector:'#map', map:'world', zoomButtons:true, zoomOnScroll:false, backgroundColor:'transparent',
+        regionStyle:{ initial:{ fill: tok('--surface-2'), stroke: tok('--line'), strokeWidth:0.6 }, hover:{ fillOpacity:.8, cursor:'pointer' } },
+        series:{ regions:[{ attribute:'fill', scale:[tok('--mint'), tok('--mint-ink')], normalizeFunction:'polynomial', values:vals }] },
+        markers: cs.map(c=>({ name:c.name+' · '+c.papers.length+' publications', coords:c.coords, style:{ initial:{ r: Math.round(4+8*Math.sqrt(c.papers.length/max)) } } })),
+        markerStyle:{ initial:{ fill: tok('--accent'), stroke:'#ffffff', strokeWidth:2, r:6 }, hover:{ fillOpacity:.85 } },
+        onRegionClick:(e,code)=>{ const i=cs.findIndex(c=>c.code===code); if(i>=0) rmDetail(i); },
+        onRegionTooltipShow:(e,tip,code)=>{ const c=cs.find(x=>x.code===code); if(!c){ e.preventDefault(); return; } tip.text(c.name+' · '+c.papers.length+' publication'+(c.papers.length>1?'s':''), true); } });
+      delegateMarkers('#map', rmDetail); }
+    catch(err){ $('#map').innerHTML='<p class="muted" style="padding:20px">The map could not be drawn in this browser; the list beside it has the same information.</p>'; }
+  }
+  function drawCentresFallback(){
+    $('#rmstatus').textContent='PubMed could not be reached just now, so this shows a shorter hand-made list of key research centres. Please try again later for the full map.';
     $('#casecount').textContent=D.cases.length;
     $('#caselist').innerHTML=D.cases.map((c,i)=>`<button type="button" aria-pressed="false" data-i="${i}"><b>${esc(c.country)}</b><span>${esc(c.city)} · ${c.sources.length} publication${c.sources.length>1?'s':''}</span></button>`).join('');
     $('#caselist').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) centreDetail(+b.dataset.i);});
-    try { vmap('#map', D.cases.map(c=>({name:c.country+' · '+c.city, coords:c.coords})), tok('--accent'), ()=>{}); delegateMarkers('#map', centreDetail); }
-    catch(err){ $('#map').innerHTML='<p class="muted" style="padding:20px">The map could not be drawn in this browser; the list beside it has the same information.</p>'; }
+    try { vmap('#map', D.cases.map(c=>({name:c.country+' · '+c.city, coords:c.coords})), tok('--accent'), ()=>{}); delegateMarkers('#map', centreDetail); } catch(err){}
+  }
+  async function buildMap(){ mapBuilt=true;
     const rs=D.regionSummary;
     $('#regiontable').innerHTML='<thead><tr><th>Region</th><th>Patients</th></tr></thead><tbody>'+rs.rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${r[1]}</td></tr>`).join('')+'</tbody>';
     $('#regionsrc').innerHTML=`Source: <a href="${esc(rs.source.url)}" target="_blank" rel="noopener">${esc(rs.source.label)}</a>`;
+    try { RM=await window.PTPR_RESEARCH.build(); if(!RM.countries.length) throw new Error('empty'); drawResearchMap(); }
+    catch(err){ drawCentresFallback(); }
   }
 
   /* ---------- cases ---------- */
