@@ -108,15 +108,17 @@ dl.gloss{display:grid;grid-template-columns:max-content 1fr;gap:8px 20px;margin:
 .tl{list-style:none;margin:28px 0 0;padding:0;position:relative}
 .tl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;margin-left:-1.5px;background:linear-gradient(var(--sky-line),var(--mint-line),var(--butter-line),var(--blush-line));border-radius:3px}
 .tl li{position:relative;width:50%;padding:0 48px 36px 0}
-.tl li:nth-child(even){margin-left:50%;padding:0 0 36px 48px}
+.tl li.right{margin-left:50%;padding:0 0 36px 48px}
 .tl .dot{position:absolute;top:22px;right:-11px;width:22px;height:22px;border-radius:50%;background:var(--surface);border:5px solid var(--accent);box-shadow:0 0 0 4px var(--bg)}
-.tl li:nth-child(even) .dot{right:auto;left:-11px}
+.tl li.right .dot{right:auto;left:-11px}
 .tl .yr{font-family:var(--font-display);font-size:1.35rem;color:var(--ink);font-variant-numeric:tabular-nums}
-.tl li:nth-child(odd){text-align:right} .tl li:nth-child(odd) .card{text-align:left}
+.tl li.left{text-align:right} .tl li.left .card{text-align:left}
 .tl .card{border-top:4px solid var(--line)}
 .tl .card.science{border-top-color:var(--sky-line)} .tl .card.who{border-top-color:var(--butter-line)} .tl .card.treatment{border-top-color:var(--mint-line)} .tl .card.molecular{border-top-color:var(--blush-line)}
 .tl .card p:last-child{margin:0} .tl .src{font-size:.85rem}
-@media (max-width:760px){.tl::before{left:14px}.tl li,.tl li:nth-child(even){width:auto;margin-left:0;padding:0 0 28px 44px;text-align:left}.tl .dot,.tl li:nth-child(even) .dot{left:3px;right:auto}}
+.tl li.era{width:auto;margin:0;padding:6px 0 34px;text-align:center}
+.tl li.era span{display:inline-block;background:var(--butter);color:var(--butter-ink);border:1px solid var(--butter-line);border-radius:999px;padding:6px 16px;font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;position:relative;z-index:1}
+@media (max-width:760px){.tl::before{left:14px}.tl li,.tl li.right{width:auto;margin-left:0;padding:0 0 28px 44px;text-align:left}.tl .dot,.tl li.right .dot{left:3px;right:auto}.tl li.era{padding-left:0;text-align:left}}
 
 /* maps */
 .maplayout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:20px;align-items:start}
@@ -401,9 +403,9 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
 <!-- ============================ TIMELINE ============================ -->
 <div class="view" id="view-timeline">
   <section class="prose">
-    <p class="eyebrow butter">History</p>
-    <h2>How PTPR came to be recognised</h2>
-    <p class="muted">From six patients in Lyon to the molecular studies of the 2020s. Each entry links to its source.</p>
+    <p class="eyebrow butter">A timeline of the research</p>
+    <h2>How PTPR was discovered, recognised and understood</h2>
+    <p class="muted">Twenty-three years of research in order: the first description, the WHO's recognition of the tumour, the studies that shaped how it is treated, and the molecular work that now defines it. Each entry links to its source.</p>
     <div class="chips" role="group" aria-label="Filter timeline" id="tlfilter">
       <button class="chip" aria-pressed="true" data-type="all">All</button>
       <button class="chip" aria-pressed="false" data-type="science">Discovery</button>
@@ -583,12 +585,16 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
 
   /* ---------- timeline ---------- */
   const typeLabel = {science:'Discovery', who:'WHO classification', treatment:'Treatment evidence', molecular:'Molecular biology'};
+  const eras=[["Before 2003","Before it had a name"],["2003","Discovery and recognition, 2003–2007"],["2008","Learning how it behaves, 2008–2015"],["2016","The molecular era, 2016–today"]];
   function renderTimeline(filter){
-    $('#timeline').innerHTML = D.timeline.filter(t => filter==='all'||t.type===filter).map(t => `
-      <li><span class="dot" aria-hidden="true"></span>
+    const items=D.timeline.filter(t => filter==='all'||t.type===filter); let side=0, html='';
+    items.forEach(t=>{
+      const era=eras.find(e=>e[0]===t.year); if(era&&filter==='all'){ html+=`<li class="era"><span>${esc(era[1])}</span></li>`; side=0; }
+      html+=`<li class="${side%2?'right':'left'}"><span class="dot" aria-hidden="true"></span>
         <div class="card ${esc(t.type)}"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><span class="yr">${esc(t.year)}</span><span class="pill ${esc(t.type)}">${typeLabel[t.type]||esc(t.type)}</span></div>
           <h3 style="margin-top:8px">${esc(t.title)}</h3><p class="muted">${esc(t.text)}</p>
-          ${t.source?`<p class="src">Source: <a href="${esc(t.source.url)}" target="_blank" rel="noopener">${esc(t.source.label)}</a></p>`:''}</div></li>`).join('');
+          ${t.source?`<p class="src">Source: <a href="${esc(t.source.url)}" target="_blank" rel="noopener">${esc(t.source.label)}</a></p>`:''}</div></li>`; side++; });
+    $('#timeline').innerHTML=html;
   }
   renderTimeline('all');
   $('#tlfilter').addEventListener('click', e => { const b=e.target.closest('.chip'); if(!b) return; $$('#tlfilter .chip').forEach(c=>c.setAttribute('aria-pressed',c===b)); renderTimeline(b.dataset.type); });
@@ -651,7 +657,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
       <p class="meta">${esc(c.country)} · ${esc(c.year)}</p>
       <p class="out" style="margin:0">${esc(c.outcome)}</p>
       <div class="tags">${(c.treatment||[]).slice(0,4).map(t=>`<span>${esc(t)}</span>`).join('')}</div></button>`).join('');
-    if (caseMap){ try{ caseMap.destroy(); }catch(e){} }
+    if (caseMap){ try{ caseMap.destroy(); }catch(e){} caseMap=null; } $('#casemap').innerHTML='';
     try {
       const pts=shownCases.filter(c=>c.coords); const seen={};
       const markers=pts.map(c=>{ const k=c.coords.join(','); seen[k]=(seen[k]||0)+1; const n=seen[k]-1; const jit=n?[(Math.cos(n*2.4)*0.9*n), (Math.sin(n*2.4)*0.9*n)]:[0,0]; return { name:`${c.ageText||c.age}${c.sex==='F'?' F':c.sex==='M'?' M':''} · ${c.country} · ${c.outcome}`, coords:[c.coords[0]+jit[0], c.coords[1]+jit[1]], style:{ initial:{ fill: outColor(c.outcome) } }, _i: shownCases.indexOf(c) }; });
