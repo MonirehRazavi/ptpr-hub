@@ -209,6 +209,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     <li><a href="#support" data-view="support">Support</a></li>
     <li><a href="#stories" data-view="stories">Stories</a></li>
     <li><a href="#contribute" data-view="contribute">Contribute</a></li>
+    <li><a href="#legal" data-view="legal">Disclaimer</a></li>
   </ul></div></nav>
 </header>
 
@@ -548,11 +549,34 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   </section>
 </div>
 
+<!-- ============================ LEGAL ============================ -->
+<div class="view" id="view-legal">
+  <section class="prose">
+    <p class="eyebrow">Please read</p>
+    <h2>Disclaimer, privacy and copyright</h2>
+    <h3>What this site is, and is not</h3>
+    <p>PTPR Hub is an independent, non-commercial information site created and maintained by one volunteer, a family member of a person living with papillary tumor of the pineal region. It is not affiliated with any hospital, university, charity, company or government body, and nobody involved in making it is a physician.</p>
+    <p><strong>Nothing on this site is medical advice.</strong> The information here is general, educational and drawn from published medical literature. It cannot take account of your own medical history, scan results, pathology or circumstances. Please do not make, change or delay any decision about your care on the basis of what you read here. Talk to your own neurosurgeon, neuro-oncologist or family doctor, and if you are unwell, seek medical attention.</p>
+    <h3>Accuracy and the numbers</h3>
+    <p>Every medical statement links to the peer-reviewed article it comes from, and the statistics, case details and summaries have been checked against those articles by a person. Even so, mistakes are possible: the site is maintained by a volunteer, the underlying research is based on very small numbers of patients, and knowledge about PTPR changes. Survival and recurrence figures describe groups of past patients, not any individual, and they must not be read as a prediction for you or anyone you love. <strong>Please read the original articles yourself, draw your own conclusions with your medical team, and tell us if you find an error</strong> so that it can be corrected.</p>
+    <p>The case registry summarises patients described in published reports. It is not a medical registry, it is not complete, and it must not be used for research or clinical decisions without going back to the original publications.</p>
+    <h3>External links</h3>
+    <p>Links to PubMed, journals, ClinicalTrials.gov, charities and other sites are provided for convenience. We do not control those sites and are not responsible for their content.</p>
+    <h3>Privacy</h3>
+    <p>This site sets no cookies and runs no analytics or advertising. The Publications page asks PubMed, Europe PMC and ClinicalTrials.gov for public data directly from your browser; those services may log the request like any web visit. If you write to us, your message is used only to reply and, if you ask, to publish your story or case; nothing about you is published without your written consent, and you can withdraw it at any time.</p>
+    <h3>Copyright</h3>
+    <p>© <span data-year></span> PTPR Hub. The plain-language text, summaries, timeline, illustrations and design of this site are original work. You may share and adapt them for non-commercial purposes with credit to PTPR Hub and a link back, under the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 licence</a>. Titles, author names and bibliographic details of scientific articles belong to their publishers and are reproduced here under fair dealing for the purpose of research, citation and review; no article text, figures or images are copied. The world-map library is <a href="https://github.com/themustafaomar/jsvectormap" target="_blank" rel="noopener">jsVectorMap</a> (MIT licence). If you believe something here infringes your rights, write to <span data-email></span> and it will be removed or corrected promptly.</p>
+    <h3>Jurisdiction</h3>
+    <p>This site is published from Ontario, Canada, by a private individual. By using it you accept that it is provided "as is", in good faith, without warranty of any kind, and that the volunteer who maintains it is not liable for decisions made on the basis of its content.</p>
+  </section>
+</div>
+
 </main>
 
+<div class="wrap" style="padding-bottom:28px"><div class="notice" role="note"><strong>Please read before relying on anything here.</strong> This site is made by one volunteer, not by doctors or a hospital, and nothing on it is medical advice. Every figure comes from a linked published article: please open the articles, read them yourself, and draw conclusions only together with your own medical team. Statistics describe groups of past patients and cannot predict any one person's future. <a href="#legal">Full disclaimer, privacy and copyright</a>.</div></div>
 <footer class="site"><div class="wrap"><div class="row">
-  <span>PTPR Hub · an independent, volunteer-run information site · content last reviewed <span data-reviewed></span></span>
-  <span>Not medical advice. Sources are linked where claims are made. Built by a volunteer with help from an AI assistant; every fact is checked against its published source.</span>
+  <span>© <span data-year></span> PTPR Hub · independent, volunteer-run, non-commercial · content last reviewed <span data-reviewed></span></span>
+  <span>Text and illustrations <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener">CC BY-NC-SA 4.0</a> · built with help from an AI assistant · <a href="#legal">Disclaimer</a></span>
 </div></div></footer>
 
 <script src="data.js"></script>
@@ -567,10 +591,11 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const css = () => getComputedStyle(document.documentElement), tok = n => css().getPropertyValue(n).trim();
   $$('[data-reviewed]').forEach(e => e.textContent = D.lastReviewed);
+  $$('[data-year]').forEach(e => e.textContent = new Date().getFullYear());
   $$('[data-email]').forEach(e => e.textContent = D.contactEmail);
 
   /* ---------- routing ---------- */
-  const views = ['home','why','timeline','cases','map','publications','support','stories','contribute'];
+  const views = ['home','why','timeline','cases','map','publications','support','stories','contribute','legal'];
   let mapBuilt=false, caseMapBuilt=false, feedStarted=false;
   function show(){
     let v = (location.hash || '#home').slice(1); if (!views.includes(v)) v='home';
