@@ -14,7 +14,7 @@ window.PTPR_DATA = {
 
   /* Contact address shown on the Support, Stories and Contribute pages.
      Replace with the address you want people to write to. */
-  contactEmail: "you@example.com",
+  contactEmail: "monirazav@gmail.com",
 
   /* -------------------------------------------------------------------
      TIMELINE – how PTPR came to be recognised.

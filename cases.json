@@ -1,0 +1,2336 @@
+[
+ {
+  "id": "canizares-2019-1",
+  "year": 2019,
+  "age": 34,
+  "ageText": "34",
+  "sex": "M",
+  "country": "Spain",
+  "city": "",
+  "coords": [
+   40.42,
+   -3.7
+  ],
+  "presentation": "Headaches and blurred vision",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (gross total)"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "Alive and symptom-free with no recurrence 57 months (almost 5 years) after surgery, without any additional treatment.",
+  "notes": "Tumour was initially thought to be a pineocytoma on imaging; complete removal alone was enough so far.",
+  "source": {
+   "label": "Cañizares-Méndez et al., 2019, Neurocirugía",
+   "url": "https://consensus.app/papers/details/98c8991d1e245602a2335880f614ef0d/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "hasan-2025-1",
+  "year": 2025,
+  "age": 4,
+  "ageText": "4",
+  "sex": "M",
+  "country": "Iraq",
+  "city": "",
+  "coords": [
+   33.31,
+   44.37
+  ],
+  "presentation": "Progressive headaches, vomiting, upward-gaze palsy, unsteadiness",
+  "hydrocephalus": true,
+  "treatment": [
+   "Shunt",
+   "Surgery (gross total)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No recurrence and no neurological problems 6 months after surgery and radiotherapy (54 Gy).",
+  "notes": "A very young child; imaging first suggested a germinoma.",
+  "source": {
+   "label": "Hasan et al., 2025, Middle Eastern Cancer and Oncology Journal",
+   "url": "https://consensus.app/papers/details/a15e20aed19f5e1d81f41c7a9887b6cd/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "bromfield-2020-1",
+  "year": 2020,
+  "age": 24,
+  "ageText": "24",
+  "sex": "M",
+  "country": "South Africa",
+  "city": "Johannesburg",
+  "coords": [
+   -26.2,
+   28.04
+  ],
+  "presentation": "New-onset seizures and reduced consciousness",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (subtotal)",
+   "ETV"
+  ],
+  "outcome": "Died",
+  "outcomeText": "The patient died 3 months after diagnosis.",
+  "notes": "Large solid-cystic tumour extending into the third ventricle.",
+  "source": {
+   "label": "Bromfield et al., 2020, Egyptian Journal of Neurology, Psychiatry and Neurosurgery",
+   "url": "https://consensus.app/papers/details/b780ffeb672253808396a7df95bef9a6/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "anvari-2024-1",
+  "year": 2024,
+  "age": 46,
+  "ageText": "46",
+  "sex": "M",
+  "country": "Iran",
+  "city": "Mashhad",
+  "coords": [
+   36.3,
+   59.6
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": true,
+  "treatment": [
+   "Shunt",
+   "Surgery (subtotal)",
+   "Radiotherapy",
+   "Chemotherapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Tumour spread to the brain and spinal coverings (leptomeningeal seeding) 14 months after initial treatment; chemotherapy (vincristine and carboplatin) kept it stable for the following 6 months.",
+  "notes": "Illustrates late spread through the cerebrospinal fluid and a response to chemotherapy.",
+  "source": {
+   "label": "Anvari et al., 2024, Middle East Journal of Cancer",
+   "url": "https://consensus.app/papers/details/ca5457234be55ae48e85d8cbad6ac451/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "khaled-2023-1",
+  "year": 2023,
+  "age": 27,
+  "ageText": "27",
+  "sex": "F",
+  "country": "Bangladesh",
+  "city": "",
+  "coords": [
+   23.81,
+   90.41
+  ],
+  "presentation": "Pineal mass",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (extent not stated)"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Follow-up after removal was not reported.",
+  "notes": "",
+  "source": {
+   "label": "Khaled et al., 2023, Pulse",
+   "url": "https://consensus.app/papers/details/2d4854ea7555504c84f6a51faeef2636/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "yamaki-2018-1",
+  "year": 2018,
+  "age": 36,
+  "ageText": "36",
+  "sex": "F",
+  "country": "Brazil",
+  "city": "",
+  "coords": [
+   -15.79,
+   -47.88
+  ],
+  "presentation": "One year of headache and intermittent double vision",
+  "hydrocephalus": true,
+  "treatment": [
+   "Shunt",
+   "Surgery (subtotal)",
+   "Radiotherapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Symptom-free after surgery; a local recurrence was found on imaging 3.5 years later and treated with radiotherapy.",
+  "notes": "Needed an emergency shunt for acute hydrocephalus before surgery.",
+  "source": {
+   "label": "Yamaki et al., 2018, Arquivos Brasileiros de Neurocirurgia",
+   "url": "https://consensus.app/papers/details/ee55981d5a0e5bd4b483a4624985496d/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "reghin-2025-1",
+  "year": 2025,
+  "age": 29,
+  "ageText": "29",
+  "sex": "M",
+  "country": "Brazil",
+  "city": "",
+  "coords": [
+   -15.79,
+   -47.88
+  ],
+  "presentation": "Nine months of intense, progressive headache",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (gross total)",
+   "Radiotherapy",
+   "Surgery (subtotal)"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Complete removal in 2016; the tumour returned after 4 years (treated with radiotherapy by patient choice), progressed again 2 years later and was re-operated.",
+  "notes": "Persistent eye-movement problems after surgery.",
+  "source": {
+   "label": "Reghin et al., 2025, Journal of Neurological Surgery Part B",
+   "url": "https://consensus.app/papers/details/fde098faa4645a2abdbd759805264b62/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "inoue-2008-1",
+  "year": 2008,
+  "age": 43,
+  "ageText": "43",
+  "sex": "M",
+  "country": "Japan",
+  "city": "",
+  "coords": [
+   36.2,
+   138.25
+  ],
+  "presentation": "Raised intracranial pressure and upward-gaze palsy",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (gross total)",
+   "Radiotherapy",
+   "Chemotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "Doing well with no recurrence 1 year after complete removal followed by radiotherapy and chemotherapy.",
+  "notes": "Advanced imaging (MR spectroscopy, PET) suggested an active tumour, prompting adjuvant treatment.",
+  "source": {
+   "label": "Inoue et al., 2008, Brain Tumor Pathology",
+   "url": "https://consensus.app/papers/details/ed6f777cf31f5af08d4ad85c01a54470/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "dagnew-2007-1",
+  "year": 2007,
+  "age": null,
+  "ageText": "37–55 (range for the 3 women)",
+  "sex": "F",
+  "country": "United States",
+  "city": "",
+  "coords": [
+   39.83,
+   -98.58
+  ],
+  "presentation": "Symptoms of hydrocephalus and pressure on the midbrain",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (subtotal)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "Clinically stable with no local or distant recurrence after 56–60 months of follow-up.",
+  "notes": "Two of these three patients were originally misdiagnosed as having a metastatic carcinoma; the diagnosis was revised to PTPR on review.",
+  "source": {
+   "label": "Dagnew et al., 2007, Neurosurgery",
+   "url": "https://consensus.app/papers/details/6f0f6c9f104750a2915ce86d56f33188/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "dagnew-2007-2",
+  "year": 2007,
+  "age": null,
+  "ageText": "37–55 (range for the 3 women)",
+  "sex": "F",
+  "country": "United States",
+  "city": "",
+  "coords": [
+   39.83,
+   -98.58
+  ],
+  "presentation": "Symptoms of hydrocephalus and pressure on the midbrain",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (subtotal)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "Clinically stable with no local or distant recurrence after 56–60 months of follow-up.",
+  "notes": "Two of these three patients were originally misdiagnosed as having a metastatic carcinoma; the diagnosis was revised to PTPR on review.",
+  "source": {
+   "label": "Dagnew et al., 2007, Neurosurgery",
+   "url": "https://consensus.app/papers/details/6f0f6c9f104750a2915ce86d56f33188/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "dagnew-2007-3",
+  "year": 2007,
+  "age": null,
+  "ageText": "37–55 (range for the 3 women)",
+  "sex": "F",
+  "country": "United States",
+  "city": "",
+  "coords": [
+   39.83,
+   -98.58
+  ],
+  "presentation": "Symptoms of hydrocephalus and pressure on the midbrain",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (subtotal)",
+   "Radiotherapy"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Long-term follow-up was not yet available at the time of the report.",
+  "notes": "Two of these three patients were originally misdiagnosed as having a metastatic carcinoma; the diagnosis was revised to PTPR on review.",
+  "source": {
+   "label": "Dagnew et al., 2007, Neurosurgery",
+   "url": "https://consensus.app/papers/details/6f0f6c9f104750a2915ce86d56f33188/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "shibahara-2004-1",
+  "year": 2004,
+  "age": 29,
+  "ageText": "29",
+  "sex": "F",
+  "country": "Japan",
+  "city": "Tokyo",
+  "coords": [
+   35.68,
+   139.69
+  ],
+  "presentation": "Headaches",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (extent not stated)"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Follow-up was not reported in this pathology-focused report.",
+  "notes": "One of the earliest reports after PTPR was first described in 2003.",
+  "source": {
+   "label": "Shibahara et al., 2004, Acta Neuropathologica",
+   "url": "https://consensus.app/papers/details/e5d5f2b7c5855f10aec4e2e3ef121509/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "royal-preyra-2025-1",
+  "year": 2025,
+  "age": 69,
+  "ageText": "late 60s",
+  "sex": "M",
+  "country": "Canada",
+  "city": "",
+  "coords": [
+   56.13,
+   -106.35
+  ],
+  "presentation": "Two weeks of confusion and unsteadiness",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (extent not stated)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "Symptom-free with no sign of recurrence on MRI 18 months after treatment.",
+  "notes": "Report includes details of the radiotherapy planning.",
+  "source": {
+   "label": "Royal-Preyra et al., 2025, Cureus",
+   "url": "https://consensus.app/papers/details/eb49af293e3857919283edea521ab3ce/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "balci-topuz-2025-1",
+  "year": 2025,
+  "age": 3,
+  "ageText": "3",
+  "sex": "?",
+  "country": "Türkiye",
+  "city": "",
+  "coords": [
+   39.0,
+   35.0
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (subtotal)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, stable disease",
+  "outcomeText": "Disease has remained stable for 9 years and 2 months, over a total follow-up of 9.5 years, after partial removal and radiotherapy.",
+  "notes": "One of the longest stable outcomes reported in a child after incomplete removal.",
+  "source": {
+   "label": "Balcı Topuz et al., 2025, Asia-Pacific Journal of Clinical Oncology",
+   "url": "https://consensus.app/papers/details/c86b89324f335245a8aa88b2caa2984a/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "yorio-2021-1",
+  "year": 2021,
+  "age": null,
+  "ageText": "adult (two patients in their 40s, one in their 60s)",
+  "sex": "?",
+  "country": "Argentina",
+  "city": "Buenos Aires",
+  "coords": [
+   -34.6,
+   -58.38
+  ],
+  "presentation": "Headache with visual symptoms and/or gait disturbance",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (extent not stated)",
+   "Radiotherapy",
+   "Chemotherapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Tumour came back at a distant site after 7 years, then remained stable for a further 2 years.",
+  "notes": "Series of 3 adults (2 men, 1 woman); all had biopsy, then surgery and chemoradiotherapy with temozolomide.",
+  "source": {
+   "label": "Yorio et al., 2021, Neuro-Oncology (abstract)",
+   "url": "https://consensus.app/papers/details/4c0921c01e515ffbb7016af672fafb8c/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "yorio-2021-2",
+  "year": 2021,
+  "age": null,
+  "ageText": "adult (two patients in their 40s, one in their 60s)",
+  "sex": "?",
+  "country": "Argentina",
+  "city": "Buenos Aires",
+  "coords": [
+   -34.6,
+   -58.38
+  ],
+  "presentation": "Headache with visual symptoms and/or gait disturbance",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (extent not stated)",
+   "Radiotherapy",
+   "Chemotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No recurrence 2 years after treatment.",
+  "notes": "Series of 3 adults (2 men, 1 woman); all had biopsy, then surgery and chemoradiotherapy with temozolomide.",
+  "source": {
+   "label": "Yorio et al., 2021, Neuro-Oncology (abstract)",
+   "url": "https://consensus.app/papers/details/4c0921c01e515ffbb7016af672fafb8c/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "yorio-2021-3",
+  "year": 2021,
+  "age": null,
+  "ageText": "adult (two patients in their 40s, one in their 60s)",
+  "sex": "?",
+  "country": "Argentina",
+  "city": "Buenos Aires",
+  "coords": [
+   -34.6,
+   -58.38
+  ],
+  "presentation": "Headache with visual symptoms and/or gait disturbance",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (extent not stated)",
+   "Radiotherapy",
+   "Chemotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No recurrence 2.5 years after treatment.",
+  "notes": "Series of 3 adults (2 men, 1 woman); all had biopsy, then surgery and chemoradiotherapy with temozolomide.",
+  "source": {
+   "label": "Yorio et al., 2021, Neuro-Oncology (abstract)",
+   "url": "https://consensus.app/papers/details/4c0921c01e515ffbb7016af672fafb8c/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "chatterjee-2015-1",
+  "year": 2015,
+  "age": null,
+  "ageText": "not reported",
+  "sex": "?",
+  "country": "India",
+  "city": "",
+  "coords": [
+   20.59,
+   78.96
+  ],
+  "presentation": "Headache and visual disturbance",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (extent not stated)",
+   "Radiotherapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Tumour recurred 7 years after surgery and radiotherapy.",
+  "notes": "Series of 3 patients followed for 8 to 98 months; one patient also had absent periods (amenorrhoea).",
+  "source": {
+   "label": "Chatterjee et al., 2015, Neurology India",
+   "url": "https://consensus.app/papers/details/99db0a9650135823a10433c307d4c0bc/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "chatterjee-2015-2",
+  "year": 2015,
+  "age": null,
+  "ageText": "not reported",
+  "sex": "?",
+  "country": "India",
+  "city": "",
+  "coords": [
+   20.59,
+   78.96
+  ],
+  "presentation": "Headache and visual disturbance",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (extent not stated)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No recurrence at last follow-up.",
+  "notes": "Series of 3 patients followed for 8 to 98 months; one patient also had absent periods (amenorrhoea).",
+  "source": {
+   "label": "Chatterjee et al., 2015, Neurology India",
+   "url": "https://consensus.app/papers/details/99db0a9650135823a10433c307d4c0bc/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "chatterjee-2015-3",
+  "year": 2015,
+  "age": null,
+  "ageText": "not reported",
+  "sex": "?",
+  "country": "India",
+  "city": "",
+  "coords": [
+   20.59,
+   78.96
+  ],
+  "presentation": "Headache and visual disturbance",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (extent not stated)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No recurrence at last follow-up.",
+  "notes": "Series of 3 patients followed for 8 to 98 months; one patient also had absent periods (amenorrhoea).",
+  "source": {
+   "label": "Chatterjee et al., 2015, Neurology India",
+   "url": "https://consensus.app/papers/details/99db0a9650135823a10433c307d4c0bc/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "mohiuddin-2016-1",
+  "year": 2016,
+  "age": null,
+  "ageText": "not reported",
+  "sex": "?",
+  "country": "India",
+  "city": "",
+  "coords": [
+   20.59,
+   78.96
+  ],
+  "presentation": "Headache, impaired gaze and double vision",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (extent not stated)"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "The tumour came back one year after surgery.",
+  "notes": "Cystic mass in the third ventricle and pineal region.",
+  "source": {
+   "label": "Mohiuddin et al., 2016, Journal of Medical and Scientific Research",
+   "url": "https://consensus.app/papers/details/c5f59b7e40d254e08a2c76516a450f98/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "mohiuddin-2016-2",
+  "year": 2016,
+  "age": null,
+  "ageText": "not reported",
+  "sex": "?",
+  "country": "India",
+  "city": "",
+  "coords": [
+   20.59,
+   78.96
+  ],
+  "presentation": "Headache, impaired gaze and double vision",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (extent not stated)"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "The tumour came back six months after surgery.",
+  "notes": "Tumour had displaced the tectal plate.",
+  "source": {
+   "label": "Mohiuddin et al., 2016, Journal of Medical and Scientific Research",
+   "url": "https://consensus.app/papers/details/c5f59b7e40d254e08a2c76516a450f98/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "nemir-2022-1",
+  "year": 2022,
+  "age": 9,
+  "ageText": "9",
+  "sex": "F",
+  "country": "Croatia",
+  "city": "Zagreb",
+  "coords": [
+   45.81,
+   15.98
+  ],
+  "presentation": "Five months of excessive appetite and weight gain",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (gross total)",
+   "ETV",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No recurrence during 78 months (6.5 years) of follow-up.",
+  "notes": "Unusual presentation; a later review describes the radiotherapy as proton therapy.",
+  "source": {
+   "label": "Nemir et al., 2022, Surgical Neurology International",
+   "url": "https://consensus.app/papers/details/c0dcff2877dc58a49b9e08bc46f71730/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "damgaci-2020-1",
+  "year": 2020,
+  "age": 17,
+  "ageText": "17",
+  "sex": "F",
+  "country": "Türkiye",
+  "city": "",
+  "coords": [
+   39.0,
+   35.0
+  ],
+  "presentation": "Nausea, vomiting, hearing loss and Parinaud syndrome; shunted for hydrocephalus 18 months earlier",
+  "hydrocephalus": true,
+  "treatment": [
+   "Shunt",
+   "Surgery (gross total)"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Outcome after complete removal was not reported.",
+  "notes": "Large (58 mm) solid-cystic mass; report focuses on CT and MRI features.",
+  "source": {
+   "label": "Damgacı et al., 2020, Current Medical Imaging",
+   "url": "https://consensus.app/papers/details/299f9e98e3de557c8feb6975c4e11812/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "hua-2015-1",
+  "year": 2015,
+  "age": 10,
+  "ageText": "10",
+  "sex": "F",
+  "country": "China",
+  "city": "Qingdao",
+  "coords": [
+   36.07,
+   120.38
+  ],
+  "presentation": "One year of squint/double vision and headaches",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (gross total)"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "Doing well with no recurrence 15 months after surgery.",
+  "notes": "",
+  "source": {
+   "label": "Hua et al., 2015, Experimental and Therapeutic Medicine",
+   "url": "https://consensus.app/papers/details/aa17197d6b8750608cf60704faebb128/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "allison-2025-1",
+  "year": 2025,
+  "age": 47,
+  "ageText": "47",
+  "sex": "F",
+  "country": "Unknown",
+  "city": "",
+  "coords": null,
+  "presentation": "Progressive headaches, nausea and vomiting",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (extent not stated)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "Long-standing tumour control throughout follow-up after surgery and radiotherapy (diagnosed 2014).",
+  "notes": "WHO grade 2–3.",
+  "source": {
+   "label": "Allison et al., 2025, Surgical Neurology International",
+   "url": "https://consensus.app/papers/details/583d28e5294f5e049f60bc5724fa31b9/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "allison-2025-2",
+  "year": 2025,
+  "age": 40,
+  "ageText": "40",
+  "sex": "F",
+  "country": "Unknown",
+  "city": "",
+  "coords": null,
+  "presentation": "Two weeks of double vision, headache and imbalance",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (extent not stated)",
+   "Radiotherapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Aggressive spread (metastatic disease) despite repeated surgery and radiation (diagnosed 2020).",
+  "notes": "WHO grade 3.",
+  "source": {
+   "label": "Allison et al., 2025, Surgical Neurology International",
+   "url": "https://consensus.app/papers/details/583d28e5294f5e049f60bc5724fa31b9/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "shatara-2022-1",
+  "year": 2022,
+  "age": null,
+  "ageText": "22 months",
+  "sex": "F",
+  "country": "United States",
+  "city": "Columbus",
+  "coords": [
+   39.96,
+   -83.0
+  ],
+  "presentation": "Progressive unsteadiness and incoordination",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (subtotal)"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No disease progression for 92 months (over 7.5 years) after partial removal, with no additional treatment.",
+  "notes": "",
+  "source": {
+   "label": "Shatara et al., 2022, Neuro-Oncology (abstract)",
+   "url": "https://consensus.app/papers/details/8dfc5e331ded5763a7661e849e842090/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "shatara-2022-2",
+  "year": 2022,
+  "age": 8,
+  "ageText": "8",
+  "sex": "F",
+  "country": "United States",
+  "city": "Columbus",
+  "coords": [
+   39.96,
+   -83.0
+  ],
+  "presentation": "Progressive headaches and new seizures",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (subtotal)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No recurrence 37 months after radiotherapy, which followed two partial removals.",
+  "notes": "Genetic testing found CREBBP and MLL2 alterations (not targetable).",
+  "source": {
+   "label": "Shatara et al., 2022, Neuro-Oncology (abstract)",
+   "url": "https://consensus.app/papers/details/8dfc5e331ded5763a7661e849e842090/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "shatara-2022-3",
+  "year": 2022,
+  "age": 7,
+  "ageText": "7",
+  "sex": "M",
+  "country": "United States",
+  "city": "Columbus",
+  "coords": [
+   39.96,
+   -83.0
+  ],
+  "presentation": "New focal seizures",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (gross total)"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No progression 8 months after complete removal.",
+  "notes": "Methylation profiling classified the tumour as PTPR group B.",
+  "source": {
+   "label": "Shatara et al., 2022, Neuro-Oncology (abstract)",
+   "url": "https://consensus.app/papers/details/8dfc5e331ded5763a7661e849e842090/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "kennedy-2023-1",
+  "year": 2023,
+  "age": 61,
+  "ageText": "61",
+  "sex": "F",
+  "country": "United States",
+  "city": "Shreveport",
+  "coords": [
+   32.52,
+   -93.75
+  ],
+  "presentation": "Symptoms of hydrocephalus",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (subtotal)",
+   "Surgery (gross total)",
+   "Shunt"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Residual/recurrent tumour required a second operation; stable 1 year after the second surgery.",
+  "notes": "",
+  "source": {
+   "label": "Kennedy et al., 2023, Cureus",
+   "url": "https://consensus.app/papers/details/dd08215172255750a6b2a8433193e867/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "koshy-2022-1",
+  "year": 2022,
+  "age": 41,
+  "ageText": "41",
+  "sex": "M",
+  "country": "Unknown",
+  "city": "",
+  "coords": null,
+  "presentation": "Headache and double vision",
+  "hydrocephalus": true,
+  "treatment": [
+   "Shunt",
+   "Surgery (subtotal)",
+   "Surgery (gross total)",
+   "Proton therapy",
+   "Radiosurgery (Gamma Knife/SRS)",
+   "Chemotherapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Spread to the cerebellum 15 months after surgery (treated with craniospinal proton therapy); a new tumour deposit in the temporal lobe appeared in 2020 and was treated with surgery, Gamma Knife and temozolomide; doing well 21 months later.",
+  "notes": "First reported case of PTPR spreading into brain tissue away from the pineal region.",
+  "source": {
+   "label": "Koshy et al., 2022, Neuro-Oncology (abstract)",
+   "url": "https://consensus.app/papers/details/ccc8c090d18e55588743ce9123d92278/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "schwartz-2024-1",
+  "year": 2024,
+  "age": 52,
+  "ageText": "52",
+  "sex": "F",
+  "country": "United States",
+  "city": "Boston",
+  "coords": [
+   42.36,
+   -71.06
+  ],
+  "presentation": "Sudden severe headache and vomiting",
+  "hydrocephalus": true,
+  "treatment": [
+   "ETV",
+   "Observation"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "After biopsy and ETV, the team chose monitoring rather than aggressive surgery; longer-term outcome not reported.",
+  "notes": "Methylation profiling classified the tumour as the less aggressive subtype A, which guided the decision to observe.",
+  "source": {
+   "label": "Schwartz et al., 2024, Journal of Neuropathology and Experimental Neurology",
+   "url": "https://consensus.app/papers/details/5d4c3d4816365b0f88fe1a937679f665/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "mobark-2022-1",
+  "year": 2022,
+  "age": 9,
+  "ageText": "9",
+  "sex": "F",
+  "country": "Saudi Arabia",
+  "city": "Riyadh",
+  "coords": [
+   24.71,
+   46.68
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": true,
+  "treatment": [
+   "Shunt",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, stable disease",
+  "outcomeText": "Tumour had already spread to the spinal coverings at diagnosis; radiotherapy alone gave excellent control.",
+  "notes": "Methylation group B; biopsy only, with residual tumour.",
+  "source": {
+   "label": "Mobark et al., 2022, Current Oncology",
+   "url": "https://consensus.app/papers/details/d196cb4ae0a4524abb9463aaf7b203e1/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "mobark-2022-2",
+  "year": 2022,
+  "age": 8,
+  "ageText": "8",
+  "sex": "F",
+  "country": "Saudi Arabia",
+  "city": "Riyadh",
+  "coords": [
+   24.71,
+   46.68
+  ],
+  "presentation": "Headaches and visual loss",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (extent not stated)",
+   "Radiotherapy",
+   "Chemotherapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Aggressive course with repeated local regrowth despite radiotherapy and several operations; responded well to intensive chemotherapy.",
+  "notes": "Methylation group A; readmitted 4 months after surgery with drowsiness.",
+  "source": {
+   "label": "Mobark et al., 2022, Current Oncology",
+   "url": "https://consensus.app/papers/details/d196cb4ae0a4524abb9463aaf7b203e1/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "mobark-2022-3",
+  "year": 2022,
+  "age": null,
+  "ageText": "child",
+  "sex": "F",
+  "country": "Saudi Arabia",
+  "city": "Riyadh",
+  "coords": [
+   24.71,
+   46.68
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (subtotal)",
+   "Surgery (gross total)",
+   "Radiotherapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "No recurrence for 18 months after near-complete removal without further treatment; a local recurrence was then removed completely and treated with focal radiotherapy.",
+  "notes": "",
+  "source": {
+   "label": "Mobark et al., 2022, Current Oncology",
+   "url": "https://consensus.app/papers/details/d196cb4ae0a4524abb9463aaf7b203e1/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "braun-2018-1",
+  "year": 2018,
+  "age": 28,
+  "ageText": "28",
+  "sex": "M",
+  "country": "Poland",
+  "city": "",
+  "coords": [
+   51.92,
+   19.15
+  ],
+  "presentation": "35 mm pineal tumour",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (gross total)",
+   "Radiotherapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Initially diagnosed as pineocytoma; the tumour returned 7 years after complete removal, and radiotherapy then produced significant shrinkage and neurological improvement.",
+  "notes": "Shows how PTPR can be mistaken for a benign pineocytoma.",
+  "source": {
+   "label": "Braun et al., 2018, World Neurosurgery",
+   "url": "https://consensus.app/papers/details/6c59dd9fbae850689a58005d7120fd90/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "mathkour-2020-1",
+  "year": 2020,
+  "age": 10,
+  "ageText": "10",
+  "sex": "F",
+  "country": "United States",
+  "city": "New Orleans",
+  "coords": [
+   29.95,
+   -90.07
+  ],
+  "presentation": "Behaviour changes, imbalance, difficulty with simple tasks, staring spells",
+  "hydrocephalus": true,
+  "treatment": [
+   "ETV",
+   "Surgery (gross total)"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "Back to her usual self with no recurrence 3 years after surgery.",
+  "notes": "Child with trisomy 21 (Down syndrome); first such association reported.",
+  "source": {
+   "label": "Mathkour et al., 2020, Clinical Neurology and Neurosurgery",
+   "url": "https://consensus.app/papers/details/6fa4534c54e651d384d1a9a80ead1d22/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "gupta-k-2021-1",
+  "year": 2021,
+  "age": 5,
+  "ageText": "5",
+  "sex": "M",
+  "country": "India",
+  "city": "",
+  "coords": [
+   20.59,
+   78.96
+  ],
+  "presentation": "Worsening headaches, enlarged head since birth, visual disturbance",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (gross total)"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Outcome after complete removal was not reported.",
+  "notes": "",
+  "source": {
+   "label": "Gupta K et al., 2021, Asian Journal of Neurosurgery",
+   "url": "https://consensus.app/papers/details/9c280fd3e5e852eca1bec2e8df94f902/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "marucci-2026-1",
+  "year": 2026,
+  "age": 2,
+  "ageText": "2",
+  "sex": "M",
+  "country": "Italy",
+  "city": "",
+  "coords": [
+   41.87,
+   12.57
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [],
+  "outcome": "Not reported",
+  "outcomeText": "Treatment and outcome were not described in this pathology-focused report.",
+  "notes": "Tumour arose in the fourth ventricle, away from the pineal region, in a child with a germline PTEN variant.",
+  "source": {
+   "label": "Marucci et al., 2026, Neuropathology and Applied Neurobiology",
+   "url": "https://consensus.app/papers/details/06ef163b7dca5815badd470907245598/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "mehta-2021-1",
+  "year": 2021,
+  "age": 29,
+  "ageText": "29",
+  "sex": "M",
+  "country": "India",
+  "city": "",
+  "coords": [
+   20.59,
+   78.96
+  ],
+  "presentation": "Recurrent tumour 9 years after first surgery",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (subtotal)",
+   "Shunt",
+   "Radiotherapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "After surgery, shunting and radiotherapy the tumour was controlled for 8 years, then recurred twice within 6 months with rising growth activity.",
+  "notes": "Originally misdiagnosed as pineocytoma.",
+  "source": {
+   "label": "Mehta et al., 2021, Asian Journal of Neurosurgery",
+   "url": "https://consensus.app/papers/details/f50e48285954521b84f5cf4e093db95e/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "urquiza-2026-1",
+  "year": 2026,
+  "age": 45,
+  "ageText": "45",
+  "sex": "F",
+  "country": "Unknown",
+  "city": "",
+  "coords": null,
+  "presentation": "One year of headaches, visual disturbance and gait problems",
+  "hydrocephalus": true,
+  "treatment": [
+   "ETV",
+   "Surgery (extent not stated)",
+   "Shunt",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No recurrence on the most recent surveillance MRI after surgery and radiotherapy (follow-up length not stated).",
+  "notes": "Diagnosis needed review at two specialist centres; ETV failed and a shunt was required.",
+  "source": {
+   "label": "Urquiza Portilla et al., 2026, Cureus",
+   "url": "https://consensus.app/papers/details/adc3fde4286d525cbf803978a812f39a/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "zaimoglu-2017-1",
+  "year": 2017,
+  "age": 21,
+  "ageText": "21",
+  "sex": "F",
+  "country": "Türkiye",
+  "city": "",
+  "coords": [
+   39.0,
+   35.0
+  ],
+  "presentation": "Pineal tumour",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (gross total)"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Outcome after complete removal was not reported.",
+  "notes": "",
+  "source": {
+   "label": "Zaimoğlu et al., 2017, International Surgery Journal",
+   "url": "https://consensus.app/papers/details/c345e7b441ab51958f818ebbd12c7a3b/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "bechri-2021-1",
+  "year": 2021,
+  "age": 26,
+  "ageText": "26",
+  "sex": "F",
+  "country": "Morocco",
+  "city": "Rabat",
+  "coords": [
+   34.02,
+   -6.84
+  ],
+  "presentation": "Raised intracranial pressure",
+  "hydrocephalus": true,
+  "treatment": [
+   "ETV",
+   "Radiosurgery (Gamma Knife/SRS)"
+  ],
+  "outcome": "Alive, stable disease",
+  "outcomeText": "Declined open surgery; after radiosurgery the tumour shrank by about 60% and she regained independence at 1 year.",
+  "notes": "Radiosurgery used as the main treatment instead of removal.",
+  "source": {
+   "label": "Bechri et al., 2021, Surgical Neurology International",
+   "url": "https://consensus.app/papers/details/e5ef2d935c92508e8d12cdba8e47462b/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "suryadevara-2025-1",
+  "year": 2025,
+  "age": 46,
+  "ageText": "46",
+  "sex": "M",
+  "country": "Unknown",
+  "city": "",
+  "coords": null,
+  "presentation": "Symptomatic obstructive hydrocephalus",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (extent not stated)"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Outcome not reported (surgical technique video).",
+  "notes": "WHO grade 2; operated through an occipital transtentorial approach.",
+  "source": {
+   "label": "Suryadevara et al., 2025, Journal of Neurological Surgery Part B",
+   "url": "https://consensus.app/papers/details/7fd9069b103a586e8d7ca1877ed9ddc7/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "gupta-r-2020-1",
+  "year": 2020,
+  "age": 25,
+  "ageText": "25",
+  "sex": "M",
+  "country": "India",
+  "city": "",
+  "coords": [
+   20.59,
+   78.96
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (extent not stated)"
+  ],
+  "outcome": "Died",
+  "outcomeText": "Died 4 days after surgery from a cardiac arrest.",
+  "notes": "Report focuses on an unusual keratin staining pattern.",
+  "source": {
+   "label": "Gupta R et al., 2020, Indian Journal of Medical and Paediatric Oncology",
+   "url": "https://consensus.app/papers/details/7819624c909958d4b003c493e83e52d4/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "kawahara-2007-1",
+  "year": 2007,
+  "age": 48,
+  "ageText": "48",
+  "sex": "F",
+  "country": "Japan",
+  "city": "",
+  "coords": [
+   36.2,
+   138.25
+  ],
+  "presentation": "Morning headaches for 1 month",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (gross total)"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "Doing well with no recurrence 8 months after complete removal.",
+  "notes": "",
+  "source": {
+   "label": "Kawahara et al., 2007, Neurologia medico-chirurgica",
+   "url": "https://consensus.app/papers/details/8d5ae82341fd5e24bafffaf9880ba990/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "abraham-2019-1",
+  "year": 2019,
+  "age": 40,
+  "ageText": "40",
+  "sex": "F",
+  "country": "India",
+  "city": "",
+  "coords": [
+   20.59,
+   78.96
+  ],
+  "presentation": "Ten days of reduced vision and incontinence, two days of confusion",
+  "hydrocephalus": true,
+  "treatment": [],
+  "outcome": "Not reported",
+  "outcomeText": "Treatment and outcome were not given in the available abstract.",
+  "notes": "Optic nerve damage (pale discs) from raised pressure.",
+  "source": {
+   "label": "Abraham et al., 2019, Journal of Evolution of Medical and Dental Sciences",
+   "url": "https://consensus.app/papers/details/393cc181ae8a5bb594f39a40da9091b8/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "boco-2008-1",
+  "year": 2008,
+  "age": 22,
+  "ageText": "22",
+  "sex": "M",
+  "country": "United States",
+  "city": "",
+  "coords": [
+   39.83,
+   -98.58
+  ],
+  "presentation": "Progressive headache, nystagmus and worsening double vision",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (extent not stated)"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Outcome after removal was not reported.",
+  "notes": "",
+  "source": {
+   "label": "Boco et al., 2008, Neuropathology",
+   "url": "https://consensus.app/papers/details/1e850cca78f0517fb54f30f861797fa3/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "nasrollahi-2018-1",
+  "year": 2018,
+  "age": 6,
+  "ageText": "6",
+  "sex": "M",
+  "country": "Iran",
+  "city": "Shiraz",
+  "coords": [
+   29.59,
+   52.58
+  ],
+  "presentation": "Headaches, nausea and vomiting",
+  "hydrocephalus": null,
+  "treatment": [
+   "Radiotherapy",
+   "Chemotherapy"
+  ],
+  "outcome": "Alive, stable disease",
+  "outcomeText": "Treated with radiotherapy (54 Gy) and chemotherapy after biopsy only; the tumour shrank slightly and he was well and attending school 4 years later.",
+  "notes": "Example of radiotherapy as the main treatment without removal.",
+  "source": {
+   "label": "Nasrollahi et al., 2018, Middle East Journal of Cancer",
+   "url": "https://consensus.app/papers/details/8acaf10d19225a54b86b78c21172b909/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "choque-velasquez-2018-1",
+  "year": 2018,
+  "age": 3,
+  "ageText": "3",
+  "sex": "M",
+  "country": "Finland",
+  "city": "Helsinki",
+  "coords": [
+   60.17,
+   24.94
+  ],
+  "presentation": "Recurrent tumour",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (gross total)",
+   "Radiotherapy",
+   "Chemotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No recurrence more than 3 years after re-operation, radiotherapy and chemotherapy.",
+  "notes": "Tumour had progressed from grade 2 to grade 3 at recurrence.",
+  "source": {
+   "label": "Choque-Velasquez et al., 2018, World Neurosurgery",
+   "url": "https://consensus.app/papers/details/33f2e2610c2d59de9fb23d7a2df8f376/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "buffenoir-2008-1",
+  "year": 2008,
+  "age": 13,
+  "ageText": "13",
+  "sex": "M",
+  "country": "France",
+  "city": "",
+  "coords": [
+   46.23,
+   2.21
+  ],
+  "presentation": "Raised intracranial pressure",
+  "hydrocephalus": true,
+  "treatment": [
+   "ETV",
+   "Surgery (gross total)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "Back at school with no residual tumour on MRI 15 months after surgery and radiotherapy (50 Gy).",
+  "notes": "",
+  "source": {
+   "label": "Buffenoir et al., 2008, Child's Nervous System",
+   "url": "https://consensus.app/papers/details/fbd443cbb63f5816bf4f82adbd7d2a2b/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "patil-2016-1",
+  "year": 2016,
+  "age": 60,
+  "ageText": "60",
+  "sex": "F",
+  "country": "India",
+  "city": "",
+  "coords": [
+   20.59,
+   78.96
+  ],
+  "presentation": "Headache, giddiness and reduced vision",
+  "hydrocephalus": false,
+  "treatment": [
+   "Surgery (extent not stated)"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Presented with a recurrence 2 years after a first pineal operation; reported well on follow-up.",
+  "notes": "",
+  "source": {
+   "label": "Patil et al., 2016, Asian Journal of Neurosurgery",
+   "url": "https://consensus.app/papers/details/d411fef3258e52028302cf71b0111869/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "jimenez-heffernan-2016-1",
+  "year": 2016,
+  "age": 34,
+  "ageText": "34",
+  "sex": "F",
+  "country": "Spain",
+  "city": "Madrid",
+  "coords": [
+   40.42,
+   -3.7
+  ],
+  "presentation": "Hydrocephalus",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (extent not stated)"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Outcome not reported (report on microscopic smear features).",
+  "notes": "",
+  "source": {
+   "label": "Jiménez-Heffernan et al., 2016, Diagnostic Cytopathology",
+   "url": "https://consensus.app/papers/details/b72bb515fa9e559fb9ad14f4afde5110/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "poulgrain-2011-1",
+  "year": 2011,
+  "age": 25,
+  "ageText": "25",
+  "sex": "F",
+  "country": "Australia",
+  "city": "",
+  "coords": [
+   -25.27,
+   133.78
+  ],
+  "presentation": "Fall from gait disturbance",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (extent not stated)",
+   "Radiotherapy"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "One of the two patients in this report had a local recurrence 23 months after surgery; which one is not stated.",
+  "notes": "",
+  "source": {
+   "label": "Poulgrain et al., 2011, Journal of Clinical Neuroscience",
+   "url": "https://consensus.app/papers/details/5d345e6c132f573492bde64e0ea07be4/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "poulgrain-2011-2",
+  "year": 2011,
+  "age": 42,
+  "ageText": "42",
+  "sex": "M",
+  "country": "Australia",
+  "city": "",
+  "coords": [
+   -25.27,
+   133.78
+  ],
+  "presentation": "Headaches",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (extent not stated)",
+   "Radiotherapy"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "One of the two patients in this report had a local recurrence 23 months after surgery; which one is not stated.",
+  "notes": "",
+  "source": {
+   "label": "Poulgrain et al., 2011, Journal of Clinical Neuroscience",
+   "url": "https://consensus.app/papers/details/5d345e6c132f573492bde64e0ea07be4/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "koziarski-2014-1",
+  "year": 2014,
+  "age": 37,
+  "ageText": "37",
+  "sex": "M",
+  "country": "Poland",
+  "city": "Warsaw",
+  "coords": [
+   52.23,
+   21.01
+  ],
+  "presentation": "Hydrocephalus (shunted 6 years before tumour removal)",
+  "hydrocephalus": true,
+  "treatment": [
+   "Shunt",
+   "Surgery (gross total)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No complaints 10 years after the disease began.",
+  "notes": "Surgery was delayed 6 years after the first diagnosis and shunt.",
+  "source": {
+   "label": "Koziarski et al., 2014, Neurologia i Neurochirurgia Polska",
+   "url": "https://consensus.app/papers/details/2066a2bbe907566fa485889916243720/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "koziarski-2014-2",
+  "year": 2014,
+  "age": 45,
+  "ageText": "45",
+  "sex": "F",
+  "country": "Poland",
+  "city": "Warsaw",
+  "coords": [
+   52.23,
+   21.01
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (gross total)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No complaints 24 months after surgery and radiotherapy.",
+  "notes": "",
+  "source": {
+   "label": "Koziarski et al., 2014, Neurologia i Neurochirurgia Polska",
+   "url": "https://consensus.app/papers/details/2066a2bbe907566fa485889916243720/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "santiago-2026-1",
+  "year": 2026,
+  "age": 42,
+  "ageText": "42",
+  "sex": "M",
+  "country": "Philippines",
+  "city": "",
+  "coords": [
+   14.6,
+   120.98
+  ],
+  "presentation": "Chronic headaches and dizziness",
+  "hydrocephalus": true,
+  "treatment": [
+   "ETV",
+   "Shunt"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Hydrocephalus relieved by ETV then shunt; discharged well on day 5. Longer-term outcome not reported.",
+  "notes": "Diagnosis and hydrocephalus treatment done through a single burr hole.",
+  "source": {
+   "label": "Santiago et al., 2026, Philippine Journal of Science",
+   "url": "https://consensus.app/papers/details/804c7dfecdef5a749feff5ff3688842b/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "iranmehr-2026-1",
+  "year": 2026,
+  "age": 24,
+  "ageText": "24",
+  "sex": "M",
+  "country": "Iran",
+  "city": "Tehran",
+  "coords": [
+   35.69,
+   51.39
+  ],
+  "presentation": "Recurrent grade 3 tumour",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (subtotal)",
+   "Radiotherapy",
+   "Radiosurgery (Gamma Knife/SRS)"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Progressed despite partial removal and radiotherapy; after a second partial removal and fractionated Gamma Knife treatment the tumour shrank markedly and he was stable 1 year later.",
+  "notes": "First report of fractionated Gamma Knife for a large recurrent PTPR.",
+  "source": {
+   "label": "Iranmehr et al., 2026, Clinical Case Reports",
+   "url": "https://consensus.app/papers/details/1071efeb388453b29fb24edfea577f33/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "aggarwal-2015-1",
+  "year": 2015,
+  "age": 17,
+  "ageText": "17",
+  "sex": "F",
+  "country": "India",
+  "city": "",
+  "coords": [
+   20.59,
+   78.96
+  ],
+  "presentation": "Unusual presentation (tumour extending into third ventricle)",
+  "hydrocephalus": null,
+  "treatment": [],
+  "outcome": "Not reported",
+  "outcomeText": "Treatment and outcome were not given in the abstract.",
+  "notes": "",
+  "source": {
+   "label": "Aggarwal et al., 2015, Asian Journal of Neurosurgery",
+   "url": "https://consensus.app/papers/details/aa8c392e29fb55bb9ac7286d2a7743c7/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "mobley-2015-1",
+  "year": 2015,
+  "age": 25,
+  "ageText": "25",
+  "sex": "M",
+  "country": "United States",
+  "city": "",
+  "coords": [
+   39.83,
+   -98.58
+  ],
+  "presentation": "Headache, misaligned eyes and confusion",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (extent not stated)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, stable disease",
+  "outcomeText": "Stable with no progression 17 months after surgery and radiotherapy.",
+  "notes": "Two tumours at once (pineal and suprasellar) and unusual chromosome changes.",
+  "source": {
+   "label": "Mobley et al., 2015, Human Pathology",
+   "url": "https://consensus.app/papers/details/e7be16ca5ae95da381ee734aaca6b680/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "li-2011-1",
+  "year": 2011,
+  "age": null,
+  "ageText": "15 months",
+  "sex": "M",
+  "country": "United States",
+  "city": "Baltimore",
+  "coords": [
+   39.29,
+   -76.61
+  ],
+  "presentation": "Initially thought to be a tectal glioma; growth on follow-up imaging",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (subtotal)",
+   "Chemotherapy",
+   "ETV",
+   "Shunt",
+   "Proton therapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Tumour kept growing despite several debulking operations and chemotherapy; after proton-beam therapy the tumour was stable at 15 months.",
+  "notes": "Youngest patient reported at the time.",
+  "source": {
+   "label": "Li et al., 2011, Journal of Neurosurgery: Pediatrics",
+   "url": "https://consensus.app/papers/details/105387b7503c5bb3b77e15db28145899/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "nowicka-2016-1",
+  "year": 2016,
+  "age": null,
+  "ageText": "not reported",
+  "sex": "?",
+  "country": "Poland",
+  "city": "",
+  "coords": [
+   51.92,
+   19.15
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (extent not stated)"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Tumour spread to the ventricles and spine 5 years after the first operation.",
+  "notes": "Example of late spread via cerebrospinal fluid.",
+  "source": {
+   "label": "Nowicka et al., 2016, Folia Neuropathologica",
+   "url": "https://consensus.app/papers/details/9eb99dfa47275f5e8b8479643a12f396/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "gupta-s-2019-1",
+  "year": 2019,
+  "age": 15,
+  "ageText": "15",
+  "sex": "?",
+  "country": "India",
+  "city": "",
+  "coords": [
+   20.59,
+   78.96
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [],
+  "outcome": "Not reported",
+  "outcomeText": "Details were not available in the abstract.",
+  "notes": "",
+  "source": {
+   "label": "Gupta S et al., 2019, Indian Journal of Medical and Paediatric Oncology",
+   "url": "https://consensus.app/papers/details/7e41c2977dc257a38a3ce842b2d32be8/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "oneal-2025-1",
+  "year": 2025,
+  "age": 21,
+  "ageText": "21",
+  "sex": "M",
+  "country": "United States",
+  "city": "",
+  "coords": [
+   39.83,
+   -98.58
+  ],
+  "presentation": "Large head and obstructive hydrocephalus",
+  "hydrocephalus": true,
+  "treatment": [
+   "ETV",
+   "Surgery (gross total)"
+  ],
+  "outcome": "Alive, stable disease",
+  "outcomeText": "Declined proton radiotherapy; a small residual was seen at 18 months and he was clinically stable at 28 months.",
+  "notes": "Testing found a germline PTEN mutation (PTEN hamartoma tumour syndrome); tumour was first misdiagnosed as ependymoma.",
+  "source": {
+   "label": "O'Neal et al., 2025, Current Oncology",
+   "url": "https://consensus.app/papers/details/46e02eca5f8f517ab7a893e460067ced/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "riis-2013-1",
+  "year": 2013,
+  "age": null,
+  "ageText": "not reported",
+  "sex": "?",
+  "country": "Denmark",
+  "city": "",
+  "coords": [
+   56.26,
+   9.5
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [
+   "Radiosurgery (Gamma Knife/SRS)"
+  ],
+  "outcome": "Alive, stable disease",
+  "outcomeText": "Five years after Gamma Knife radiosurgery the tumour was still shrinking.",
+  "notes": "First reported radiosurgery for a biopsy-confirmed PTPR.",
+  "source": {
+   "label": "Riis et al., 2013, Stereotactic and Functional Neurosurgery",
+   "url": "https://consensus.app/papers/details/7ababd836a1153ef94536a2eb48d6b8e/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "rosa-2015-1",
+  "year": 2015,
+  "age": 17,
+  "ageText": "17",
+  "sex": "M",
+  "country": "Unknown",
+  "city": "",
+  "coords": null,
+  "presentation": "Headache",
+  "hydrocephalus": null,
+  "treatment": [],
+  "outcome": "Not reported",
+  "outcomeText": "Treatment and outcome were not given in the abstract.",
+  "notes": "Report focuses on MRI features (T1 brightness).",
+  "source": {
+   "label": "Rosa et al., 2015, Case Reports in Neurological Medicine",
+   "url": "https://consensus.app/papers/details/284e7ca12ce25eb094d4c5761982f165/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "sato-2009-1",
+  "year": 2009,
+  "age": 18,
+  "ageText": "18",
+  "sex": "M",
+  "country": "Japan",
+  "city": "",
+  "coords": [
+   36.2,
+   138.25
+  ],
+  "presentation": "Initially misdiagnosed as a pineal cyst and observed",
+  "hydrocephalus": null,
+  "treatment": [
+   "Observation",
+   "Chemotherapy",
+   "Radiotherapy"
+  ],
+  "outcome": "Died",
+  "outcomeText": "The tumour spread early through the cerebrospinal fluid and progressed relentlessly; the patient died despite intensive chemotherapy and radiotherapy.",
+  "notes": "Rapidly progressive, possibly multicentric tumour.",
+  "source": {
+   "label": "Sato et al., 2009, Pediatric Radiology",
+   "url": "https://consensus.app/papers/details/73fec6a008f858cba55261785fcaf4ec/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "kern-2006-1",
+  "year": 2006,
+  "age": null,
+  "ageText": "young woman",
+  "sex": "F",
+  "country": "Unknown",
+  "city": "",
+  "coords": null,
+  "presentation": "Raised intracranial pressure and Parinaud syndrome",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (extent not stated)"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Outcome was not reported.",
+  "notes": "Third publication ever on this tumour type.",
+  "source": {
+   "label": "Kern et al., 2006, Clinical Neuropathology",
+   "url": "https://consensus.app/papers/details/315df735bdce55d091d120da141ba62a/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "cerase-2009-1",
+  "year": 2009,
+  "age": 56,
+  "ageText": "56",
+  "sex": "M",
+  "country": "Italy",
+  "city": "Siena",
+  "coords": [
+   43.32,
+   11.33
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [
+   "Observation",
+   "Surgery (extent not stated)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "Observed for 29 months (tumour clearly grew), then operated and irradiated; no relapse at 3 months, with longer follow-up published in 2016.",
+  "notes": "Documents the natural growth of an untreated PTPR.",
+  "source": {
+   "label": "Cerase et al., 2009, Journal of Neuro-Oncology",
+   "url": "https://consensus.app/papers/details/1556848cbab65ec9b6f3b8b05dbfd098/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "assi-2021-1",
+  "year": 2021,
+  "age": 25,
+  "ageText": "25",
+  "sex": "M",
+  "country": "Lebanon",
+  "city": "Beirut",
+  "coords": [
+   33.89,
+   35.5
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (gross total)",
+   "Radiotherapy",
+   "Everolimus"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Recurred with cerebellar deposits after surgery and radiotherapy; everolimus alone from 2017 produced regression and stable disease for 43 months.",
+  "notes": "Grade 3 tumour with PTEN R130Q mutation and chromosome 10 loss; first everolimus monotherapy report.",
+  "source": {
+   "label": "Assi et al., 2021, Current Oncology",
+   "url": "https://consensus.app/papers/details/e5170b2bf2595a09addec5bd279b7cc7/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "kim-2010-1",
+  "year": 2010,
+  "age": 39,
+  "ageText": "39",
+  "sex": "F",
+  "country": "South Korea",
+  "city": "Seoul",
+  "coords": [
+   37.57,
+   126.98
+  ],
+  "presentation": "One month of headache and reduced vision",
+  "hydrocephalus": true,
+  "treatment": [
+   "ETV",
+   "Surgery (subtotal)",
+   "Radiosurgery (Gamma Knife/SRS)"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Tumour had already seeded the pituitary stalk and inner-ear canals at diagnosis; radiosurgery shrank these but new deposits soon appeared nearby.",
+  "notes": "Proof that PTPR can spread to distant sites.",
+  "source": {
+   "label": "Kim et al., 2010, Neuropathology",
+   "url": "https://consensus.app/papers/details/36985ea92add5e979a696beb5637e1a3/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "santoro-2012-1",
+  "year": 2012,
+  "age": 47,
+  "ageText": "47",
+  "sex": "M",
+  "country": "Italy",
+  "city": "Rome",
+  "coords": [
+   41.9,
+   12.5
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [
+   "Observation",
+   "Surgery (extent not stated)"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Followed with imaging for about 4 years before surgery; outcome after surgery not reported.",
+  "notes": "Growth rate of the tumour was measured over 4 years.",
+  "source": {
+   "label": "Santoro et al., 2012, Neurological Sciences",
+   "url": "https://consensus.app/papers/details/613035ad63c55f5b9dea946b7143d783/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "shakir-2015-1",
+  "year": 2015,
+  "age": null,
+  "ageText": "not reported",
+  "sex": "?",
+  "country": "Unknown",
+  "city": "",
+  "coords": null,
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (subtotal)",
+   "Radiosurgery (Gamma Knife/SRS)",
+   "Chemotherapy"
+  ],
+  "outcome": "Alive, stable disease",
+  "outcomeText": "Residual tumour regressed and the patient remained symptom-free over 9 years after partial removal, Gamma Knife and temozolomide.",
+  "notes": "",
+  "source": {
+   "label": "Shakir et al., 2015, Surgical Neurology International",
+   "url": "https://consensus.app/papers/details/6417ae2337725c8fb25ffd96a3f7a792/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "lancia-2017-1",
+  "year": 2017,
+  "age": 27,
+  "ageText": "27",
+  "sex": "F",
+  "country": "Italy",
+  "city": "",
+  "coords": [
+   41.87,
+   12.57
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (extent not stated)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "Complete response of the residual tumour 41 months after radiotherapy (59.4 Gy), with no side effects and resolution of neurological symptoms.",
+  "notes": "Multiple operations before radiotherapy.",
+  "source": {
+   "label": "Lancia et al., 2017, Klinická Onkologie",
+   "url": "https://consensus.app/papers/details/482620dd7c48569aa13bc531026a53d0/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "cuccia-2025-1",
+  "year": 2025,
+  "age": 24,
+  "ageText": "24",
+  "sex": "F",
+  "country": "Italy",
+  "city": "",
+  "coords": [
+   41.87,
+   12.57
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (subtotal)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No recurrence and in good health 2 years after partial removal and radiotherapy (59.4 Gy); the residual tumour slightly shrank.",
+  "notes": "",
+  "source": {
+   "label": "Cuccia et al., 2025, International Cancer Conference Journal",
+   "url": "https://consensus.app/papers/details/759672a23046579384429b6528197e46/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "jiang-2014-1",
+  "year": 2014,
+  "age": 57,
+  "ageText": "57",
+  "sex": "M",
+  "country": "China",
+  "city": "",
+  "coords": [
+   35.86,
+   104.2
+  ],
+  "presentation": "Six months of headache, worsening in the last month",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (gross total)"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "No deficits and no recurrence 12 months after complete removal, without radiotherapy or chemotherapy.",
+  "notes": "",
+  "source": {
+   "label": "Jiang et al., 2014, Chinese Journal of Contemporary Neurology and Neurosurgery",
+   "url": "https://consensus.app/papers/details/06eb6291447352d1ba89b9e477b9a483/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "patel-2012-1",
+  "year": 2012,
+  "age": 23,
+  "ageText": "23",
+  "sex": "M",
+  "country": "United States",
+  "city": "",
+  "coords": [
+   39.83,
+   -98.58
+  ],
+  "presentation": "Third-ventricle mass causing hydrocephalus",
+  "hydrocephalus": true,
+  "treatment": [
+   "ETV",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, no recurrence",
+  "outcomeText": "After ETV and biopsy only, radiotherapy led to complete disappearance of the tumour with no recurrence at 25 months.",
+  "notes": "Shows a minimally invasive strategy avoiding open surgery.",
+  "source": {
+   "label": "Patel et al., 2012, Journal of Neuro-Oncology",
+   "url": "https://consensus.app/papers/details/808c1dbe23a65360b7b9319c89fa2e87/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "yano-2009-1",
+  "year": 2009,
+  "age": 17,
+  "ageText": "17",
+  "sex": "M",
+  "country": "Japan",
+  "city": "",
+  "coords": [
+   36.2,
+   138.25
+  ],
+  "presentation": "3 cm pineal tumour",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (subtotal)"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Residual tumour recurred three times after two incomplete operations; the patient was alive 218 months (18 years) after diagnosis.",
+  "notes": "Longest survival reported at the time; originally diagnosed as papillary ependymoma.",
+  "source": {
+   "label": "Yano et al., 2009, Brain Tumor Pathology",
+   "url": "https://consensus.app/papers/details/f7ac871ed3425c84859b541ef4a8c234/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "wong-2012-1",
+  "year": 2012,
+  "age": 45,
+  "ageText": "45",
+  "sex": "M",
+  "country": "China",
+  "city": "Hong Kong",
+  "coords": [
+   22.32,
+   114.17
+  ],
+  "presentation": "Symptoms of hydrocephalus",
+  "hydrocephalus": true,
+  "treatment": [
+   "Shunt",
+   "Observation",
+   "Surgery (subtotal)"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Observed with a shunt for 15 years while the tumour slowly grew, then had a near-total removal; outcome after surgery not reported.",
+  "notes": "Very slow growth over 15 years.",
+  "source": {
+   "label": "Wong et al., 2012, Brain Pathology",
+   "url": "https://consensus.app/papers/details/cf7549c8185c5011ae56b174a0294e93/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "magalhaes-2012-1",
+  "year": 2012,
+  "age": 48,
+  "ageText": "48",
+  "sex": "M",
+  "country": "Unknown",
+  "city": "",
+  "coords": null,
+  "presentation": "Pineal region mass",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (extent not stated)"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Outcome not reported (pathology-focused report).",
+  "notes": "Tumour showed areas of marked cell pleomorphism.",
+  "source": {
+   "label": "Magalhães et al., 2012, Brain Tumor Pathology",
+   "url": "https://consensus.app/papers/details/899ae86a2d2d512381c9c0c6115de6f3/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "magalhaes-2012-2",
+  "year": 2012,
+  "age": 35,
+  "ageText": "35",
+  "sex": "M",
+  "country": "Unknown",
+  "city": "",
+  "coords": null,
+  "presentation": "Pineal region tumour",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (extent not stated)"
+  ],
+  "outcome": "Not reported",
+  "outcomeText": "Outcome not reported (pathology-focused report).",
+  "notes": "",
+  "source": {
+   "label": "Magalhães et al., 2012, Brain Tumor Pathology",
+   "url": "https://consensus.app/papers/details/899ae86a2d2d512381c9c0c6115de6f3/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "momii-2018-1",
+  "year": 2018,
+  "age": 46,
+  "ageText": "46",
+  "sex": "M",
+  "country": "United States",
+  "city": "Irvine",
+  "coords": [
+   33.68,
+   -117.83
+  ],
+  "presentation": "Pineal tumour with obstructive hydrocephalus",
+  "hydrocephalus": true,
+  "treatment": [
+   "Radiosurgery (Gamma Knife/SRS)",
+   "Chemotherapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Treated with repeated radiosurgery over several years; the tumour spread to the brain and spine and was managed with temozolomide, then bevacizumab with etoposide and carboplatin, with periods of stable disease.",
+  "notes": "Heavily pre-treated case; PTEN mutation found; could not tolerate mTOR inhibitors.",
+  "source": {
+   "label": "Momii et al., 2018, Neurology (abstract)",
+   "url": "https://consensus.app/papers/details/11c5d81a0a565473b86c9726f084df28/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "marfia-2020-1",
+  "year": 2020,
+  "age": 40,
+  "ageText": "40",
+  "sex": "M",
+  "country": "Italy",
+  "city": "Milan",
+  "coords": [
+   45.46,
+   9.19
+  ],
+  "presentation": "Unconscious from bleeding into the tumour",
+  "hydrocephalus": true,
+  "treatment": [
+   "ETV",
+   "Surgery (extent not stated)",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, stable disease",
+  "outcomeText": "After radiotherapy the tumour was dramatically reduced on MRI at 20 months.",
+  "notes": "Unusual presentation with haemorrhage; blood VEGF levels were studied.",
+  "source": {
+   "label": "Marfia et al., 2020, Journal of Neurosurgical Sciences",
+   "url": "https://consensus.app/papers/details/0742ca23c1db543e8289af7feb077804/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "kaloshi-2010-1",
+  "year": 2010,
+  "age": 29,
+  "ageText": "29",
+  "sex": "M",
+  "country": "Albania",
+  "city": "Tirana",
+  "coords": [
+   41.33,
+   19.82
+  ],
+  "presentation": "One month of double vision and headaches",
+  "hydrocephalus": true,
+  "treatment": [
+   "Shunt",
+   "Surgery (subtotal)",
+   "Chemotherapy",
+   "Radiotherapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Tumour grew aggressively within 8 months of partial removal; after chemotherapy and radiotherapy he was improving clinically and on imaging.",
+  "notes": "First diagnosed as ependymoma; corrected on review.",
+  "source": {
+   "label": "Kaloshi et al., 2010, Journal of Neuro-Oncology",
+   "url": "https://consensus.app/papers/details/9914e1054d2e5549ab0ace8d3d2981b0/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "vaghela-2010-1",
+  "year": 2010,
+  "age": 18,
+  "ageText": "18",
+  "sex": "F",
+  "country": "India",
+  "city": "",
+  "coords": [
+   20.59,
+   78.96
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [],
+  "outcome": "Not reported",
+  "outcomeText": "Treatment and outcome were not given in the abstract (advanced MRI report).",
+  "notes": "",
+  "source": {
+   "label": "Vaghela et al., 2010, Neurology India",
+   "url": "https://consensus.app/papers/details/2fc04e2f16e95340841a2bb8e7f153f4/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "kamamoto-2016-1",
+  "year": 2016,
+  "age": 37,
+  "ageText": "37",
+  "sex": "M",
+  "country": "Japan",
+  "city": "Tokyo",
+  "coords": [
+   35.68,
+   139.69
+  ],
+  "presentation": "Headache at age 22 with hydrocephalus",
+  "hydrocephalus": true,
+  "treatment": [
+   "Shunt",
+   "Surgery (subtotal)",
+   "Chemotherapy",
+   "Radiotherapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Over 15 years of repeated partial removals, chemotherapy and radiotherapy; a combination of temozolomide and bevacizumab produced shrinkage and improvement lasting over 14 months.",
+  "notes": "Diagnosis changed several times before PTPR was confirmed.",
+  "source": {
+   "label": "Kamamoto et al., 2016, Brain Tumor Pathology",
+   "url": "https://consensus.app/papers/details/1eb0c823831c5f1998481c8341bfc427/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "heim-2013-1",
+  "year": 2013,
+  "age": 59,
+  "ageText": "59",
+  "sex": "F",
+  "country": "Germany",
+  "city": "Münster",
+  "coords": [
+   51.96,
+   7.63
+  ],
+  "presentation": "Symptoms of hydrocephalus",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (gross total)",
+   "Radiosurgery (Gamma Knife/SRS)"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Tumour regrew within 2 months of surgery; single-session robotic radiosurgery markedly shrank it and she was well 6 months after surgery.",
+  "notes": "First PTPR with an anaplastic small-cell component.",
+  "source": {
+   "label": "Heim et al., 2013, Journal of Neuro-Oncology",
+   "url": "https://consensus.app/papers/details/7fb9619aae8354f88900d20b2618547c/?utm_source=claude_desktop"
+  }
+ },
+ {
+  "id": "dhandapani-2024-1",
+  "year": 2024,
+  "age": 16,
+  "ageText": "16",
+  "sex": "F",
+  "country": "India",
+  "city": "",
+  "coords": [
+   20.59,
+   78.96
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": true,
+  "treatment": [
+   "Surgery (gross total)",
+   "ETV",
+   "Radiotherapy"
+  ],
+  "outcome": "Alive, stable disease",
+  "outcomeText": "Stable with no neurological deficits after complete removal and radiotherapy.",
+  "notes": "",
+  "source": {
+   "label": "Dhandapani et al., 2024",
+   "url": ""
+  }
+ },
+ {
+  "id": "abela-2013-1",
+  "year": 2013,
+  "age": 3,
+  "ageText": "3",
+  "sex": "F",
+  "country": "Switzerland",
+  "city": "Zurich",
+  "coords": [
+   47.38,
+   8.54
+  ],
+  "presentation": "Not reported",
+  "hydrocephalus": null,
+  "treatment": [
+   "Surgery (gross total)",
+   "Proton therapy"
+  ],
+  "outcome": "Recurrence / progression",
+  "outcomeText": "Local recurrence 36 months after complete removal without radiotherapy; proton therapy produced near-complete remission 3 months later.",
+  "notes": "",
+  "source": {
+   "label": "Abela et al., 2013",
+   "url": ""
+  }
+ }
+]

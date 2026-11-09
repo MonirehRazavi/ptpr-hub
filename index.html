@@ -4,177 +4,183 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>PTPR Hub</title>
-<meta name="description" content="Plain-language information, research timeline, world map of published cases, live publication feed and support resources for papillary tumor of the pineal region (PTPR), a very rare brain tumour.">
+<meta name="description" content="Plain-language information, research timeline, a registry of reported cases, live publication feed and support for papillary tumor of the pineal region (PTPR), a very rare brain tumour.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%231f6f78'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23f4f7f8'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:ital,opsz,wght@0,6..12,400;0,6..12,600;0,6..12,700;1,6..12,400&display=swap" rel="stylesheet">
 <style>
-/* Layout idea: a quiet reading page. One narrow column of text (65ch) under a sticky tab bar; the map and the feed get the full width. */
+/* Layout idea: a calm reading column (65ch) under a sticky tab bar; maps, the case registry and the publications split view take the full width.
+   Colour: cool off-white base, deep teal for actions, and four pastel washes used by ROLE so the page feels warm without turning loud:
+   sky = understanding, mint = research & cases, butter = history & support, blush = people & stories. */
 :root{
-  --bg:#f4f7f8;            /* cool off-white */
-  --surface:#ffffff;
-  --surface-2:#e9eff1;
-  --ink:#1b2a30;           /* blue-black text */
-  --ink-2:#4b5f66;         /* secondary text */
-  --line:#d3dde0;
-  --accent:#1f6f78;        /* deep teal */
-  --accent-ink:#ffffff;
-  --accent-soft:#dcecee;
-  --warm:#9a6b3f;          /* a single quiet warm note for dates/eyebrows */
+  --bg:#f6f8f9; --surface:#ffffff; --surface-2:#eef2f4; --ink:#1b2a30; --ink-2:#4b5f66; --line:#d6dfe2;
+  --accent:#1f6f78; --accent-ink:#ffffff; --accent-soft:#dcecee;
+  --sky:#e3effa; --sky-ink:#2b5f8a; --sky-line:#bcd6ee;
+  --mint:#e2f3ea; --mint-ink:#2f7d4f; --mint-line:#b9dfc8;
+  --butter:#fbf3d9; --butter-ink:#8a6a1c; --butter-line:#ecdca4;
+  --blush:#fbe7ea; --blush-ink:#a24a58; --blush-line:#f0c3ca;
   --good:#2f7d4f; --warn:#a2651a; --crit:#a63d40;
-  --font-display:"Lora",Georgia,"Times New Roman",serif;
-  --font-body:"Nunito Sans","Segoe UI",system-ui,-apple-system,sans-serif;
-  --radius:10px;
-  --shadow:0 1px 2px rgba(27,42,48,.06),0 8px 24px -12px rgba(27,42,48,.18);
-  color-scheme:light;
+  --font-display:"Lora",Georgia,"Times New Roman",serif; --font-body:"Nunito Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --radius:12px; --shadow:0 1px 2px rgba(27,42,48,.05),0 10px 28px -14px rgba(27,42,48,.18); color-scheme:light;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121a1d;--surface:#1a2428;--surface-2:#22303a;--ink:#e6edef;--ink-2:#a7b7bd;--line:#2f3f46;
-    --accent:#5fb6bf;--accent-ink:#0f1a1c;--accent-soft:#1d3a3f;--warm:#d2a373;
-    --good:#6cc28f;--warn:#e0a85a;--crit:#e07b7e;
-    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);color-scheme:dark;
-  }
-}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#121a1d;--surface:#1a2428;--surface-2:#22303a;--ink:#e6edef;--ink-2:#a7b7bd;--line:#2f3f46;--accent:#5fb6bf;--accent-ink:#0f1a1c;--accent-soft:#1d3a3f;
+  --sky:#1c2d3c;--sky-ink:#8fc1ec;--sky-line:#2c4a63;--mint:#1b3127;--mint-ink:#7fd0a0;--mint-line:#2d5440;--butter:#33301c;--butter-ink:#e3c76a;--butter-line:#5a5330;--blush:#3a2428;--blush-ink:#f0a0ad;--blush-line:#5f3a42;
+  --good:#6cc28f;--warn:#e0a85a;--crit:#e07b7e;--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -14px rgba(0,0,0,.6);color-scheme:dark; } }
 :root[data-theme="dark"]{
-  --bg:#121a1d;--surface:#1a2428;--surface-2:#22303a;--ink:#e6edef;--ink-2:#a7b7bd;--line:#2f3f46;
-  --accent:#5fb6bf;--accent-ink:#0f1a1c;--accent-soft:#1d3a3f;--warm:#d2a373;
-  --good:#6cc28f;--warn:#e0a85a;--crit:#e07b7e;
-  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);color-scheme:dark;
-}
+  --bg:#121a1d;--surface:#1a2428;--surface-2:#22303a;--ink:#e6edef;--ink-2:#a7b7bd;--line:#2f3f46;--accent:#5fb6bf;--accent-ink:#0f1a1c;--accent-soft:#1d3a3f;
+  --sky:#1c2d3c;--sky-ink:#8fc1ec;--sky-line:#2c4a63;--mint:#1b3127;--mint-ink:#7fd0a0;--mint-line:#2d5440;--butter:#33301c;--butter-ink:#e3c76a;--butter-line:#5a5330;--blush:#3a2428;--blush-ink:#f0a0ad;--blush-line:#5f3a42;
+  --good:#6cc28f;--warn:#e0a85a;--crit:#e07b7e;--shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -14px rgba(0,0,0,.6);color-scheme:dark; }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
-a:hover{text-decoration-thickness:2px}
 h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;line-height:1.2;text-wrap:balance;margin:0 0 .5em}
-h1{font-size:clamp(2rem,4.5vw,3rem)}
-h2{font-size:clamp(1.5rem,3vw,2rem);margin-top:0}
-h3{font-size:1.25rem}
+h1{font-size:clamp(2rem,4.5vw,3rem)} h2{font-size:clamp(1.5rem,3vw,2rem)} h3{font-size:1.25rem}
 p{margin:0 0 1em}
-.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
 .prose{max-width:68ch}
-.eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--warm);font-weight:700;margin-bottom:.4rem}
-.muted{color:var(--ink-2)}
-.small{font-size:.9rem}
+.eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);font-weight:700;margin-bottom:.4rem}
+.eyebrow.sky{color:var(--sky-ink)} .eyebrow.mint{color:var(--mint-ink)} .eyebrow.butter{color:var(--butter-ink)} .eyebrow.blush{color:var(--blush-ink)}
+.muted{color:var(--ink-2)} .small{font-size:.9rem}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
-.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.wash{border-radius:var(--radius);padding:22px 24px;border:1px solid}
+.wash.sky{background:var(--sky);border-color:var(--sky-line)} .wash.mint{background:var(--mint);border-color:var(--mint-line)}
+.wash.butter{background:var(--butter);border-color:var(--butter-line)} .wash.blush{background:var(--blush);border-color:var(--blush-line)}
 
-/* header + tabs */
-header.site{border-bottom:1px solid var(--line);background:var(--surface)}
-.brand{display:flex;align-items:center;gap:14px;padding:18px 0 10px}
-.brand .mark{width:38px;height:38px;border-radius:50%;background:var(--accent);display:grid;place-items:center;flex:none}
+/* header */
+header.site{background:linear-gradient(180deg,var(--sky) 0%,var(--surface) 100%);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:14px;padding:22px 0 14px}
+.brand .mark{width:40px;height:40px;border-radius:50%;background:var(--accent);display:grid;place-items:center;flex:none;box-shadow:0 0 0 6px var(--accent-soft)}
 .brand .mark span{width:12px;height:12px;border-radius:50%;background:var(--accent-ink)}
-.brand h1{font-size:1.35rem;margin:0}
-.brand .sub{font-size:.9rem;color:var(--ink-2);margin:0}
+.brand h1{font-size:1.4rem;margin:0} .brand .sub{font-size:.92rem;color:var(--ink-2);margin:0}
 nav.tabs{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
-nav.tabs ul{list-style:none;margin:0;padding:0;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.tabs ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
 nav.tabs ul::-webkit-scrollbar{display:none}
-nav.tabs a{display:block;padding:12px 14px;color:var(--ink-2);text-decoration:none;font-weight:600;font-size:.95rem;border-bottom:3px solid transparent;white-space:nowrap}
-nav.tabs a:hover{color:var(--ink)}
-nav.tabs a[aria-current="page"]{color:var(--accent);border-bottom-color:var(--accent)}
+nav.tabs a{display:block;padding:12px 13px;color:var(--ink-2);text-decoration:none;font-weight:600;font-size:.93rem;border-bottom:3px solid transparent;white-space:nowrap}
+nav.tabs a:hover{color:var(--ink)} nav.tabs a[aria-current="page"]{color:var(--accent);border-bottom-color:var(--accent)}
 
 /* views */
-.view{display:none;padding:40px 0 64px}
-.view.active{display:block}
+.view{display:none;padding:40px 0 64px} .view.active{display:block}
 section+section{margin-top:44px}
 .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:40px;align-items:start}
 @media (max-width:820px){.hero{grid-template-columns:1fr}}
 .lede{font-size:1.2rem;color:var(--ink-2)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow)}
-.card h3{margin-top:0}
-.grid{display:grid;gap:16px}
-.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
-.grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-@media (max-width:900px){.grid.cols-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:600px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
-.fact{border-left:4px solid var(--accent);padding:14px 18px;background:var(--surface);border-radius:0 var(--radius) var(--radius) 0;border-top:1px solid var(--line);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
-.fact .big{font-family:var(--font-display);font-size:1.7rem;line-height:1.1;margin:0 0 4px;font-variant-numeric:tabular-nums}
-.fact .lbl{font-size:.9rem;color:var(--ink-2)}
-.notice{background:var(--accent-soft);border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px;font-size:.95rem}
-.notice strong{color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow)} .card h3{margin-top:0}
+.grid{display:grid;gap:16px} .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))} .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))} .grid.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:900px){.grid.cols-3,.grid.cols-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.grid.cols-3,.grid.cols-2,.grid.cols-4{grid-template-columns:1fr}}
+.fact{padding:16px 18px;border-radius:var(--radius);border:1px solid}
+.fact .big{font-family:var(--font-display);font-size:1.75rem;line-height:1.1;margin:0 0 4px;font-variant-numeric:tabular-nums}
+.fact .lbl{font-size:.9rem;color:var(--ink-2);margin:0}
+.fact.sky{background:var(--sky);border-color:var(--sky-line)} .fact.sky .big{color:var(--sky-ink)}
+.fact.mint{background:var(--mint);border-color:var(--mint-line)} .fact.mint .big{color:var(--mint-ink)}
+.fact.butter{background:var(--butter);border-color:var(--butter-line)} .fact.butter .big{color:var(--butter-ink)}
+.fact.blush{background:var(--blush);border-color:var(--blush-line)} .fact.blush .big{color:var(--blush-ink)}
 ol.steps{list-style:none;padding:0;margin:0;counter-reset:s;display:grid;gap:14px}
 ol.steps li{counter-increment:s;display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start}
-ol.steps li::before{content:counter(s);width:34px;height:34px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:700;font-family:var(--font-display)}
+ol.steps li::before{content:counter(s);width:34px;height:34px;border-radius:50%;background:var(--sky);color:var(--sky-ink);border:1px solid var(--sky-line);display:grid;place-items:center;font-weight:700;font-family:var(--font-display)}
 ol.steps li b{display:block;margin-bottom:2px}
 details{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:0 18px;margin-bottom:10px}
 details summary{cursor:pointer;padding:14px 0;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
-details summary::after{content:"+";color:var(--accent);font-weight:700;font-size:1.2rem;line-height:1}
-details[open] summary::after{content:"–"}
+details summary::after{content:"+";color:var(--accent);font-weight:700;font-size:1.2rem;line-height:1} details[open] summary::after{content:"–"}
 details summary::-webkit-details-marker{display:none}
 details .body{padding:0 0 16px;color:var(--ink-2)}
-dl.gloss{display:grid;grid-template-columns:max-content 1fr;gap:8px 20px;margin:0}
-dl.gloss dt{font-weight:700}
-dl.gloss dd{margin:0;color:var(--ink-2)}
+details.faq{border-left:5px solid var(--sky-line)} details.faq .num{display:inline-block;background:var(--sky);color:var(--sky-ink);border-radius:8px;padding:2px 9px;font-weight:700;font-variant-numeric:tabular-nums;margin-right:6px}
+details.faq .hope{margin-top:8px;padding:10px 14px;background:var(--mint);border:1px solid var(--mint-line);border-radius:8px;color:var(--ink)}
+dl.gloss{display:grid;grid-template-columns:max-content 1fr;gap:8px 20px;margin:0} dl.gloss dt{font-weight:700} dl.gloss dd{margin:0;color:var(--ink-2)}
 @media (max-width:600px){dl.gloss{grid-template-columns:1fr}dl.gloss dd{margin-bottom:8px}}
 .btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--accent-ink);border:none;border-radius:999px;padding:10px 18px;font:inherit;font-weight:700;font-size:.95rem;cursor:pointer;text-decoration:none}
-.btn.ghost{background:transparent;color:var(--accent);border:2px solid var(--accent)}
 .btn:hover{filter:brightness(1.07)}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;font-size:.85rem;font-weight:600;color:var(--ink-2);cursor:pointer}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:5px 12px;font-size:.85rem;font-weight:600;color:var(--ink-2);cursor:pointer;font-family:inherit}
 .chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.pill{display:inline-block;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--surface-2);color:var(--ink-2)}
-.pill.who{background:var(--accent-soft);color:var(--accent)}
-.pill.molecular{color:var(--warm)}
-.pill.treatment{color:var(--good)}
+.pill{display:inline-block;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line)}
+.pill.science,.pill.sky{background:var(--sky);color:var(--sky-ink);border-color:var(--sky-line)}
+.pill.who,.pill.butter{background:var(--butter);color:var(--butter-ink);border-color:var(--butter-line)}
+.pill.treatment,.pill.mint{background:var(--mint);color:var(--mint-ink);border-color:var(--mint-line)}
+.pill.molecular,.pill.blush{background:var(--blush);color:var(--blush-ink);border-color:var(--blush-line)}
+.notice{background:var(--butter);border:1px solid var(--butter-line);border-radius:var(--radius);padding:14px 18px;font-size:.95rem}
 
-/* timeline */
-.tl{list-style:none;margin:0;padding:0;position:relative}
-.tl::before{content:"";position:absolute;left:92px;top:8px;bottom:8px;width:2px;background:var(--line)}
-.tl li{display:grid;grid-template-columns:76px 1fr;gap:34px;padding:0 0 28px;position:relative}
-.tl .yr{font-family:var(--font-display);font-size:1.15rem;color:var(--warm);text-align:right;font-variant-numeric:tabular-nums;line-height:1.3}
-.tl li::after{content:"";position:absolute;left:86px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
-.tl .card p:last-child{margin:0}
-.tl .src{font-size:.85rem}
-@media (max-width:600px){.tl::before{left:12px}.tl li{grid-template-columns:1fr;gap:6px;padding-left:36px}.tl .yr{text-align:left}.tl li::after{left:6px}}
+/* alternating timeline */
+.tl{list-style:none;margin:28px 0 0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;margin-left:-1.5px;background:linear-gradient(var(--sky-line),var(--mint-line),var(--butter-line),var(--blush-line));border-radius:3px}
+.tl li{position:relative;width:50%;padding:0 48px 36px 0}
+.tl li:nth-child(even){margin-left:50%;padding:0 0 36px 48px}
+.tl .dot{position:absolute;top:22px;right:-11px;width:22px;height:22px;border-radius:50%;background:var(--surface);border:5px solid var(--accent);box-shadow:0 0 0 4px var(--bg)}
+.tl li:nth-child(even) .dot{right:auto;left:-11px}
+.tl .yr{font-family:var(--font-display);font-size:1.35rem;color:var(--ink);font-variant-numeric:tabular-nums}
+.tl li:nth-child(odd){text-align:right} .tl li:nth-child(odd) .card{text-align:left}
+.tl .card{border-top:4px solid var(--line)}
+.tl .card.science{border-top-color:var(--sky-line)} .tl .card.who{border-top-color:var(--butter-line)} .tl .card.treatment{border-top-color:var(--mint-line)} .tl .card.molecular{border-top-color:var(--blush-line)}
+.tl .card p:last-child{margin:0} .tl .src{font-size:.85rem}
+@media (max-width:760px){.tl::before{left:14px}.tl li,.tl li:nth-child(even){width:auto;margin-left:0;padding:0 0 28px 44px;text-align:left}.tl .dot,.tl li:nth-child(even) .dot{left:3px;right:auto}}
 
-/* map */
-.maplayout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:20px;align-items:start}
+/* maps */
+.maplayout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:20px;align-items:start}
 @media (max-width:900px){.maplayout{grid-template-columns:1fr}}
-#map{height:520px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-@media (max-width:600px){#map{height:340px}}
-.jvm-container{touch-action:none;position:relative;overflow:hidden;height:100%;width:100%}
-.jvm-tooltip{position:absolute;display:none;background:var(--ink);color:var(--bg);font:600 .85rem var(--font-body);padding:6px 10px;border-radius:6px;white-space:nowrap;box-shadow:var(--shadow);pointer-events:none}
+.map{height:500px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+@media (max-width:600px){.map{height:340px}}
+.jvm-container{touch-action:none;position:relative;overflow:hidden}
+.jvm-tooltip{position:absolute;display:none;background:var(--ink);color:var(--bg);font:600 .85rem var(--font-body);padding:6px 10px;border-radius:6px;white-space:nowrap;box-shadow:var(--shadow);pointer-events:none;z-index:5}
 .jvm-tooltip.active{display:block}
 .jvm-zoom-btn{position:absolute;left:10px;width:28px;height:28px;border-radius:6px;background:var(--surface);border:1px solid var(--line);color:var(--ink);display:grid;place-items:center;cursor:pointer;font-weight:700;box-sizing:border-box;line-height:1;user-select:none}
 .jvm-zoomin{top:10px}.jvm-zoomout{top:44px}
-.caselist{display:grid;gap:8px;max-height:520px;overflow:auto;padding-right:4px}
-.caselist button{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:inherit;color:var(--ink);cursor:pointer}
-.caselist button:hover,.caselist button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
-.caselist b{display:block}
-.caselist span{font-size:.85rem;color:var(--ink-2)}
-#casedetail{margin-top:18px}
+.sidelist{display:grid;gap:8px;max-height:500px;overflow:auto;padding-right:4px}
+.sidelist button{text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;color:var(--ink);cursor:pointer}
+.sidelist button:hover,.sidelist button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.sidelist b{display:block} .sidelist span{font-size:.85rem;color:var(--ink-2)}
+.detail{margin-top:18px}
 table.plain{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
-table.plain th,table.plain td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)}
-table.plain td:last-child,table.plain th:last-child{text-align:right}
+table.plain th,table.plain td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)} table.plain td:last-child,table.plain th:last-child{text-align:right}
 
-/* publications */
-.pub{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
-.pub .yr{font-family:var(--font-display);font-size:1.1rem;color:var(--warm);font-variant-numeric:tabular-nums}
-.pub .t{font-weight:700}
-.pub .m{color:var(--ink-2);font-size:.92rem}
-.pub .pill{margin-left:8px;vertical-align:middle}
+/* cases */
+.filters{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin:18px 0}
+.filters label{display:grid;gap:4px;font-size:.85rem;font-weight:700;color:var(--ink-2)}
+.filters select{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.casegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;border-left:6px solid var(--line);cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
+.case:hover{box-shadow:var(--shadow)}
+.case.o-clear{border-left-color:var(--mint-ink)} .case.o-stable{border-left-color:var(--sky-ink)} .case.o-recur{border-left-color:var(--butter-ink)} .case.o-died{border-left-color:var(--blush-ink)} .case.o-nr{border-left-color:var(--line)}
+.case .who{font-family:var(--font-display);font-size:1.15rem;margin:0 0 2px}
+.case .meta{font-size:.85rem;color:var(--ink-2);margin:0 0 8px}
+.case .out{font-size:.85rem;font-weight:700}
+.o-clear .out{color:var(--mint-ink)} .o-stable .out{color:var(--sky-ink)} .o-recur .out{color:var(--butter-ink)} .o-died .out{color:var(--blush-ink)} .o-nr .out{color:var(--ink-2)}
+.legend{display:flex;flex-wrap:wrap;gap:12px 18px;font-size:.85rem;color:var(--ink-2);margin:10px 0 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 0} .tags span{font-size:.78rem;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:2px 9px;color:var(--ink-2)}
+
+/* publications split view */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,420px);gap:20px;align-items:start}
+@media (max-width:900px){.split{grid-template-columns:1fr}.split .pane{position:static}}
+.split .pane{position:sticky;top:64px}
+.pub{display:grid;grid-template-columns:58px 1fr;gap:14px;padding:12px 10px;border-bottom:1px solid var(--line);cursor:pointer;border-radius:8px}
+.pub:hover{background:var(--surface)} .pub[aria-selected="true"]{background:var(--accent-soft)}
+.pub .yr{font-family:var(--font-display);font-size:1.05rem;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.pub .t{font-weight:700} .pub .m{color:var(--ink-2);font-size:.9rem} .pub .pill{margin-left:8px;vertical-align:middle}
+.pane .card{border-top:5px solid var(--mint-line)} .pane h3{font-size:1.15rem}
+.pane .kv{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;font-size:.9rem;margin:10px 0}
+.pane .kv dt{color:var(--ink-2)} .pane .kv dd{margin:0}
 .feedstatus{display:flex;align-items:center;gap:10px;font-size:.92rem;color:var(--ink-2);margin:8px 0 12px}
-.dot{width:10px;height:10px;border-radius:50%;background:var(--warn);flex:none}
-.dot.ok{background:var(--good)}.dot.err{background:var(--crit)}
-.spinner{width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;flex:none}
-@keyframes spin{to{transform:rotate(360deg)}}
+.dot2{width:10px;height:10px;border-radius:50%;background:var(--warn);flex:none} .dot2.ok{background:var(--good)} .dot2.err{background:var(--crit)}
+.spinner{width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite;flex:none} @keyframes spin{to{transform:rotate(360deg)}}
+input.search{font:inherit;padding:10px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);width:min(100%,380px)}
 
 /* support / stories */
-.org{display:grid;gap:4px}
-.org .r{font-size:.8rem;color:var(--warm);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.empty{border:2px dashed var(--line);border-radius:var(--radius);padding:28px;text-align:center;color:var(--ink-2)}
+.org{display:grid;gap:4px;border-top:4px solid var(--butter-line)} .org .r{font-size:.78rem;color:var(--butter-ink);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.empty{border:2px dashed var(--blush-line);background:var(--blush);border-radius:var(--radius);padding:28px;text-align:center;color:var(--ink)}
 .memorial{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
 .memorial figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-.memorial img,.memorial .ph{width:100%;aspect-ratio:1;object-fit:cover;background:var(--surface-2);display:grid;place-items:center;color:var(--ink-2)}
+.memorial img,.memorial .ph{width:100%;aspect-ratio:1;object-fit:cover;background:var(--blush);display:grid;place-items:center;color:var(--blush-ink);font-size:2rem}
 .memorial figcaption{padding:12px 14px}
-form.simple{display:grid;gap:12px;max-width:560px}
-form.simple label{display:grid;gap:4px;font-weight:600;font-size:.95rem}
+.story{max-width:62ch;font-size:1.1rem;line-height:1.75}
+.story p:first-of-type::first-letter{font-family:var(--font-display);font-size:3.2em;float:left;line-height:.8;margin:6px 10px 0 0;color:var(--blush-ink)}
+.story .sig{font-family:var(--font-display);font-style:italic;color:var(--ink-2);margin-top:24px}
+form.simple{display:grid;gap:12px;max-width:560px} form.simple label{display:grid;gap:4px;font-weight:600;font-size:.95rem}
 form.simple input,form.simple textarea,form.simple select{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
 code{background:var(--surface-2);padding:2px 6px;border-radius:4px;font-size:.9em}
-footer.site{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--ink-2);font-size:.9rem}
+footer.site{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--ink-2);font-size:.9rem;background:var(--surface)}
 footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
 </style>
 </head>
@@ -184,25 +190,20 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   <div class="wrap">
     <div class="brand">
       <div class="mark" aria-hidden="true"><span></span></div>
-      <div>
-        <h1>PTPR Hub</h1>
-        <p class="sub">Papillary tumor of the pineal region — everything in one calm place</p>
-      </div>
+      <div><h1>PTPR Hub</h1><p class="sub">Papillary tumor of the pineal region — made by people who've been through it, for the next person who will be</p></div>
     </div>
   </div>
-  <nav class="tabs" aria-label="Sections">
-    <div class="wrap">
-      <ul>
-        <li><a href="#home" data-view="home">Just diagnosed</a></li>
-        <li><a href="#timeline" data-view="timeline">Timeline</a></li>
-        <li><a href="#map" data-view="map">World map</a></li>
-        <li><a href="#publications" data-view="publications">Publications</a></li>
-        <li><a href="#support" data-view="support">Support</a></li>
-        <li><a href="#stories" data-view="stories">Stories</a></li>
-        <li><a href="#contribute" data-view="contribute">Contribute</a></li>
-      </ul>
-    </div>
-  </nav>
+  <nav class="tabs" aria-label="Sections"><div class="wrap"><ul>
+    <li><a href="#home" data-view="home">Just diagnosed</a></li>
+    <li><a href="#why" data-view="why">Why this exists</a></li>
+    <li><a href="#timeline" data-view="timeline">Timeline</a></li>
+    <li><a href="#cases" data-view="cases">Reported cases</a></li>
+    <li><a href="#map" data-view="map">Research map</a></li>
+    <li><a href="#publications" data-view="publications">Publications</a></li>
+    <li><a href="#support" data-view="support">Support</a></li>
+    <li><a href="#stories" data-view="stories">Stories</a></li>
+    <li><a href="#contribute" data-view="contribute">Contribute</a></li>
+  </ul></div></nav>
 </header>
 
 <main class="wrap">
@@ -211,59 +212,99 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
 <div class="view" id="view-home">
   <section class="hero">
     <div class="prose">
-      <p class="eyebrow">If you were just told you have this</p>
-      <h1>Take a breath. Here is what is known.</h1>
-      <p class="lede">A papillary tumor of the pineal region (PTPR) is one of the rarest brain tumours there is. Only a few hundred cases have ever been described in the medical literature since it was first named in 2003. That rarity is why your search results are so thin, why even some doctors have never seen one, and why this page exists.</p>
-      <p>PTPR grows deep in the centre of the brain, next to the pineal gland, and it is thought to start from a tiny structure called the subcommissural organ rather than from the pineal gland itself. Most people first notice it because of headaches: the tumour sits where the fluid inside the brain drains, and when that drain is blocked, pressure builds (hydrocephalus). It is classified by the World Health Organization as CNS WHO grade 2 or 3, which means it is a real tumour that needs treatment and long follow-up, but it is not among the most aggressive brain tumours.</p>
-      <p>Everything on this site is drawn from the published medical literature, with the source shown next to each claim. It is written for patients and families, not for doctors, and it is not a substitute for your own medical team.</p>
+      <p class="eyebrow sky">If you were just told you have this</p>
+      <h1>Take a breath. You've found the right place.</h1>
+      <p class="lede">If you're reading this, someone probably just said the words "papillary tumor of the pineal region" to you, and then the internet gave you almost nothing. That's not because the news is bad. It's because this tumour is so rare that only a few hundred people have ever been written about since it was first named in 2003. Here is what is actually known, gathered in one calm place.</p>
+      <p>PTPR grows deep in the centre of the brain, beside the pineal gland. It is thought to start from a tiny structure called the subcommissural organ, not the pineal gland itself. Most people first notice it because of headaches: the tumour sits where fluid drains inside the brain, and when that drain is squeezed, pressure builds (hydrocephalus). The World Health Organization classes it as CNS WHO grade 2 or 3: a real tumour that needs treatment and long follow-up, but not among the most aggressive brain tumours.</p>
+      <p>Everything here comes from the published medical literature, with the source shown next to each claim, and it is written for patients and families rather than for doctors. It is not a substitute for your own medical team, and it was made by someone who loves a person with PTPR, not by a hospital.</p>
     </div>
-    <aside class="card">
-      <h3>What this site does</h3>
+    <aside class="wash sky">
+      <h3 style="margin-top:0">What you'll find here</h3>
       <ul style="padding-left:18px;margin:0;color:var(--ink-2)">
-        <li>Explains PTPR in plain language</li>
-        <li>Shows how it came to be recognised, year by year</li>
-        <li>Maps where cases have been published around the world</li>
-        <li>Pulls in every new publication automatically from PubMed</li>
-        <li>Lists organisations that support people with rare brain tumours</li>
-        <li>Collects stories from people who have lived through it</li>
+        <li>PTPR explained in plain language, with the questions everyone asks</li>
+        <li>The story of how it came to be recognised, year by year</li>
+        <li>A registry of reported cases: ages, treatments, and how people did</li>
+        <li>Every new publication, pulled in automatically from PubMed</li>
+        <li>Who can support you, and how to find each other</li>
+        <li>Stories from people who have lived with it</li>
       </ul>
       <p class="small muted" style="margin:14px 0 0">Content last reviewed: <span data-reviewed></span></p>
     </aside>
   </section>
 
   <section>
-    <p class="eyebrow">Key facts</p>
+    <p class="eyebrow sky">Key facts</p>
     <div class="grid cols-3">
-      <div class="fact"><p class="big">2003</p><p class="lbl">First described by Jouvet and colleagues in Lyon, France (six patients)</p></div>
-      <div class="fact"><p class="big">2007</p><p class="lbl">Added to the WHO classification of brain tumours</p></div>
-      <div class="fact"><p class="big">Grade 2–3</p><p class="lbl">CNS WHO grade in the current (2021) classification</p></div>
-      <div class="fact"><p class="big">30s</p><p class="lbl">Typical age at diagnosis, though it has been reported from 15 months to the late 60s</p></div>
-      <div class="fact"><p class="big">~89%</p><p class="lbl">Of published patients presented with hydrocephalus (fluid build-up); headache is the most common symptom</p></div>
-      <div class="fact"><p class="big">≈ 50/50</p><p class="lbl">Men and women are affected about equally</p></div>
+      <div class="fact sky"><p class="big">2003</p><p class="lbl">First described by Jouvet and colleagues in Lyon, France (six patients)</p></div>
+      <div class="fact butter"><p class="big">2007</p><p class="lbl">Added to the WHO classification of brain tumours</p></div>
+      <div class="fact mint"><p class="big">Grade 2–3</p><p class="lbl">CNS WHO grade in the current (2021) classification</p></div>
+      <div class="fact sky"><p class="big">30s</p><p class="lbl">Typical age at diagnosis, though it has been reported from 15 months to the late 60s</p></div>
+      <div class="fact butter"><p class="big">~89%</p><p class="lbl">Of published patients had hydrocephalus (fluid build-up); headache is the most common first symptom</p></div>
+      <div class="fact blush"><p class="big">≈ 50 / 50</p><p class="lbl">Men and women are affected about equally</p></div>
     </div>
+  </section>
+
+  <section class="prose">
+    <p class="eyebrow sky">The questions everyone asks</p>
+    <h2>Honest answers, with the numbers behind them</h2>
+    <p class="muted">These are the questions people type into search engines at 2 a.m. The numbers come from the largest pooled studies, but please hold them loosely: they describe small groups of patients, many treated 10 to 20 years ago, before molecular testing and modern radiotherapy. They cannot predict one person's path.</p>
+    <details class="faq"><summary>How long do people live with this?</summary><div class="body">
+      <p><span class="num">73%</span> of patients were alive five years after diagnosis in the first multicentre series (31 patients, 2006), and the same study's authors later followed 44 patients, 32 of whom were alive after a median of more than five years. A 2019 analysis pooling every published case found <span class="num">83.5%</span> alive at three years.</p>
+      <p>Behind those averages are individual stories of people well 7, 10 and 15 years after surgery, some with no further treatment at all.</p>
+      <div class="hope">What the numbers can't tell you: they describe patients diagnosed mostly between 2003 and 2017. Methylation profiling, proton therapy and targeted drugs barely existed then. Nobody can tell you your number, and that uncertainty cuts both ways.</div>
+      <p class="small">Sources: <a href="https://doi.org/10.1097/01.jnen.0000240462.80263.13" target="_blank" rel="noopener">Fèvre-Montange 2006</a> · <a href="https://doi.org/10.1007/s11060-013-1050-5" target="_blank" rel="noopener">Fauchon 2013</a> · <a href="https://doi.org/10.1093/neuros/nyz062" target="_blank" rel="noopener">Yamaki 2019</a></p>
+    </div></details>
+    <details class="faq"><summary>Does it come back?</summary><div class="body">
+      <p>Often, yes, and this is the single most important thing to understand about PTPR. In the pooled analysis, <span class="num">57%</span> of patients had a recurrence, at a median of 28 months. In the 2024 molecular series the median time without progression was <span class="num">63 months</span>. Recurrence is almost always local, in the same place, and sometimes appears years later. That is why your team will keep scanning you for a long time.</p>
+      <div class="hope">A recurrence is not a death sentence. The literature is full of people treated again, with a second operation, radiosurgery, radiotherapy or, more recently, targeted drugs, and then stable for years. Being followed closely is the point: it catches regrowth when it is small.</div>
+      <p class="small">Sources: <a href="https://doi.org/10.1093/neuros/nyz062" target="_blank" rel="noopener">Yamaki 2019</a> · <a href="https://doi.org/10.1186/s40478-024-01781-4" target="_blank" rel="noopener">Wu 2024</a></p>
+    </div></details>
+    <details class="faq"><summary>Do people die from it?</summary><div class="body">
+      <p>Some do. In a review of 73 published patients, <span class="num">3</span> had died at the time their reports were written, and <span class="num">50</span> had no recurrence at all. Deaths in the literature cluster around repeated recurrences, tumours that could not be fully removed, and surgical complications in the earliest years. Most people in published reports were alive at their last follow-up.</p>
+      <div class="hope">The overall picture is of a tumour people live with, under surveillance, more often than one they die from. Several doctors who have written about PTPR describe it as unpredictable rather than aggressive.</div>
+      <p class="small">Source: <a href="https://brieflands.com/articles/rro-68372" target="_blank" rel="noopener">Nasrollahi 2016</a></p>
+    </div></details>
+    <details class="faq"><summary>Is it cancer?</summary><div class="body">
+      <p>It sits in between. CNS WHO grade 2 or 3 means it is not benign (grade 1), because it can regrow and, rarely, spread through the spinal fluid, but it is not grade 4 like glioblastoma. Doctors treat it seriously and follow it for years for exactly that reason. The grade itself is less settled than for other tumours: the WHO says precise grading criteria for PTPR are not yet established.</p>
+      <p class="small">Source: <a href="https://pubmed.ncbi.nlm.nih.gov/34185076/" target="_blank" rel="noopener">WHO CNS5, 2021</a></p>
+    </div></details>
+    <details class="faq"><summary>Does it spread?</summary><div class="body">
+      <p>Usually it stays where it is. Spread through the cerebrospinal fluid to the spine or the lining of the brain (leptomeningeal seeding) has been reported in a minority of cases, which is why an MRI of the whole spine is part of the standard work-up at diagnosis and sometimes during follow-up.</p>
+      <p class="small">Sources: <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Papillary+tumor+of+pineal+region+presenting+with+leptomeningeal+seeding%22" target="_blank" rel="noopener">Kim 2010</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Late+dissemination+via+cerebrospinal+fluid+of+papillary+tumor+of+the+pineal+region%22" target="_blank" rel="noopener">Nowicka 2016</a></p>
+    </div></details>
+    <details class="faq"><summary>If it was completely removed, am I done?</summary><div class="body">
+      <p>Complete removal (gross total resection) is the factor most consistently linked to longer survival, and there are published patients who had their tumour fully removed, no further treatment, and no recurrence after nearly five years. But even after complete removal, recurrence happens: around <span class="num">39%</span> of children in one review, and comparable rates in adults. So "done" means "done with this chapter": follow-up scans continue, often yearly, for a decade or more.</p>
+      <p class="small">Sources: <a href="https://doi.org/10.1007/s11060-013-1050-5" target="_blank" rel="noopener">Fauchon 2013</a> · <a href="https://onlinelibrary.wiley.com/doi/10.1111/ajco.70010" target="_blank" rel="noopener">Balci Topuz 2026</a></p>
+    </div></details>
+    <details class="faq"><summary>Did I do something to cause this?</summary><div class="body">
+      <p>No. There are no known lifestyle, environmental or dietary risk factors for PTPR. It is not caused by stress, phones, diet or anything you did or didn't do. In almost every case it is not inherited either; a handful of recent reports describe inherited changes in a gene called PTEN in people with PTPR, which is a research lead, not a reason for most families to worry.</p>
+      <p class="small">Sources: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11763826/" target="_blank" rel="noopener">Royal-Preyra 2025</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11941023/" target="_blank" rel="noopener">O'Neal 2025</a></p>
+    </div></details>
+    <details class="faq"><summary>Should I get a second opinion?</summary><div class="body">
+      <p>For a tumour this rare, almost every expert would say yes, at least for the pathology. PTPR is regularly mistaken for other papillary tumours; several published patients carried a wrong diagnosis for years. Ask whether DNA methylation profiling was done, and whether your slides can be reviewed at a centre that sees pineal tumours. Good doctors are not offended by this.</p>
+    </div></details>
   </section>
 
   <section class="prose">
     <h2>What usually happens next</h2>
     <p class="muted">Care differs between countries and hospitals, and there is no single agreed protocol because the tumour is so rare. These are the steps that appear again and again in the published cases.</p>
     <ol class="steps">
-      <li><div><b>Relieving the pressure</b>If hydrocephalus is present, the first operation is often a small one to let fluid drain: an endoscopic third ventriculostomy (ETV) or a shunt. Headaches, nausea and vision problems often improve quickly after this.</div></li>
-      <li><div><b>Finding out exactly what it is</b>MRI of the brain and whole spine, blood and spinal-fluid tests for germ-cell tumour markers (AFP and beta-hCG), and sometimes spinal-fluid cytology. These rule out the more common pineal-region tumours. A definite diagnosis of PTPR needs tissue.</div></li>
-      <li><div><b>Surgery</b>Removing as much of the tumour as can be done safely is the step most consistently linked to better outcomes in the literature. This is deep, delicate surgery; ask whether your surgeon or centre has experience with pineal-region tumours.</div></li>
-      <li><div><b>Pathology, including molecular testing</b>Under the microscope PTPR can look like several other tumours. Immunohistochemistry (cytokeratin positive) and, increasingly, DNA methylation profiling confirm the diagnosis and can place the tumour in subgroup PTPR-A or PTPR-B. Ask whether methylation profiling has been done or can be requested.</div></li>
-      <li><div><b>Discussion of radiotherapy</b>Many centres offer radiotherapy after surgery, especially when tumour is left behind, but retrospective studies disagree on how much it helps. This is an area where a second opinion from a neuro-oncology centre is reasonable.</div></li>
-      <li><div><b>Long-term follow-up</b>PTPR tends to come back locally, sometimes years later (median about 28 months in one pooled analysis; some recurrences after 5 years). Regular MRI for many years is standard. A recurrence is not the end of the road: many people have been treated again with surgery, radiosurgery or radiotherapy.</div></li>
+      <li><div><b>Relieving the pressure</b>If hydrocephalus is present, the first operation is often a small one to let fluid drain: an endoscopic third ventriculostomy (ETV) or a shunt. Headaches, nausea and vision problems often ease quickly.</div></li>
+      <li><div><b>Finding out exactly what it is</b>MRI of the brain and whole spine, blood and spinal-fluid tests for germ-cell tumour markers (AFP and beta-hCG), sometimes spinal-fluid cytology. A definite diagnosis of PTPR needs tissue.</div></li>
+      <li><div><b>Surgery</b>Removing as much tumour as can be done safely is the step most consistently linked to better outcomes. This is deep, delicate surgery; ask whether your surgeon or centre has experience with pineal-region tumours.</div></li>
+      <li><div><b>Pathology, including molecular testing</b>Under the microscope PTPR resembles several other tumours. Cytokeratin staining and, increasingly, DNA methylation profiling confirm the diagnosis and can place it in subgroup PTPR-A or PTPR-B.</div></li>
+      <li><div><b>The radiotherapy conversation</b>Many centres offer radiotherapy after surgery, especially when tumour is left behind, but retrospective studies disagree on how much it helps. This is a reasonable moment for a second opinion from a neuro-oncology centre.</div></li>
+      <li><div><b>Long-term follow-up</b>PTPR tends to come back locally, sometimes years later. Regular MRI for many years is standard. Many people settle into a rhythm of yearly scans and otherwise ordinary lives.</div></li>
     </ol>
   </section>
 
   <section class="prose">
     <h2>Questions worth asking your team</h2>
     <details><summary>Has the diagnosis been confirmed by a neuropathologist with pineal-tumour experience?</summary><div class="body">PTPR is often mistaken for papillary ependymoma, choroid plexus tumours or metastases. A second pathology read at a large centre is common and reasonable.</div></details>
-    <details><summary>Was DNA methylation profiling done? Which subgroup is it?</summary><div class="body">Methylation profiling is now the most reliable way to confirm PTPR and distinguishes PTPR-A from PTPR-B. Published series suggest group B may recur sooner, so it can affect how closely you are followed.</div></details>
-    <details><summary>How much of the tumour was removed, and what does the post-operative MRI show?</summary><div class="body">Gross total resection was linked to longer survival in the largest multicentre study. Knowing whether residual tumour is present shapes the radiotherapy discussion.</div></details>
+    <details><summary>Was DNA methylation profiling done? Which subgroup is it?</summary><div class="body">Methylation profiling is now the most reliable way to confirm PTPR and distinguishes PTPR-A from PTPR-B. Published series suggest group B may recur sooner, which can affect how closely you are followed.</div></details>
+    <details><summary>How much of the tumour was removed, and what does the post-operative MRI show?</summary><div class="body">Knowing whether residual tumour is present shapes the radiotherapy discussion.</div></details>
     <details><summary>What is the plan for follow-up imaging, and for how long?</summary><div class="body">Because late recurrence is documented, many teams continue MRI surveillance for a decade or more.</div></details>
-    <details><summary>Is there a rare-tumour programme or natural-history study I can join?</summary><div class="body">In North America, the US National Cancer Institute's NCI-CONNECT programme studies rare central nervous system tumours and offers consultations. Similar rare-tumour networks exist in Europe (EURACAN).</div></details>
-    <details><summary>Could I speak with someone else who has had this?</summary><div class="body">There is no PTPR-specific patient organisation yet. The <a href="#support">Support</a> section lists brain-tumour charities with mentor programmes, and this site is building a way for people with PTPR to find one another.</div></details>
+    <details><summary>Is there a rare-tumour programme or natural-history study I can join?</summary><div class="body">In North America, the NCI-CONNECT programme studies rare central nervous system tumours and offers consultations. In Europe, EURACAN is the reference network for rare adult cancers.</div></details>
   </section>
 
   <section class="prose">
@@ -272,7 +313,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
       <dt>Pineal region</dt><dd>The very centre of the brain, around the pineal gland, which makes melatonin. Tumours here block the narrow channel that drains fluid from the brain.</dd>
       <dt>Hydrocephalus</dt><dd>Build-up of cerebrospinal fluid because its drainage is blocked. Causes headache, nausea, sleepiness and vision changes. Treated with an ETV or a shunt.</dd>
       <dt>ETV</dt><dd>Endoscopic third ventriculostomy: a small operation that makes a new opening for fluid to drain, avoiding a permanent shunt.</dd>
-      <dt>Parinaud's syndrome</dt><dd>Difficulty looking upward, with pupil changes, caused by pressure on the top of the brainstem. Reported in a minority of PTPR patients.</dd>
+      <dt>Parinaud's syndrome</dt><dd>Difficulty looking upward, with pupil changes, from pressure on the top of the brainstem. Reported in a minority of PTPR patients.</dd>
       <dt>Gross total resection</dt><dd>Surgical removal of all visible tumour. Subtotal resection means some was left behind, often deliberately to protect vital structures.</dd>
       <dt>Methylation profiling</dt><dd>A laboratory test that reads chemical marks on the tumour's DNA and compares them with thousands of known tumours. Very accurate for PTPR.</dd>
       <dt>PTPR-A / PTPR-B</dt><dd>The two molecular subgroups of PTPR described in 2016 and confirmed in 2024.</dd>
@@ -282,16 +323,35 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   </section>
 
   <section class="prose">
-    <div class="notice"><strong>About this information.</strong> This site is maintained by a volunteer, not by a hospital. It summarises published research and is checked against the sources shown, but it cannot know your situation. Please take decisions with your own medical team, and if you spot an error, <a href="#contribute">tell us</a>.</div>
+    <div class="notice"><strong>About this information.</strong> This site is kept by one person, with help from everyone who writes in, not by a hospital. It summarises published research and is checked against the sources shown, but it cannot know your situation. Please make decisions with your own medical team, and if you spot an error, <a href="#contribute">tell us</a>.</div>
+  </section>
+</div>
+
+<!-- ============================ WHY ============================ -->
+<div class="view" id="view-why">
+  <section class="prose">
+    <p class="eyebrow blush">Why this exists</p>
+    <h2>A gift, and a promise</h2>
+  </section>
+  <section class="story">
+    <p>Almost ten years ago, someone I had not yet met was told he had a brain tumour so rare that the doctors themselves had to look it up. He was young. He went through the scans and the surgery and the long silence afterwards, in which you wait for a machine to tell you whether you can keep making plans. He did it mostly in the dark, because there was almost nothing written for people like him, and what little existed was written for pathologists.</p>
+    <p>I met him last year. By the time he told me about the tumour, I already knew he was the steadiest person I had ever met; I just didn't yet know why. When I finally sat down to read about PTPR, I found what he had found years earlier: a handful of case reports, a few paragraphs of statistics, and nobody speaking to the person actually living it.</p>
+    <p>So I built this. It is a gift to him, to say how proud I am of the way he has carried something most people never have to carry, and it is a promise to the next person who hears those four words: you will not have to search in the dark the way he did. Everything we could find is here, in plain language, with the sources shown, and with room for your story next to his.</p>
+    <p>He is doing well. His scans have been stable for years now, and life has settled into yearly MRIs and everything that happens in between them. That is not a guarantee for anyone else, but it is a true story, and true stories were what we both wished we'd had.</p>
+    <p>My thanks go to his parents and his two sisters, who held him up long before I arrived, to his friends, and to the staff at Sunnybrook who have looked after him from the first frightening weeks through every scan since. This site exists because of all of you.</p>
+    <p class="sig">— Moni, Ottawa</p>
+  </section>
+  <section class="prose">
+    <div class="wash blush"><p style="margin:0">If you have a story of your own, or you are the person who was just diagnosed and simply want to talk to someone who has been through this, write to <strong><span data-email></span></strong>. Nothing is published without your agreement, and you never have to share more than you want to.</p></div>
   </section>
 </div>
 
 <!-- ============================ TIMELINE ============================ -->
 <div class="view" id="view-timeline">
   <section class="prose">
-    <p class="eyebrow">History</p>
+    <p class="eyebrow butter">History</p>
     <h2>How PTPR came to be recognised</h2>
-    <p class="muted">From the first six patients in Lyon to the 2021 WHO classification and the molecular studies that followed. Each entry links to its source.</p>
+    <p class="muted">From six patients in Lyon to the molecular studies of the 2020s. Each entry links to its source.</p>
     <div class="chips" role="group" aria-label="Filter timeline" id="tlfilter">
       <button class="chip" aria-pressed="true" data-type="all">All</button>
       <button class="chip" aria-pressed="false" data-type="science">Discovery</button>
@@ -303,26 +363,47 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   <section><ol class="tl" id="timeline"></ol></section>
 </div>
 
-<!-- ============================ MAP ============================ -->
+<!-- ============================ CASES ============================ -->
+<div class="view" id="view-cases">
+  <section class="prose">
+    <p class="eyebrow mint">Reported cases</p>
+    <h2>The people behind the papers</h2>
+    <p class="muted">Every case here is a real person described in a published medical report: how old they were, what was done, and how they were doing when the report was written. It is not a complete registry (most people with PTPR are never written up, and pooled studies rarely give individual details), but it is the closest thing to "people like me" that exists. Add a case through the <a href="#contribute">Contribute</a> page.</p>
+  </section>
+  <section>
+    <div class="grid cols-4" id="casestats"></div>
+    <div class="filters">
+      <label>Age group<select id="f-age"><option value="all">All ages</option><option value="child">Children (under 18)</option><option value="young">Adults 18–39</option><option value="older">Adults 40 and over</option></select></label>
+      <label>Sex<select id="f-sex"><option value="all">All</option><option value="F">Female</option><option value="M">Male</option></select></label>
+      <label>Outcome at last report<select id="f-out"><option value="all">All outcomes</option><option value="Alive, no recurrence">Alive, no recurrence</option><option value="Alive, stable disease">Alive, stable disease</option><option value="Recurrence / progression">Recurrence or progression</option><option value="Died">Died</option><option value="Not reported">Not reported</option></select></label>
+      <label>Treatment included<select id="f-tx"><option value="all">Any</option></select></label>
+    </div>
+    <div class="maplayout">
+      <div><div class="map" id="casemap" role="img" aria-label="World map of reported PTPR cases"></div>
+        <div class="legend"><span><i style="background:var(--mint-ink)"></i>Alive, no recurrence</span><span><i style="background:var(--sky-ink)"></i>Alive, stable disease</span><span><i style="background:var(--butter-ink)"></i>Recurrence / progression</span><span><i style="background:var(--blush-ink)"></i>Died</span><span><i style="background:var(--line)"></i>Not reported</span></div>
+      </div>
+      <div id="casedetail2" class="card" style="min-height:200px"><p class="muted" style="margin:0">Click a marker or a card to read one person's story in the literature.</p></div>
+    </div>
+  </section>
+  <section>
+    <p class="eyebrow mint"><span id="casecount2"></span> cases shown</p>
+    <div class="casegrid" id="casegrid"></div>
+  </section>
+</div>
+
+<!-- ============================ RESEARCH MAP ============================ -->
 <div class="view" id="view-map">
   <section class="prose">
-    <p class="eyebrow">Where cases have been reported</p>
-    <h2>A map of the published literature</h2>
-    <p class="muted">Each marker is a centre that has published PTPR cases or research. It is a map of what has been written, not a count of every patient: many people with PTPR are never written up, and multicentre papers pool patients from several countries. Click a marker or a name to read what came from there.</p>
+    <p class="eyebrow mint">Where it's studied</p>
+    <h2>A map of the research</h2>
+    <p class="muted">Each marker is a centre that has published PTPR cases or research. Click a marker or a name to read what came from there.</p>
   </section>
   <section class="maplayout">
-    <div>
-      <div id="map" role="img" aria-label="World map with markers on centres that have published PTPR cases"></div>
-      <div id="casedetail" class="card" hidden></div>
-    </div>
-    <div>
-      <p class="eyebrow">Reporting centres (<span id="casecount"></span>)</p>
-      <div class="caselist" id="caselist"></div>
-    </div>
+    <div><div class="map" id="map" role="img" aria-label="World map with markers on centres that have published PTPR research"></div><div id="casedetail" class="card detail" hidden></div></div>
+    <div><p class="eyebrow mint">Reporting centres (<span id="casecount"></span>)</p><div class="sidelist" id="caselist"></div></div>
   </section>
   <section class="prose">
     <h3>Where the first 73 published patients came from</h3>
-    <p class="muted small">From a 2016 literature review that located every English-language case with enough detail to analyse.</p>
     <table class="plain" id="regiontable"></table>
     <p class="small muted" id="regionsrc" style="margin-top:8px"></p>
   </section>
@@ -331,18 +412,18 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
 <!-- ============================ PUBLICATIONS ============================ -->
 <div class="view" id="view-publications">
   <section class="prose">
-    <p class="eyebrow">Research</p>
+    <p class="eyebrow mint">Research</p>
     <h2>Publications</h2>
-    <p class="muted">The landmark papers first, then every PubMed-indexed article that mentions PTPR, newest first, fetched live each time this page loads. Abstracts are free to read on PubMed; many full papers are free through PubMed Central.</p>
+    <p class="muted">Every paper we know of about PTPR, sorted newest first, with a plain-language summary of what each one found and what it added to the picture. Choose a category, or search. New PubMed articles are fetched live each time the page loads and appear under "Latest from PubMed".</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px"><input class="search" id="pubsearch" type="search" placeholder="Search titles, authors, journals…" aria-label="Search publications"></div>
+    <div class="chips" id="pubcats" style="margin-top:12px"></div>
   </section>
-  <section>
-    <h3>Landmark papers</h3>
-    <div id="keypapers"></div>
-  </section>
-  <section>
-    <h3>Latest from PubMed</h3>
-    <div class="feedstatus" id="feedstatus"><span class="spinner" aria-hidden="true"></span><span>Checking PubMed for the newest publications…</span></div>
-    <div id="feed"></div>
+  <section class="split">
+    <div>
+      <div class="feedstatus" id="feedstatus"><span class="spinner" aria-hidden="true"></span><span>Checking PubMed for the newest publications…</span></div>
+      <div id="publist"></div>
+    </div>
+    <aside class="pane"><div class="card" id="pubpane"><p class="muted" style="margin:0">Select a paper to read what it found and what it added.</p></div></aside>
   </section>
   <section>
     <h3>Clinical trials mentioning pineal-region tumours</h3>
@@ -354,7 +435,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
 <!-- ============================ SUPPORT ============================ -->
 <div class="view" id="view-support">
   <section class="prose">
-    <p class="eyebrow">You are not alone</p>
+    <p class="eyebrow butter">You are not alone</p>
     <h2>Support</h2>
     <p class="muted">With so few people diagnosed, there is no PTPR-only charity or support group anywhere in the world yet. The organisations below support people with any rare brain tumour, and several have mentor programmes that will try to match you with someone whose situation is close to yours.</p>
   </section>
@@ -362,12 +443,12 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   <section class="prose">
     <h2>Find each other</h2>
     <p>This site wants to become the place where people with PTPR, their families and the people who have lost someone can meet. If you would like to be put in touch with others, or to help start a small private group (email list, WhatsApp, Discord or a monthly video call), write to <strong><span data-email></span></strong>. Nothing is published or shared without your written agreement.</p>
-    <div class="card">
-      <h3>If you want to start a group yourself</h3>
+    <div class="wash butter">
+      <h3 style="margin-top:0">If you want to start a group yourself</h3>
       <ol style="margin:0;padding-left:20px;color:var(--ink-2)">
         <li>Pick one private channel people already use (a WhatsApp or Signal group, or a private Facebook group).</li>
-        <li>Ask RareConnect (EURORDIS) to host a moderated PTPR community; they do this for free for rare diseases.</li>
-        <li>Agree on three rules early: no medical advice, no selling, and privacy by default.</li>
+        <li>Ask RareConnect (EURORDIS) to host a moderated PTPR community; they do this free for rare diseases.</li>
+        <li>Agree on three rules early: no medical advice, no selling, privacy by default.</li>
         <li>Tell this site, so the group can be listed here for the next person who is diagnosed.</li>
       </ol>
     </div>
@@ -377,24 +458,13 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
 <!-- ============================ STORIES ============================ -->
 <div class="view" id="view-stories">
   <section class="prose">
-    <p class="eyebrow">Lived experience</p>
+    <p class="eyebrow blush">Lived experience</p>
     <h2>Stories</h2>
     <p class="muted">Research papers describe tumours. These pages are for the people. Interviews with survivors and a place to remember those who died are published here only with written consent from the person or their family.</p>
   </section>
-  <section>
-    <h3>Living with and after PTPR</h3>
-    <div id="survivors"></div>
-  </section>
-  <section>
-    <h3>In memory</h3>
-    <div id="memorial"></div>
-  </section>
-  <section class="prose">
-    <div class="card">
-      <h3>Share your story</h3>
-      <p class="muted">Interviews can be written, by email, or by video call, and you choose how much identifying detail appears. Families who would like a loved one remembered here can send a photo and a few words. Write to <strong><span data-email></span></strong>.</p>
-    </div>
-  </section>
+  <section><h3>Living with and after PTPR</h3><div id="survivors"></div></section>
+  <section><h3>In memory</h3><div id="memorial"></div></section>
+  <section class="prose"><div class="card"><h3>Share your story</h3><p class="muted" style="margin:0">Interviews can be written, by email, or by video call, and you choose how much identifying detail appears. Families who would like a loved one remembered here can send a photo and a few words. Write to <strong><span data-email></span></strong>.</p></div></section>
 </div>
 
 <!-- ============================ CONTRIBUTE ============================ -->
@@ -404,63 +474,55 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     <h2>Contribute</h2>
     <p>This site is run by one person and improved by everyone who uses it. Three things help most.</p>
     <div class="grid cols-3" style="margin:18px 0 28px">
-      <div class="card"><h3>Report a case for the map</h3><p class="muted small">Doctors, patients and families can tell us about a published or unpublished case so a country or centre is represented. Only country and year are shown; no names.</p></div>
-      <div class="card"><h3>Point out a mistake</h3><p class="muted small">If something here is wrong, outdated or unclear, say so. Every correction is checked against the source and the "last reviewed" date is updated.</p></div>
-      <div class="card"><h3>Translate</h3><p class="muted small">PTPR has been reported on every inhabited continent. Translations into French, Persian, Spanish, Turkish, Portuguese and others would reach people who need them.</p></div>
+      <div class="wash mint"><h3 style="margin-top:0">Add a case</h3><p class="muted small" style="margin:0">Doctors, patients and families can add a published or unpublished case to the registry. Only age group, sex, country, treatment and outcome are shown; never names.</p></div>
+      <div class="wash sky"><h3 style="margin-top:0">Point out a mistake</h3><p class="muted small" style="margin:0">If something here is wrong, outdated or unclear, say so. Every correction is checked against the source and the "last reviewed" date is updated.</p></div>
+      <div class="wash butter"><h3 style="margin-top:0">Translate</h3><p class="muted small" style="margin:0">PTPR has been reported on every inhabited continent. Translations into French, Persian, Spanish, Turkish, Portuguese and others would reach people who need them.</p></div>
     </div>
     <form class="simple" id="contactform">
-      <label>What is this about?
-        <select id="cf-kind"><option>A case for the map</option><option>A correction</option><option>A translation</option><option>Support or connecting with others</option><option>A story or memorial</option><option>Something else</option></select>
-      </label>
+      <label>What is this about?<select id="cf-kind"><option>A case for the registry</option><option>A correction</option><option>A translation</option><option>Support or connecting with others</option><option>A story or memorial</option><option>Something else</option></select></label>
       <label>Your message<textarea id="cf-msg" rows="6" placeholder="Write as much or as little as you like."></textarea></label>
       <label>How can we reply? (email, optional)<input id="cf-reply" type="email" placeholder="name@example.com"></label>
-      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-        <button class="btn" type="submit">Copy message and open email</button>
-        <span class="small muted">Goes to <span data-email></span></span>
-      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><button class="btn" type="submit">Copy message and open email</button><span class="small muted">Goes to <span data-email></span></span></div>
       <p class="small muted" id="cf-status" role="status"></p>
     </form>
   </section>
   <section class="prose">
     <h3>How this site stays current</h3>
-    <p class="muted">The Publications page queries PubMed and Europe PMC every time it is opened, so new papers appear without anyone editing the site. The timeline, map and support list are edited by hand in a single file (<code>data.js</code>) and reviewed against their sources. The date of the last review is shown in the footer.</p>
+    <p class="muted">The Publications page queries PubMed and Europe PMC every time it is opened, so new papers appear without anyone editing the site. The timeline, case registry, publication summaries and support list are edited by hand in plain data files and reviewed against their sources. The date of the last review is shown in the footer.</p>
   </section>
 </div>
 
 </main>
 
-<footer class="site">
-  <div class="wrap">
-    <div class="row">
-      <span>PTPR Hub · an independent, volunteer-run information site · content last reviewed <span data-reviewed></span></span>
-      <span>Not medical advice. Sources are linked where claims are made.</span>
-    </div>
-  </div>
-</footer>
+<footer class="site"><div class="wrap"><div class="row">
+  <span>PTPR Hub · an independent, volunteer-run information site · content last reviewed <span data-reviewed></span></span>
+  <span>Not medical advice. Sources are linked where claims are made.</span>
+</div></div></footer>
 
 <script src="data.js"></script>
+<script src="cases.js"></script>
+<script src="pubs.js"></script>
 <script src="vendor/jsvectormap.min.js"></script>
 <script src="vendor/world.js"></script>
 <script>
 (function(){
-  const D = window.PTPR_DATA;
-  const $ = (s, r=document) => r.querySelector(s);
-  const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
-  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-
+  const D = window.PTPR_DATA, CASES = window.PTPR_CASES || [], PUBS = window.PTPR_PUBS || [];
+  const $ = (s, r=document) => r.querySelector(s), $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+  const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const css = () => getComputedStyle(document.documentElement), tok = n => css().getPropertyValue(n).trim();
   $$('[data-reviewed]').forEach(e => e.textContent = D.lastReviewed);
   $$('[data-email]').forEach(e => e.textContent = D.contactEmail);
 
   /* ---------- routing ---------- */
-  const views = ['home','timeline','map','publications','support','stories','contribute'];
-  let mapBuilt = false, feedStarted = false;
+  const views = ['home','why','timeline','cases','map','publications','support','stories','contribute'];
+  let mapBuilt=false, caseMapBuilt=false, feedStarted=false;
   function show(){
-    let v = (location.hash || '#home').slice(1);
-    if (!views.includes(v)) v = 'home';
-    $$('.view').forEach(el => el.classList.toggle('active', el.id === 'view-'+v));
-    $$('nav.tabs a').forEach(a => a.getAttribute('data-view') === v ? a.setAttribute('aria-current','page') : a.removeAttribute('aria-current'));
-    if (v === 'map' && !mapBuilt) buildMap();
-    if (v === 'publications' && !feedStarted) { feedStarted = true; loadFeed(); loadTrials(); }
+    let v = (location.hash || '#home').slice(1); if (!views.includes(v)) v='home';
+    $$('.view').forEach(el => el.classList.toggle('active', el.id==='view-'+v));
+    $$('nav.tabs a').forEach(a => a.dataset.view===v ? a.setAttribute('aria-current','page') : a.removeAttribute('aria-current'));
+    if (v==='map' && !mapBuilt) buildMap();
+    if (v==='cases' && !caseMapBuilt) buildCases();
+    if (v==='publications' && !feedStarted) { feedStarted=true; loadFeed(); loadTrials(); }
     window.scrollTo({top:0});
   }
   window.addEventListener('hashchange', show);
@@ -468,123 +530,163 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   /* ---------- timeline ---------- */
   const typeLabel = {science:'Discovery', who:'WHO classification', treatment:'Treatment evidence', molecular:'Molecular biology'};
   function renderTimeline(filter){
-    $('#timeline').innerHTML = D.timeline.filter(t => filter==='all' || t.type===filter).map(t => `
-      <li>
-        <div class="yr">${esc(t.year)}</div>
-        <div class="card">
-          <span class="pill ${esc(t.type)}">${typeLabel[t.type]||esc(t.type)}</span>
-          <h3 style="margin-top:8px">${esc(t.title)}</h3>
-          <p class="muted">${esc(t.text)}</p>
-          ${t.source ? `<p class="src">Source: <a href="${esc(t.source.url)}" target="_blank" rel="noopener">${esc(t.source.label)}</a></p>` : ''}
-        </div>
-      </li>`).join('');
+    $('#timeline').innerHTML = D.timeline.filter(t => filter==='all'||t.type===filter).map(t => `
+      <li><span class="dot" aria-hidden="true"></span>
+        <div class="card ${esc(t.type)}"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><span class="yr">${esc(t.year)}</span><span class="pill ${esc(t.type)}">${typeLabel[t.type]||esc(t.type)}</span></div>
+          <h3 style="margin-top:8px">${esc(t.title)}</h3><p class="muted">${esc(t.text)}</p>
+          ${t.source?`<p class="src">Source: <a href="${esc(t.source.url)}" target="_blank" rel="noopener">${esc(t.source.label)}</a></p>`:''}</div></li>`).join('');
   }
   renderTimeline('all');
-  $('#tlfilter').addEventListener('click', e => {
-    const b = e.target.closest('.chip'); if (!b) return;
-    $$('#tlfilter .chip').forEach(c => c.setAttribute('aria-pressed', c===b));
-    renderTimeline(b.dataset.type);
-  });
+  $('#tlfilter').addEventListener('click', e => { const b=e.target.closest('.chip'); if(!b) return; $$('#tlfilter .chip').forEach(c=>c.setAttribute('aria-pressed',c===b)); renderTimeline(b.dataset.type); });
 
-  /* ---------- map ---------- */
-  function caseDetail(i){
-    const c = D.cases[i];
-    const el = $('#casedetail');
-    el.hidden = false;
-    el.innerHTML = `<p class="eyebrow">${esc(c.country)}</p><h3>${esc(c.city)}</h3><p class="muted">${esc(c.note)}</p><p class="small">Publications: ${c.sources.map(esc).join(' · ')}</p>`;
-    $$('#caselist button').forEach((b,j) => b.setAttribute('aria-pressed', j===i));
+  /* ---------- research map ---------- */
+  function centreDetail(i){ const c=D.cases[i], el=$('#casedetail'); el.hidden=false;
+    el.innerHTML=`<p class="eyebrow mint">${esc(c.country)}</p><h3>${esc(c.city)}</h3><p class="muted">${esc(c.note)}</p><p class="small">Publications: ${c.sources.map(esc).join(' · ')}</p>`;
+    $$('#caselist button').forEach((b,j)=>b.setAttribute('aria-pressed',j===i)); }
+  function vmap(sel, markers, fill, onClick){
+    return new jsVectorMap({ selector:sel, map:'world', zoomButtons:true, zoomOnScroll:false, backgroundColor:'transparent',
+      regionStyle:{ initial:{ fill: tok('--surface-2'), stroke: tok('--line'), strokeWidth:0.6 }, hover:{ fill: tok('--mint') } },
+      markers, markerStyle:{ initial:{ fill, stroke:'#ffffff', strokeWidth:2, r:7 }, hover:{ r:9 } },
+      onMarkerClick:(e,i)=>onClick(+i), onRegionTooltipShow:(e)=>{ e.preventDefault(); } });
   }
-  function buildMap(){
-    mapBuilt = true;
-    $('#casecount').textContent = D.cases.length;
-    $('#caselist').innerHTML = D.cases.map((c,i) => `<button type="button" aria-pressed="false" data-i="${i}"><b>${esc(c.country)}</b><span>${esc(c.city)} · ${c.sources.length} publication${c.sources.length>1?'s':''}</span></button>`).join('');
-    $('#caselist').addEventListener('click', e => { const b = e.target.closest('button'); if (b) caseDetail(+b.dataset.i); });
-    const css = getComputedStyle(document.documentElement);
+  function buildMap(){ mapBuilt=true;
+    $('#casecount').textContent=D.cases.length;
+    $('#caselist').innerHTML=D.cases.map((c,i)=>`<button type="button" aria-pressed="false" data-i="${i}"><b>${esc(c.country)}</b><span>${esc(c.city)} · ${c.sources.length} publication${c.sources.length>1?'s':''}</span></button>`).join('');
+    $('#caselist').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) centreDetail(+b.dataset.i);});
+    try { vmap('#map', D.cases.map(c=>({name:c.country+' · '+c.city, coords:c.coords})), tok('--accent'), centreDetail); }
+    catch(err){ $('#map').innerHTML='<p class="muted" style="padding:20px">The map could not be drawn in this browser; the list beside it has the same information.</p>'; }
+    const rs=D.regionSummary;
+    $('#regiontable').innerHTML='<thead><tr><th>Region</th><th>Patients</th></tr></thead><tbody>'+rs.rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${r[1]}</td></tr>`).join('')+'</tbody>';
+    $('#regionsrc').innerHTML=`Source: <a href="${esc(rs.source.url)}" target="_blank" rel="noopener">${esc(rs.source.label)}</a>`;
+  }
+
+  /* ---------- cases ---------- */
+  const outClass = o => ({'Alive, no recurrence':'o-clear','Alive, stable disease':'o-stable','Recurrence / progression':'o-recur','Died':'o-died'}[o]||'o-nr');
+  const outColor = o => ({'o-clear':tok('--mint-ink'),'o-stable':tok('--sky-ink'),'o-recur':tok('--butter-ink'),'o-died':tok('--blush-ink')}[outClass(o)]||tok('--line'));
+  function personLabel(c){ const num=c.age!=null&&/^\d+$/.test(String(c.ageText||c.age)); const who=c.sex==='F'?(c.age!=null&&c.age<18?'girl':'woman'):c.sex==='M'?(c.age!=null&&c.age<18?'boy':'man'):'person'; return num?`${esc(c.age)}-year-old ${who}`:`${esc(c.ageText||'Age not stated')}, ${who}`; }
+  const ageGroup = c => c.age==null ? 'unknown' : c.age<18 ? 'child' : c.age<40 ? 'young' : 'older';
+  let caseMap=null, shownCases=[];
+  function filteredCases(){
+    const a=$('#f-age').value, s=$('#f-sex').value, o=$('#f-out').value, t=$('#f-tx').value;
+    return CASES.filter(c => (a==='all'||ageGroup(c)===a) && (s==='all'||c.sex===s) && (o==='all'||c.outcome===o) && (t==='all'||(c.treatment||[]).includes(t)));
+  }
+  function median(arr){ const a=arr.filter(x=>x!=null).sort((x,y)=>x-y); if(!a.length) return null; const m=Math.floor(a.length/2); return a.length%2?a[m]:(a[m-1]+a[m])/2; }
+  function caseDetail(i){ const c=shownCases[i]; if(!c) return;
+    $('#casedetail2').innerHTML=`<p class="eyebrow mint">${esc(c.country)}${c.city?' · '+esc(c.city):''} · reported ${esc(c.year)}</p>
+      <h3 style="margin:0 0 6px">${personLabel(c)}</h3>
+      ${c.presentation?`<p><b>How it started:</b> ${esc(c.presentation)}${c.hydrocephalus?' Hydrocephalus was present.':''}</p>`:''}
+      <p><b>Treatment:</b> ${(c.treatment||[]).map(esc).join(', ')||'Not reported'}</p>
+      <p><b>Outcome at last report:</b> <span class="${outClass(c.outcome)}"><span class="out" style="font-weight:700">${esc(c.outcome)}</span></span>. ${esc(c.outcomeText||'')}</p>
+      ${c.notes?`<p class="muted">${esc(c.notes)}</p>`:''}
+      <p class="small" style="margin:0">Source: <a href="${esc(c.source.url)}" target="_blank" rel="noopener">${esc(c.source.label)}</a></p>`;
+    $$('#casegrid .case').forEach((b,j)=>b.setAttribute('aria-pressed',j===i));
+    $('#casedetail2').scrollIntoView({behavior:'smooth',block:'nearest'});
+  }
+  function renderCases(){
+    shownCases=filteredCases();
+    $('#casecount2').textContent=shownCases.length;
+    const ages=shownCases.map(c=>c.age), med=median(ages), f=shownCases.filter(c=>c.sex==='F').length, m=shownCases.filter(c=>c.sex==='M').length;
+    const known=shownCases.filter(c=>c.outcome&&c.outcome!=='Not reported'), alive=known.filter(c=>c.outcome!=='Died').length, clear=known.filter(c=>c.outcome==='Alive, no recurrence').length;
+    $('#casestats').innerHTML=`
+      <div class="fact mint"><p class="big">${shownCases.length}</p><p class="lbl">individual cases in the registry${shownCases.length!==CASES.length?' (filtered)':''}</p></div>
+      <div class="fact sky"><p class="big">${med!=null?med:'–'}</p><p class="lbl">median age at diagnosis (years)</p></div>
+      <div class="fact butter"><p class="big">${f} / ${m}</p><p class="lbl">women / men</p></div>
+      <div class="fact blush"><p class="big">${known.length?Math.round(alive/known.length*100)+'%':'–'}</p><p class="lbl">alive at last report, where stated (${clear} with no recurrence)</p></div>`;
+    $('#casegrid').innerHTML=shownCases.map((c,i)=>`<button class="case ${outClass(c.outcome)}" data-i="${i}" aria-pressed="false">
+      <p class="who">${personLabel(c)}</p>
+      <p class="meta">${esc(c.country)} · ${esc(c.year)}</p>
+      <p class="out" style="margin:0">${esc(c.outcome)}</p>
+      <div class="tags">${(c.treatment||[]).slice(0,4).map(t=>`<span>${esc(t)}</span>`).join('')}</div></button>`).join('');
+    if (caseMap){ try{ caseMap.destroy(); }catch(e){} }
     try {
-      new jsVectorMap({
-        selector:'#map', map:'world', zoomButtons:true, zoomOnScroll:false,
-        backgroundColor:'transparent',
-        regionStyle:{ initial:{ fill: css.getPropertyValue('--surface-2').trim(), stroke: css.getPropertyValue('--line').trim(), strokeWidth:0.6 }, hover:{ fill: css.getPropertyValue('--accent-soft').trim() } },
-        markers: D.cases.map(c => ({ name: c.country + ' · ' + c.city, coords: c.coords })),
-        markerStyle:{ initial:{ fill: css.getPropertyValue('--accent').trim(), stroke:'#ffffff', strokeWidth:2, r:7 }, hover:{ fill: css.getPropertyValue('--warm').trim(), r:9 } },
-        onMarkerClick: (e, index) => caseDetail(+index),
-        onRegionTooltipShow: (e, tooltip) => { e.preventDefault(); }
-      });
-    } catch (err) {
-      $('#map').innerHTML = '<p class="muted" style="padding:20px">The map could not be drawn in this browser. The list beside it has the same information.</p>';
-    }
-    const rs = D.regionSummary;
-    $('#regiontable').innerHTML = '<thead><tr><th>Region</th><th>Patients</th></tr></thead><tbody>' + rs.rows.map(r => `<tr><td>${esc(r[0])}</td><td>${r[1]}</td></tr>`).join('') + '</tbody>';
-    $('#regionsrc').innerHTML = `Source: <a href="${esc(rs.source.url)}" target="_blank" rel="noopener">${esc(rs.source.label)}</a>`;
+      const pts=shownCases.filter(c=>c.coords); const seen={};
+      const markers=pts.map(c=>{ const k=c.coords.join(','); seen[k]=(seen[k]||0)+1; const n=seen[k]-1; const jit=n?[(Math.cos(n*2.4)*0.9*n), (Math.sin(n*2.4)*0.9*n)]:[0,0]; return { name:`${c.ageText||c.age}${c.sex==='F'?' F':c.sex==='M'?' M':''} · ${c.country} · ${c.outcome}`, coords:[c.coords[0]+jit[0], c.coords[1]+jit[1]], style:{ initial:{ fill: outColor(c.outcome) } }, _i: shownCases.indexOf(c) }; });
+      caseMap=new jsVectorMap({ selector:'#casemap', map:'world', zoomButtons:true, zoomOnScroll:false, backgroundColor:'transparent',
+        regionStyle:{ initial:{ fill: tok('--surface-2'), stroke: tok('--line'), strokeWidth:0.6 }, hover:{ fill: tok('--mint') } },
+        markers, markerStyle:{ initial:{ stroke:'#ffffff', strokeWidth:2, r:6 }, hover:{ r:9 } },
+        onMarkerClick:(e,i)=>caseDetail(markers[+i]._i), onRegionTooltipShow:(e)=>{ e.preventDefault(); } });
+    } catch(err){ $('#casemap').innerHTML='<p class="muted" style="padding:20px">The map could not be drawn here; the cards below carry the same information.</p>'; }
+  }
+  function buildCases(){ caseMapBuilt=true;
+    const tx=[...new Set(CASES.flatMap(c=>c.treatment||[]))].sort();
+    $('#f-tx').innerHTML='<option value="all">Any</option>'+tx.map(t=>`<option>${esc(t)}</option>`).join('');
+    ['#f-age','#f-sex','#f-out','#f-tx'].forEach(s=>$(s).addEventListener('change',renderCases));
+    $('#casegrid').addEventListener('click',e=>{const b=e.target.closest('.case'); if(b) caseDetail(+b.dataset.i);});
+    if(!CASES.length){ $('#casegrid').innerHTML='<div class="empty">The case registry is being compiled from the published literature. Check back soon.</div>'; return; }
+    renderCases();
   }
 
-  /* ---------- publications ---------- */
-  $('#keypapers').innerHTML = D.keyPapers.map(p => {
-    const url = p.url;
-    return `<div class="pub"><div class="yr">${p.year}</div><div><div class="t"><a href="${esc(url)}" target="_blank" rel="noopener">${esc(p.title)}</a><span class="pill">${esc(p.tag)}</span></div><div class="m">${esc(p.authors)} · ${esc(p.journal)}</div></div></div>`;
-  }).join('');
-
-  function status(id, cls, text){ $(id).innerHTML = `<span class="dot ${cls}" aria-hidden="true"></span><span>${text}</span>`; }
-  function renderPubs(items){
-    $('#feed').innerHTML = items.map(p => `<div class="pub"><div class="yr">${esc(p.year||'')}</div><div><div class="t"><a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.title)}</a></div><div class="m">${esc(p.authors)}${p.journal? ' · '+esc(p.journal):''}${p.date? ' · '+esc(p.date):''}</div></div></div>`).join('');
+  /* ---------- publications: split view ---------- */
+  const catClass = {'Case report':'blush','Case series':'blush','Treatment & outcomes':'mint','Molecular & genetics':'sky','Imaging & diagnosis':'sky','Review & guidelines':'butter','Pathology':'sky','Latest from PubMed':''};
+  let allPubs = PUBS.map(p=>Object.assign({},p)), liveItems=[], curCat='all', q='';
+  function visiblePubs(){ const list=[...liveItems.map(x=>Object.assign({category:'Latest from PubMed'},x)), ...allPubs]; const seen=new Set(); return list.filter(p=>{ const k=(p.title||'').toLowerCase().replace(/[^a-z]/g,'').slice(0,60); if(seen.has(k)) return false; seen.add(k); return true; }).filter(p=>(curCat==='all'||p.category===curCat)&&(!q||(`${p.title} ${p.authors} ${p.journal}`).toLowerCase().includes(q))); }
+  let shownPubs=[];
+  function renderPubs(){
+    shownPubs=visiblePubs();
+    $('#publist').innerHTML=shownPubs.map((p,i)=>`<div class="pub" role="button" tabindex="0" data-i="${i}" aria-selected="false"><div class="yr">${esc(p.year||'')}</div><div><div class="t">${esc(p.title)}${p.category?`<span class="pill ${catClass[p.category]||''}">${esc(p.category)}</span>`:''}</div><div class="m">${esc(p.authors||'')}${p.journal?' · '+esc(p.journal):''}${p.n?' · '+p.n+(p.n===1?' patient':' patients'):''}</div></div></div>`).join('')||'<p class="muted">No papers match.</p>';
+    const cats=['all',...new Set([...(liveItems.length?['Latest from PubMed']:[]),...allPubs.map(p=>p.category)])];
+    $('#pubcats').innerHTML=cats.map(c=>`<button class="chip" aria-pressed="${c===curCat}" data-cat="${esc(c)}">${c==='all'?'All ('+visiblePubsCount()+')':esc(c)}</button>`).join('');
   }
+  function visiblePubsCount(){ const s=curCat, t=q; curCat='all'; q=''; const n=visiblePubs().length; curCat=s; q=t; return n; }
+  async function showPub(i){ const p=shownPubs[i]; if(!p) return;
+    $$('#publist .pub').forEach((el,j)=>el.setAttribute('aria-selected',j===i));
+    const pane=$('#pubpane');
+    pane.innerHTML=`<p class="eyebrow mint">${esc(p.category||'')} · ${esc(p.year||'')}</p><h3>${esc(p.title)}</h3>
+      <dl class="kv"><dt>Authors</dt><dd>${esc(p.authors||'')}</dd><dt>Published in</dt><dd>${esc(p.journal||'')}${p.date?', '+esc(p.date):''}</dd>${p.n?`<dt>Patients</dt><dd>${p.n}</dd>`:''}</dl>
+      ${p.summary?`<p><b>What it found.</b> ${esc(p.summary)}</p>`:'<p class="muted" id="abs">Loading the abstract…</p>'}
+      ${p.adds?`<div class="wash mint" style="padding:12px 14px"><b>What it added.</b> ${esc(p.adds)}</div>`:''}
+      <p style="margin:12px 0 0"><a class="btn" href="${esc(p.url)}" target="_blank" rel="noopener">Open the paper</a></p>`;
+    if(!p.summary && p.pmid){ try{ const x=await fetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&rettype=abstract&retmode=xml&id=${p.pmid}`).then(r=>r.text()); const doc=new DOMParser().parseFromString(x,'text/xml'); const abs=[...doc.querySelectorAll('AbstractText')].map(a=>(a.getAttribute('Label')?a.getAttribute('Label')+': ':'')+a.textContent).join(' '); const el=$('#abs'); if(el) el.innerHTML=abs?`<b>Abstract (from PubMed).</b> ${esc(abs)}`:'No abstract is available for this record.'; }catch(e){ const el=$('#abs'); if(el) el.textContent='The abstract could not be loaded here; open the paper on PubMed.'; } }
+  }
+  $('#publist').addEventListener('click',e=>{const el=e.target.closest('.pub'); if(el) showPub(+el.dataset.i);});
+  $('#publist').addEventListener('keydown',e=>{ if(e.key==='Enter'){const el=e.target.closest('.pub'); if(el) showPub(+el.dataset.i);} });
+  $('#pubcats').addEventListener('click',e=>{const b=e.target.closest('.chip'); if(!b) return; curCat=b.dataset.cat; renderPubs();});
+  $('#pubsearch').addEventListener('input',e=>{ q=e.target.value.trim().toLowerCase(); renderPubs(); });
+  renderPubs();
+
+  function status(id,cls,text){ $(id).innerHTML=`<span class="dot2 ${cls}" aria-hidden="true"></span><span>${text}</span>`; }
   async function loadFeed(){
-    const want = 40;
+    const want=40;
     try {
-      const base = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
-      const s = await fetch(`${base}esearch.fcgi?db=pubmed&retmode=json&sort=pub_date&retmax=${want}&term=${encodeURIComponent(D.pubmedQuery)}`).then(r => r.json());
-      const ids = s.esearchresult.idlist; const total = s.esearchresult.count;
-      if (!ids.length) throw new Error('empty');
-      const sum = await fetch(`${base}esummary.fcgi?db=pubmed&retmode=json&id=${ids.join(',')}`).then(r => r.json());
-      const items = ids.map(id => { const r = sum.result[id]; return r && { title: r.title, authors: (r.authors||[]).slice(0,3).map(a=>a.name).join(', ') + ((r.authors||[]).length>3?' et al.':''), journal: r.source, date: r.pubdate, year: (r.pubdate||'').slice(0,4), url: `https://pubmed.ncbi.nlm.nih.gov/${id}/` }; }).filter(Boolean);
-      renderPubs(items);
-      status('#feedstatus','ok',`Live from PubMed: ${total} indexed articles mention PTPR; showing the ${items.length} most recent. Updated ${new Date().toLocaleDateString()}.`);
-      return;
-    } catch (e1) {
+      const base='https://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
+      const s=await fetch(`${base}esearch.fcgi?db=pubmed&retmode=json&sort=pub_date&retmax=${want}&term=${encodeURIComponent(D.pubmedQuery)}`).then(r=>r.json());
+      const ids=s.esearchresult.idlist, total=s.esearchresult.count; if(!ids.length) throw new Error('empty');
+      const sum=await fetch(`${base}esummary.fcgi?db=pubmed&retmode=json&id=${ids.join(',')}`).then(r=>r.json());
+      liveItems=ids.map(id=>{const r=sum.result[id]; return r&&{ pmid:id, title:r.title, authors:(r.authors||[]).slice(0,3).map(a=>a.name).join(', ')+((r.authors||[]).length>3?' et al.':''), journal:r.source, date:r.pubdate, year:(r.pubdate||'').slice(0,4), url:`https://pubmed.ncbi.nlm.nih.gov/${id}/` };}).filter(Boolean);
+      status('#feedstatus','ok',`Live from PubMed: ${total} indexed articles mention PTPR; the ${liveItems.length} most recent are included below under "Latest from PubMed".`); renderPubs(); return;
+    } catch(e1){
       try {
-        const q = encodeURIComponent(D.europePmcQuery);
-        const r = await fetch(`https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=${q}&format=json&pageSize=${want}&sort=P_PDATE_D%20desc`).then(r => r.json());
-        const items = (r.resultList.result||[]).map(x => ({ title:x.title, authors:x.authorString, journal:x.journalTitle, date:x.firstPublicationDate, year:x.pubYear, url: x.pmid ? `https://pubmed.ncbi.nlm.nih.gov/${x.pmid}/` : `https://europepmc.org/article/${x.source}/${x.id}` }));
-        if (!items.length) throw new Error('empty');
-        renderPubs(items);
-        status('#feedstatus','ok',`Live from Europe PMC: ${r.hitCount} articles; showing the ${items.length} most recent.`);
-        return;
-      } catch (e2) {
-        status('#feedstatus','err','The live feed could not reach PubMed from this page (it is blocked in preview environments and works once the site is on its own address). The landmark papers above are always available, and <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22papillary+tumor+of+the+pineal+region%22&sort=date" target="_blank" rel="noopener">this PubMed search</a> shows the newest articles.');
-      }
+        const r=await fetch(`https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=${encodeURIComponent(D.europePmcQuery)}&format=json&pageSize=${want}&sort=P_PDATE_D%20desc&resultType=core`).then(r=>r.json());
+        liveItems=(r.resultList.result||[]).map(x=>({ pmid:x.pmid, title:x.title, authors:x.authorString, journal:x.journalTitle, date:x.firstPublicationDate, year:x.pubYear, summary:x.abstractText?x.abstractText.slice(0,900):'', url:x.pmid?`https://pubmed.ncbi.nlm.nih.gov/${x.pmid}/`:`https://europepmc.org/article/${x.source}/${x.id}` }));
+        if(!liveItems.length) throw new Error('empty');
+        status('#feedstatus','ok',`Live from Europe PMC: ${r.hitCount} articles; the ${liveItems.length} most recent are included below.`); renderPubs(); return;
+      } catch(e2){ status('#feedstatus','err','The live feed could not reach PubMed from this page (it is blocked in preview environments and works once the site is on its own address). The curated list below is complete as of the last review; <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22papillary+tumor+of+the+pineal+region%22&sort=date" target="_blank" rel="noopener">this PubMed search</a> shows anything newer.'); }
     }
   }
   async function loadTrials(){
     try {
-      const r = await fetch(`https://clinicaltrials.gov/api/v2/studies?query.term=${encodeURIComponent(D.clinicalTrialsQuery)}&filter.overallStatus=RECRUITING,NOT_YET_RECRUITING,ENROLLING_BY_INVITATION&pageSize=15&fields=NCTId,BriefTitle,OverallStatus,LocationCountry`).then(r => r.json());
-      const st = r.studies||[];
-      if (!st.length) { status('#trialstatus','ok','No recruiting trials mention pineal-region tumours right now. Rare-tumour natural-history studies (such as NCI-CONNECT) are listed under Support.'); return; }
-      $('#trials').innerHTML = st.map(s => { const p = s.protocolSection; const id = p.identificationModule.nctId; const countries = [...new Set(((p.contactsLocationsModule||{}).locations||[]).map(l=>l.country))].slice(0,4).join(', '); return `<div class="pub"><div class="yr small">${esc(p.statusModule.overallStatus.replace(/_/g,' ').toLowerCase())}</div><div><div class="t"><a href="https://clinicaltrials.gov/study/${id}" target="_blank" rel="noopener">${esc(p.identificationModule.briefTitle)}</a></div><div class="m">${id}${countries? ' · '+esc(countries):''}</div></div></div>`; }).join('');
+      const r=await fetch(`https://clinicaltrials.gov/api/v2/studies?query.term=${encodeURIComponent(D.clinicalTrialsQuery)}&filter.overallStatus=RECRUITING,NOT_YET_RECRUITING,ENROLLING_BY_INVITATION&pageSize=15&fields=NCTId,BriefTitle,OverallStatus,LocationCountry`).then(r=>r.json());
+      const st=r.studies||[]; if(!st.length){ status('#trialstatus','ok','No recruiting trials mention pineal-region tumours right now. Rare-tumour natural-history studies (such as NCI-CONNECT) are listed under Support.'); return; }
+      $('#trials').innerHTML=st.map(s=>{const p=s.protocolSection, id=p.identificationModule.nctId; const countries=[...new Set(((p.contactsLocationsModule||{}).locations||[]).map(l=>l.country))].slice(0,4).join(', '); return `<div class="pub" style="cursor:default"><div class="yr small">${esc(p.statusModule.overallStatus.replace(/_/g,' ').toLowerCase())}</div><div><div class="t"><a href="https://clinicaltrials.gov/study/${id}" target="_blank" rel="noopener">${esc(p.identificationModule.briefTitle)}</a></div><div class="m">${id}${countries?' · '+esc(countries):''}</div></div></div>`;}).join('');
       status('#trialstatus','ok',`${st.length} recruiting or upcoming studies on ClinicalTrials.gov mention pineal-region tumours. Few, if any, are PTPR-specific; ask your team whether one fits.`);
-    } catch (e) {
-      status('#trialstatus','err','ClinicalTrials.gov could not be reached from this page. <a href="https://clinicaltrials.gov/search?term=pineal%20region%20tumor&aggFilters=status:rec" target="_blank" rel="noopener">Search it directly</a>.');
-    }
+    } catch(e){ status('#trialstatus','err','ClinicalTrials.gov could not be reached from this page. <a href="https://clinicaltrials.gov/search?term=pineal%20region%20tumor&aggFilters=status:rec" target="_blank" rel="noopener">Search it directly</a>.'); }
   }
 
-  /* ---------- support ---------- */
-  $('#orgs').innerHTML = D.support.map(o => `<div class="card org"><span class="r">${esc(o.region)}</span><h3 style="margin:0"><a href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.name)}</a></h3><p class="muted small" style="margin:0">${esc(o.what)}</p></div>`).join('');
+  /* ---------- support / stories ---------- */
+  $('#orgs').innerHTML=D.support.map(o=>`<div class="card org"><span class="r">${esc(o.region)}</span><h3 style="margin:0"><a href="${esc(o.url)}" target="_blank" rel="noopener">${esc(o.name)}</a></h3><p class="muted small" style="margin:0">${esc(o.what)}</p></div>`).join('');
+  $('#survivors').innerHTML=D.survivorStories.length?D.survivorStories.map(s=>`<article class="card" style="margin-bottom:14px;border-top:5px solid var(--blush-line)"><p class="eyebrow blush">${esc(s.country||'')} · diagnosed ${esc(s.diagnosed||'')}</p><h3>${esc(s.headline)}</h3><p class="muted">${esc(s.text)}</p><p class="small">— ${esc(s.name)}${s.age?', '+esc(s.age):''}</p></article>`).join('')
+    :`<div class="empty"><p style="margin:0 0 6px"><b>The first interviews are being arranged.</b></p><p style="margin:0" class="small">If you have been treated for PTPR and would be willing to talk about what helped, what you wish you had known, and how life is now, please get in touch. Interviews can be anonymous.</p></div>`;
+  $('#memorial').innerHTML=D.inMemory.length?`<div class="memorial">${D.inMemory.map(m=>`<figure>${m.imageDataUri?`<img src="${esc(m.imageDataUri)}" alt="${esc(m.name)}">`:`<div class="ph" aria-hidden="true">✦</div>`}<figcaption><b>${esc(m.name)}</b><br><span class="small muted">${esc(m.years||'')}${m.country?' · '+esc(m.country):''}</span>${m.words?`<p class="small" style="margin:6px 0 0">${esc(m.words)}</p>`:''}</figcaption></figure>`).join('')}</div>`
+    :`<div class="empty"><p style="margin:0 0 6px"><b>A quiet page for the people PTPR has taken.</b></p><p style="margin:0" class="small">Families who would like someone remembered here, with a photo and a few words, can write to ${esc(D.contactEmail)}. Nothing is posted without the family's consent.</p></div>`;
 
-  /* ---------- stories ---------- */
-  $('#survivors').innerHTML = D.survivorStories.length ? D.survivorStories.map(s => `<article class="card" style="margin-bottom:14px"><p class="eyebrow">${esc(s.country||'')} · diagnosed ${esc(s.diagnosed||'')}</p><h3>${esc(s.headline)}</h3><p class="muted">${esc(s.text)}</p><p class="small">— ${esc(s.name)}${s.age? ', '+esc(s.age):''}</p></article>`).join('')
-    : `<div class="empty"><p style="margin:0 0 6px"><b>The first interviews are being arranged.</b></p><p style="margin:0" class="small">If you have been treated for PTPR and would be willing to talk about what helped, what you wish you had known, and how life is now, please get in touch. Interviews can be anonymous.</p></div>`;
-  $('#memorial').innerHTML = D.inMemory.length ? `<div class="memorial">${D.inMemory.map(m => `<figure>${m.imageDataUri? `<img src="${esc(m.imageDataUri)}" alt="${esc(m.name)}">` : `<div class="ph" aria-hidden="true">✦</div>`}<figcaption><b>${esc(m.name)}</b><br><span class="small muted">${esc(m.years||'')}${m.country? ' · '+esc(m.country):''}</span>${m.words? `<p class="small" style="margin:6px 0 0">${esc(m.words)}</p>`:''}</figcaption></figure>`).join('')}</div>`
-    : `<div class="empty"><p style="margin:0 0 6px"><b>A quiet page for the people PTPR has taken.</b></p><p style="margin:0" class="small">Families who would like someone remembered here, with a photo and a few words, can write to ${esc(D.contactEmail)}. Nothing is posted without the family's consent.</p></div>`;
-
-  /* ---------- contact form (no server: copy + mailto) ---------- */
-  $('#contactform').addEventListener('submit', async e => {
-    e.preventDefault();
-    const kind = $('#cf-kind').value, msg = $('#cf-msg').value.trim(), reply = $('#cf-reply').value.trim();
-    if (!msg) { $('#cf-status').textContent = 'Please write a message first.'; return; }
-    const body = `Topic: ${kind}\n\n${msg}\n\n${reply? 'Reply to: '+reply : ''}`;
-    try { await navigator.clipboard.writeText(`To: ${D.contactEmail}\nSubject: PTPR Hub – ${kind}\n\n${body}`); $('#cf-status').textContent = `Copied. If your email app did not open, paste it into a new message to ${D.contactEmail}.`; }
-    catch (err) { $('#cf-status').textContent = `Please send this text to ${D.contactEmail} from your email app.`; }
-    const a = document.createElement('a'); a.href = `mailto:${D.contactEmail}?subject=${encodeURIComponent('PTPR Hub – '+kind)}&body=${encodeURIComponent(body)}`; a.click();
-  });
+  /* ---------- contact form ---------- */
+  $('#contactform').addEventListener('submit',async e=>{ e.preventDefault();
+    const kind=$('#cf-kind').value, msg=$('#cf-msg').value.trim(), reply=$('#cf-reply').value.trim();
+    if(!msg){ $('#cf-status').textContent='Please write a message first.'; return; }
+    const body=`Topic: ${kind}\n\n${msg}\n\n${reply?'Reply to: '+reply:''}`;
+    try{ await navigator.clipboard.writeText(`To: ${D.contactEmail}\nSubject: PTPR Hub – ${kind}\n\n${body}`); $('#cf-status').textContent=`Copied. If your email app did not open, paste it into a new message to ${D.contactEmail}.`; }
+    catch(err){ $('#cf-status').textContent=`Please send this text to ${D.contactEmail} from your email app.`; }
+    const a=document.createElement('a'); a.href=`mailto:${D.contactEmail}?subject=${encodeURIComponent('PTPR Hub – '+kind)}&body=${encodeURIComponent(body)}`; a.click(); });
 
   show();
 })();
