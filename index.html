@@ -215,7 +215,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
       <li><a href="#home" data-group="home">Just diagnosed</a></li>
       <li><a href="#why" data-group="why">Our story</a></li>
       <li><a href="#timeline" data-group="research">Research</a></li>
-      <li><a href="#cases" data-group="people">People</a></li>
+      <li><a href="#howmany" data-group="people">People with PTPR</a></li>
       <li><a href="#contribute" data-group="involved">Get involved</a></li>
     </ul>
     <ul id="nav2" class="sub" hidden></ul>
@@ -424,15 +424,12 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   <section><ol class="tl" id="timeline"></ol></section>
 </div>
 
-<!-- ============================ CASES ============================ -->
-<div class="view" id="view-cases">
+
+<!-- ============================ HOW MANY ============================ -->
+<div class="view" id="view-howmany">
   <section class="prose">
-    <p class="eyebrow mint">Reported cases</p>
-    <h2>The people behind the papers</h2>
-    <p class="muted">Every case here is a real person described in a published medical report: how old they were, what was done, and how they were doing when the report was written. It is not a complete registry (most people with PTPR are never written up, and pooled studies rarely give individual details), but it is the closest thing to "people like me" that exists. Add a case through the <a href="#contribute">Contribute</a> page.</p>
-  </section>
-  <section class="prose">
-    <h3>How many people have had PTPR?</h3>
+    <p class="eyebrow mint">People with PTPR</p>
+    <h2>How many people have had PTPR?</h2>
     <p class="muted">Nobody knows the true number. There is no registry anywhere in the world, and most people who are diagnosed are never written about. What can be counted is the medical literature: each time doctors publish a review, they tally every case reported so far. Those tallies, plotted below, are the best available picture, and they only ever go up as older cases are re-examined and new ones are published.</p>
     <div class="card" style="padding:16px 18px">
       <svg id="countchart" viewBox="0 0 640 260" width="100%" role="img" aria-label="Cumulative number of PTPR cases counted in published literature reviews, by year"></svg>
@@ -443,7 +440,15 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
       <div class="fact mint"><p class="big" id="cnt-reg">–</p><p class="lbl">individual patients with details in this site's registry</p></div>
       <div class="fact mint"><p class="big" id="cnt-pub">–</p><p class="lbl">articles on PubMed mentioning PTPR (<span id="cnt-pub-note">updates automatically</span>)</p></div>
     </div>
-    <p class="small muted" style="margin-top:10px">A fair summary for a newly diagnosed person: a few hundred cases have been described worldwide since 2003, perhaps 10 to 20 new reports a year, and the real number of people living with PTPR is certainly higher. To keep this up to date, add a new point in <code>data.js</code> whenever a review publishes a new total.</p>
+    <p class="small muted" style="margin-top:10px">A fair summary for a newly diagnosed person: a few hundred cases have been described worldwide since 2003, perhaps 10 to 20 new reports a year, and the real number of people living with PTPR is certainly higher. This chart is extended whenever a new review publishes a new total.</p>
+  </section>
+</div>
+<!-- ============================ CASES ============================ -->
+<div class="view" id="view-cases">
+  <section class="prose">
+    <p class="eyebrow mint">People with PTPR</p>
+    <h2>Reported cases: the people behind the papers</h2>
+    <p class="muted">Every case here is a real person described in a published medical report: how old they were, what was done, and how they were doing when the report was written. It is not a complete registry (most people with PTPR are never written up, and pooled studies rarely give individual details), but it is the closest thing to "people like me" that exists. For the bigger picture of how many cases exist, see <a href="#howmany">How many cases?</a>. Add a case through the <a href="#contribute">Contribute</a> page.</p>
   </section>
   <section>
     <div class="grid cols-4" id="casestats"></div>
@@ -565,7 +570,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     <h3>How this site was made</h3>
     <p class="muted">The site was written and designed by a volunteer with the help of an AI assistant (Anthropic's Claude), which helped gather the literature, draft the plain-language text and build the pages. Every medical statement is drawn from published, peer-reviewed articles, each one linked so you can read the original yourself, and the numbers and case details have been checked against those sources by a person. If you find something that does not match its source, please tell us and it will be corrected.</p>
     <h3>How this site stays current</h3>
-    <p class="muted">The Publications page queries PubMed and Europe PMC every time it is opened, so new papers appear without anyone editing the site. The timeline, case registry, publication summaries and support list are edited by hand in plain data files and reviewed against their sources. The date of the last review is shown in the footer.</p>
+    <p class="muted">The Publications page queries PubMed and Europe PMC every time it is opened, so new papers appear without anyone editing the site. The timeline, case registry, publication summaries and support list are updated by hand and checked against their sources. The date of the last review is shown in the footer.</p>
   </section>
 </div>
 
@@ -615,18 +620,19 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   $$('[data-email]').forEach(e => e.textContent = D.contactEmail);
 
   /* ---------- routing ---------- */
-  const views = ['home','why','timeline','cases','map','publications','support','stories','contribute','legal'];
-  let mapBuilt=false, caseMapBuilt=false, feedStarted=false;
+  const views = ['home','why','timeline','howmany','cases','map','publications','support','stories','contribute','legal'];
+  let mapBuilt=false, caseMapBuilt=false, feedStarted=false, countDrawn=false;
   function show(){
     let v = (location.hash || '#home').slice(1); if (!views.includes(v)) v='home';
     $$('.view').forEach(el => el.classList.toggle('active', el.id==='view-'+v));
-    const groups={home:[['home','Just diagnosed']], why:[['why','Our story']], research:[['timeline','Timeline'],['publications','Publications'],['map','Research map']], people:[['cases','Reported cases'],['stories','Stories'],['support','Support']], involved:[['contribute','Contribute'],['legal','Disclaimer']]};
+    const groups={home:[['home','Just diagnosed']], why:[['why','Our story']], research:[['timeline','Timeline'],['publications','Publications'],['map','Research map']], people:[['howmany','How many cases?'],['cases','Case registry & map'],['stories','Stories'],['support','Support']], involved:[['contribute','Contribute'],['legal','Disclaimer']]};
     const gname=Object.keys(groups).find(g=>groups[g].some(x=>x[0]===v));
     $$('#nav1 a').forEach(a => a.dataset.group===gname ? a.setAttribute('aria-current','page') : a.removeAttribute('aria-current'));
     const sub=$('#nav2'); const items=groups[gname]||[];
     if(items.length>1){ sub.hidden=false; sub.innerHTML=items.map(([id,label])=>`<li><a href="#${id}" ${id===v?'aria-current="page"':''}>${label}</a></li>`).join(''); } else { sub.hidden=true; sub.innerHTML=''; }
     if (v==='map' && !mapBuilt) buildMap();
     if (v==='cases' && !caseMapBuilt) buildCases();
+    if (v==='howmany' && !countDrawn) { countDrawn=true; drawCountChart(); }
     if (v==='publications' && !feedStarted) { feedStarted=true; loadFeed(); loadTrials(); }
     window.scrollTo({top:0});
   }
@@ -735,7 +741,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     $('#cnt-lit').textContent=last.count; $('#cnt-lit-yr').textContent=last.year; $('#cnt-reg').textContent=CASES.length;
     fetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=0&term=${encodeURIComponent(D.pubmedQuery)}`).then(r=>r.json()).then(j=>{ $('#cnt-pub').textContent=j.esearchresult.count; $('#cnt-pub-note').textContent='live from PubMed today'; }).catch(()=>{ $('#cnt-pub').textContent='100+'; $('#cnt-pub-note').textContent='live count loads once the site is hosted'; });
   }
-  function buildCases(){ caseMapBuilt=true; drawCountChart();
+  function buildCases(){ caseMapBuilt=true;
     const tx=[...new Set(CASES.flatMap(c=>c.treatment||[]))].sort();
     $('#f-tx').innerHTML='<option value="all">Any</option>'+tx.map(t=>`<option>${esc(t)}</option>`).join('');
     ['#f-age','#f-sex','#f-out','#f-tx'].forEach(s=>$(s).addEventListener('change',renderCases));
