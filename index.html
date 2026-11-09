@@ -489,18 +489,14 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   <section class="prose">
     <p class="eyebrow mint">Where it's studied</p>
     <h2>A map of the research</h2>
-    <p class="muted">Every paper in PubMed that mentions papillary tumour of the pineal region is placed in each country where its authors work, using the addresses printed in the paper. Click a country, on the map or in the list, to see the doctors and researchers there, their hospitals and universities, and what they have published.</p>
+    <p class="muted">Every paper, book chapter and conference abstract we can find on papillary tumour of the pineal region is placed in each country where its authors work. The list is gathered automatically from <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed</a> and <a href="https://openalex.org/" target="_blank" rel="noopener">OpenAlex</a> (an open index that also covers journals PubMed does not), together with the papers reviewed on this site, and was cross-checked against <a href="https://consensus.app/" target="_blank" rel="noopener">Consensus</a>. Click a country, on the map or in the list, to see the doctors and researchers there, their hospitals and universities, and what they have published.</p>
     <p class="small muted" id="rmstatus" aria-live="polite">Loading the latest list from PubMed…</p>
   </section>
   <section class="maplayout">
     <div><div class="map" id="map" role="img" aria-label="World map shaded by the number of PTPR publications from each country"></div><p class="small muted rm-legend" id="rmlegend"></p><div id="casedetail" class="card detail" hidden></div></div>
     <div><p class="eyebrow mint">Countries (<span id="casecount">…</span>)</p><div class="sidelist" id="caselist"></div></div>
   </section>
-  <section class="prose">
-    <h3>Where the first 73 published patients came from</h3>
-    <table class="plain" id="regiontable"></table>
-    <p class="small muted" id="regionsrc" style="margin-top:8px"></p>
-  </section>
+  
 </div>
 
 <!-- ============================ PUBLICATIONS ============================ -->
@@ -689,7 +685,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     const person=p=>`<li><b>${esc(p.name)}</b> <span class="small muted">· ${p.papers} paper${p.papers>1?'s':''}${p.latest?', latest '+p.latest:''}</span>
       ${p.aff?`<span class="aff">${esc(p.aff)}${p.affYear?` <span class="muted">(as listed in ${p.affYear})</span>`:''}</span>`:''}
       ${p.email?`<a class="em" href="mailto:${esc(p.email)}">${esc(p.email)}</a> <span class="small muted">(published ${p.emailYear||''})</span>`:''}</li>`;
-    const paper=r=>`<li><span class="yr">${esc(r.year||'')}</span><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a><span class="m">${esc(r.lead||'')}${r.journal?' · <i>'+esc(r.journal)+'</i>':''}</span></li>`;
+    const paper=r=>`<li><span class="yr">${esc(r.year||'')}</span><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title)}</a><span class="m">${esc(r.lead||'')}${r.journal?' · <i>'+esc(r.journal)+'</i>':''}${r.src?` · found via <a href="${esc(r.srcUrl)}" ${r.srcUrl&&r.srcUrl[0]==='#'?'':'target="_blank" rel="noopener"'}>${esc(r.src)}</a>`:''}</span></li>`;
     const N=12;
     el.innerHTML=`<p class="eyebrow mint">Research from</p><h3 style="margin:0">${esc(c.name)}</h3>
       <p class="muted" style="margin:4px 0 0">${c.papers.length} publication${c.papers.length>1?'s':''} · ${c.people.length} doctor${c.people.length===1?'':'s'} and researcher${c.people.length===1?'':'s'}</p>
@@ -704,7 +700,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     const cs=RM.countries; const vals={}; const lvl=n=>n>=15?'d':n>=5?'c':n>=2?'b':'a'; cs.forEach(c=>vals[c.code]=lvl(c.papers.length));
     const SC={a:'#cdeadb',b:'#94cdac',c:'#55a77a',d:'#2a7048'};
     $('#casecount').textContent=cs.length;
-    $('#rmstatus').textContent=`${RM.total-RM.unplaced} publications placed in ${cs.length} countries${RM.unplaced?`; ${RM.unplaced} more could not be placed because no author address is on record`:''}. Updated from PubMed on ${new Date(RM.built).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'})}.`;
+    $('#rmstatus').textContent=`${RM.total-RM.unplaced} publications placed in ${cs.length} countries (${RM.pubmed||0} from PubMed, ${RM.openalex||0} more from OpenAlex, ${(RM.consensus||0)+(RM.extra||0)} more from Consensus and this site's reviewed list)${RM.unplaced?`; ${RM.unplaced} more could not be placed because no author address is on record`:''}. Updated from PubMed on ${new Date(RM.built).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'})}.`;
     $('#caselist').innerHTML=cs.map((c,i)=>`<button type="button" aria-pressed="false" data-i="${i}"><b>${esc(c.name)}</b><span>${c.papers.length} publication${c.papers.length>1?'s':''} · ${c.people.length} ${c.people.length===1?'person':'people'}</span></button>`).join('');
     $('#caselist').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) rmDetail(+b.dataset.i);});
     const max=Math.max(...cs.map(c=>c.papers.length));
@@ -727,9 +723,6 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     try { vmap('#map', D.cases.map(c=>({name:c.country+' · '+c.city, coords:c.coords})), tok('--accent'), ()=>{}); delegateMarkers('#map', centreDetail); } catch(err){}
   }
   async function buildMap(){ mapBuilt=true;
-    const rs=D.regionSummary;
-    $('#regiontable').innerHTML='<thead><tr><th>Region</th><th>Patients</th></tr></thead><tbody>'+rs.rows.map(r=>`<tr><td>${esc(r[0])}</td><td>${r[1]}</td></tr>`).join('')+'</tbody>';
-    $('#regionsrc').innerHTML=`Source: <a href="${esc(rs.source.url)}" target="_blank" rel="noopener">${esc(rs.source.label)}</a>`;
     try { RM=await window.PTPR_RESEARCH.build(); if(!RM.countries.length) throw new Error('empty'); drawResearchMap(); }
     catch(err){ drawCentresFallback(); }
   }

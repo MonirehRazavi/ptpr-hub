@@ -3,7 +3,7 @@
    country where one of its authors works, according to the affiliations printed in PubMed. */
 (function () {
   const QUERY = '"papillary tumor of the pineal region"[tiab] OR "papillary tumour of the pineal region"[tiab] OR "papillary tumors of the pineal region"[tiab] OR "papillary tumours of the pineal region"[tiab] OR "papillary tumor of pineal region"[tiab] OR "papillary tumour of pineal region"[tiab] OR "papillary tumor of the pineal"[tiab] OR "papillary tumors of pineal"[tiab] OR "papillary pineal tumor"[tiab] OR "papillary tumor of the pineal gland"[tiab] OR (PTPR[tiab] AND pineal[tiab])';
-  const CACHE_KEY = 'ptpr-research-v1', CACHE_DAYS = 3;
+  const CACHE_KEY = 'ptpr-research-v3', CACHE_DAYS = 3;
 
   // [map region code, display name, lat, lng, extra name patterns]
   const C = [
@@ -126,10 +126,11 @@
       const year = txt(a, 'Article Journal JournalIssue PubDate Year') || (txt(a, 'Article Journal JournalIssue PubDate MedlineDate').match(/\d{4}/) || [''])[0] || txt(a, 'ArticleDate Year');
       const authors = [...a.querySelectorAll('AuthorList > Author')].map(au => {
         const last = txt(au, 'LastName'), first = txt(au, 'ForeName'), coll = txt(au, 'CollectiveName');
-        const affs = [...au.querySelectorAll('AffiliationInfo > Affiliation')].map(x => x.textContent.trim());
+        const affs = [...au.querySelectorAll('AffiliationInfo > Affiliation')].map(x => { const t = x.textContent.trim(); return { text: t, code: countryOf(t) }; });
         return { last, first, coll, affs };
       }).filter(x => x.last);
       return {
+        src: 'PubMed', srcUrl: 'https://pubmed.ncbi.nlm.nih.gov/' + pmid + '/',
         pmid, doi: doiEl ? doiEl.textContent.trim().toLowerCase() : '', year: +year || null,
         title: txt(a, 'ArticleTitle').replace(/\.$/, ''), journal: txt(a, 'Journal > Title') || txt(a, 'MedlineTA'), authors
       };
@@ -140,14 +141,14 @@
     const countries = {}; let unplaced = 0;
     const get = code => countries[code] || (countries[code] = { code, name: BY[code][1], coords: [BY[code][2], BY[code][3]], papers: [], people: {} });
     papers.forEach(p => {
-      const url = p.doi ? 'https://doi.org/' + p.doi : 'https://pubmed.ncbi.nlm.nih.gov/' + p.pmid + '/';
+      const url = p.doi ? 'https://doi.org/' + p.doi : (p.url || p.srcUrl);
       const lead = p.authors.length ? p.authors[0].last + (p.authors.length > 1 ? ' et al.' : '') : '';
-      const ref = { title: p.title, year: p.year, journal: p.journal, url, lead };
+      const ref = { title: p.title, year: p.year, journal: p.journal, url, lead, src: p.src, srcUrl: p.srcUrl };
       const inC = new Set(); let lastC = null;
       p.authors.forEach((au, idx) => {
         let placed = false;
-        au.affs.forEach(raw => {
-          const code = countryOf(raw); if (!code) return; placed = true; inC.add(code); lastC = code;
+        au.affs.forEach(af => {
+          const raw = af.text, code = af.code; if (!code || !BY[code]) return; placed = true; inC.add(code); lastC = code;
           const key = norm(au.last) + '|' + norm(au.first).slice(0, 1);
           const c = get(code); const person = c.people[key] || (c.people[key] = { name: (au.first ? au.first + ' ' : '') + au.last, affs: {}, emails: {}, papers: 0, latest: 0, lastPaper: null });
           if (person._seen !== p.pmid) { person._seen = p.pmid; person.papers++; if ((p.year || 0) >= person.latest) { person.latest = p.year || 0; person.lastPaper = ref; } }
@@ -155,7 +156,7 @@
           (raw.match(EMAIL) || []).forEach(e => { e = e.replace(/\.$/, '').toLowerCase(); if (emailFits(e, au.first, au.last)) person.emails[e] = Math.max(person.emails[e] || 0, p.year || 0); });
         });
         // Older PubMed records list only the first author's address: assume co-authors work in the same country
-        if (!placed && idx > 0 && p.authors[0].affs.length) { const code = countryOf(p.authors[0].affs[0]); if (code) inC.add(code); }
+        if (!placed && idx > 0) { const f = p.authors[0].affs.find(x => x.code && BY[x.code]); if (f) inC.add(f.code); }
       });
       if (!inC.size) { unplaced++; return; }
       inC.forEach(code => get(code).papers.push(ref));
@@ -170,21 +171,53 @@
       }).sort((a, b) => (b.papers - a.papers) || (b.latest - a.latest) || a.name.localeCompare(b.name));
       return c;
     }).sort((a, b) => b.papers.length - a.papers.length || a.name.localeCompare(b.name));
-    return { countries: list, total: papers.length + (extra || []).length, pubmed: papers.length, unplaced, built: Date.now() };
+    return { countries: list, total: papers.length + (extra || []).length, extra: (extra || []).length, unplaced, built: Date.now() };
   }
 
+  // OpenAlex (openalex.org): an open index of scholarly works that also covers journals, books and
+  // conference abstracts that PubMed does not index. Institutions come with ISO country codes.
+  const OA_QUERIES = ['"papillary tumor of the pineal region"', '"papillary tumour of the pineal region"', '"papillary tumors of the pineal region"', '"papillary tumours of the pineal region"', '"papillary tumor of pineal region"', '"papillary tumor of the pineal"', '"papillary pineal tumor"'];
+  const OA_TYPES = new Set(['article', 'review', 'book-chapter', 'conference-paper', 'conference-abstract', 'preprint', 'letter', 'editorial', 'report', 'dissertation', 'book']);
+  async function fetchOpenAlex() {
+    const works = new Map();
+    await Promise.all(OA_QUERIES.map(async q => {
+      let cursor = '*', guard = 0;
+      while (cursor && guard++ < 10) {
+        const u = 'https://api.openalex.org/works?per_page=200&cursor=' + encodeURIComponent(cursor) + '&filter=title_and_abstract.search:' + encodeURIComponent(q) + '&select=id,doi,ids,title,publication_year,type,primary_location,authorships';
+        const r = await (await fetch(u)).json();
+        (r.results || []).forEach(w => works.set(w.id, w));
+        if (!(r.results || []).length) break; cursor = r.meta && r.meta.next_cursor;
+      }
+    }));
+    return [...works.values()];
+  }
+  function oaToPaper(w) {
+    const loc = w.primary_location || {}; const doi = (w.doi || '').replace(/^https?:\/\/doi\.org\//i, '').toLowerCase();
+    return {
+      src: 'OpenAlex', srcUrl: w.id, pmid: '', doi, year: w.publication_year || null, url: doi ? '' : (loc.landing_page_url || w.id),
+      title: (w.title || '').replace(/<[^>]+>/g, '').replace(/\.$/, ''), journal: (loc.source && loc.source.display_name) || '',
+      authors: (w.authorships || []).map(a => {
+        const nm = (a.author && a.author.display_name) || ''; const parts = nm.trim().split(/\s+/);
+        const affs = (a.institutions || []).filter(i => i.country_code).map(i => ({ text: i.display_name + (BY[i.country_code] ? ', ' + BY[i.country_code][1] : ''), code: i.country_code }));
+        if (!affs.length && (a.countries || []).length) affs.push({ text: '', code: a.countries[0] });
+        return { last: parts.slice(-1)[0] || nm, first: parts.slice(0, -1).join(' '), affs };
+      }).filter(x => x.last)
+    };
+  }
+  const tnorm = t => (t || '').toLowerCase().replace(/<[^>]+>/g, '').replace(/[^a-z0-9]/g, '');
+
   // Papers on the site that PubMed does not index: place them with the registry's country, where known
-  function extras(pmDois) {
+  function extras(pmDois, seenT) {
     const pubs = window.PTPR_PUBS || [], cases = window.PTPR_CASES || [];
     const nameToCode = {}; C.forEach(c => { nameToCode[c[1].toLowerCase()] = c[0]; });
     nameToCode['türkiye'] = 'TR'; nameToCode['turkey'] = 'TR'; nameToCode['south korea'] = 'KR';
     const out = [];
     pubs.forEach(p => {
       const u = (p.url || '').toLowerCase(); const doi = u.includes('doi.org/') ? u.split('doi.org/')[1] : '';
-      if (u.includes('pubmed.ncbi.nlm.nih.gov') || (doi && pmDois.has(doi))) return;
+      if (u.includes('pubmed.ncbi.nlm.nih.gov') || (doi && pmDois.has(doi)) || (seenT && seenT.has(tnorm(p.title) + '|' + p.year))) return;
       const cs = cases.find(c => c.source && (c.source.url || '').toLowerCase() === u);
       const code = cs ? nameToCode[(cs.country || '').toLowerCase()] : null;
-      out.push({ code, ref: { title: p.title, year: p.year, journal: p.journal, url: p.url, lead: p.authors || '' } });
+      out.push({ code, ref: { title: p.title, year: p.year, journal: p.journal, url: p.url, lead: p.authors || '', src: 'This site', srcUrl: '#publications' } });
     });
     return out;
   }
@@ -200,7 +233,29 @@
       if (!r.ok) throw new Error('PubMed ' + r.status);
       papers = papers.concat(parsePubmed(await r.text()));
     }
-    const data = aggregate(papers, extras(new Set(papers.map(p => p.doi).filter(Boolean))));
+    let oa = [];
+    try { oa = await fetchOpenAlex(); } catch (e) { oa = []; }
+    const byPmid = {}; oa.forEach(w => { const id = w.ids && w.ids.pmid ? String(w.ids.pmid).replace(/\D/g, '') : ''; if (id) byPmid[id] = w; });
+    // Older PubMed records often print no address: borrow the institutions OpenAlex has for the same paper
+    papers.forEach(p => { if (!p.authors.some(a => a.affs.some(x => x.code)) && byPmid[p.pmid]) { const q = oaToPaper(byPmid[p.pmid]); if (q.authors.some(a => a.affs.length)) p.authors = q.authors; } });
+    const seenDoi = new Set(papers.map(p => p.doi).filter(Boolean)), seenT = new Set(papers.map(p => tnorm(p.title) + '|' + p.year));
+    const pmids = new Set(papers.map(p => p.pmid));
+    oa.forEach(w => {
+      const id = w.ids && w.ids.pmid ? String(w.ids.pmid).replace(/\D/g, '') : '';
+      if ((id && pmids.has(id)) || !OA_TYPES.has(w.type) || !w.title) return;
+      const q = oaToPaper(w); const k = tnorm(q.title) + '|' + q.year;
+      if ((q.doi && seenDoi.has(q.doi)) || seenT.has(k)) return;
+      if (q.doi) seenDoi.add(q.doi); seenT.add(k); papers.push(q);
+    });
+    // Consensus (consensus.app) results saved on this site; add any paper the two indexes above missed
+    try {
+      const cons = await (await fetch('consensus.json')).json(); const short = t => t.slice(0, 60); const seenS = new Set([...seenT].map(k => short(k.split('|')[0])));
+      cons.forEach(x => { const k = tnorm(x.title); if (seenS.has(short(k))) return; seenS.add(short(k));
+        papers.push({ src: 'Consensus', srcUrl: x.url, url: x.url, pmid: '', doi: '', year: x.year, title: x.title, journal: x.journal && x.journal !== 'Unknown Journal' ? x.journal : '',
+          authors: [{ last: (x.authors || '').replace(/ et al\.?$/, '').split(' ').slice(-1)[0], first: '', affs: x.code ? [{ text: '', code: x.code }] : [] }] }); });
+    } catch (e) {}
+    const data = aggregate(papers, extras(seenDoi, seenT));
+    data.pubmed = pmids.size; data.consensus = papers.filter(p => p.src === 'Consensus').length; data.openalex = papers.length - pmids.size - data.consensus;
     try { localStorage.setItem(CACHE_KEY, JSON.stringify(data)); } catch (e) {}
     return data;
   }
