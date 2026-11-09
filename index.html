@@ -201,11 +201,6 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     <div class="brand">
       <div class="mark" aria-hidden="true"><span></span></div>
       <div><h1>PTPR Hub</h1><p class="sub">Papillary tumor of the pineal region — made by people who've been through it, for the next person who will be</p></div>
-      <label class="small muted" style="display:flex;gap:8px;align-items:center;margin-top:4px">Read in another language
-        <select id="lang" aria-label="Translate this site" style="font:inherit;font-size:.9rem;padding:6px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)">
-          <option value="">English (original)</option><option value="fr">Français</option><option value="es">Español</option><option value="ar">العربية</option><option value="fa">فارسی</option><option value="pt">Português</option><option value="tr">Türkçe</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="zh-CN">中文</option><option value="ja">日本語</option><option value="hi">हिन्दी</option><option value="ru">Русский</option>
-        </select></label>
-      <p class="small muted" id="langnote" style="margin:0;max-width:60ch;display:none">Opens an automatic machine translation by Google Translate in a new tab. It is usually good, but not perfect: please rely on the English original or your medical team for anything important.</p>
     </div>
   </div>
   <nav class="tabs" aria-label="Sections"><div class="wrap">
@@ -611,9 +606,6 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   $$('[data-reviewed]').forEach(e => e.textContent = D.lastReviewed);
   $$('[data-year]').forEach(e => e.textContent = new Date().getFullYear());
   $$('[data-email]').forEach(e => e.textContent = D.contactEmail);
-
-  /* ---------- translation (Google Translate proxy, no key needed) ---------- */
-  const langSel=$('#lang'); if(langSel){ langSel.addEventListener('focus',()=>{$('#langnote').style.display='block';}); langSel.addEventListener('change',e=>{ const l=e.target.value; if(!l) return; const u=location.href.split('#')[0]+ (location.hash||''); const a=document.createElement('a'); a.href=`https://translate.google.com/translate?sl=en&tl=${encodeURIComponent(l)}&u=${encodeURIComponent(u)}`; a.target='_blank'; a.rel='noopener'; document.body.appendChild(a); a.click(); a.remove(); e.target.value=''; }); }
 
   /* ---------- routing ---------- */
   const views = ['home','why','timeline','cases','map','publications','support','stories','contribute','legal'];
