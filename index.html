@@ -494,7 +494,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   <section class="prose">
     <p class="eyebrow mint">Research</p>
     <h2>Publications</h2>
-    <p class="muted">Every paper we know of about PTPR, sorted newest first, with a plain-language summary of what each one found and what it added to the picture. Choose a category, or search. New PubMed articles are fetched live each time the page loads and appear under "Latest from PubMed".</p>
+    <p class="muted">More than 100 papers on PTPR, including every major study, sorted newest first, each with a plain-language summary of what it found and what it added to the picture. Choose a category, or search. The list is not exhaustive: older single-case reports in small journals may be missing, and new PubMed articles are fetched live each time the page loads and appear under "Latest from PubMed". Links open the paper on the publisher's site or on PubMed.</p>
     <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:10px"><input class="search" id="pubsearch" type="search" placeholder="Search titles, authors, journals…" aria-label="Search publications"></div>
     <div class="chips" id="pubcats" style="margin-top:12px"></div>
   </section>
@@ -642,9 +642,9 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   const typeLabel = {science:'Discovery', who:'WHO classification', treatment:'Treatment evidence', molecular:'Molecular biology'};
   const eras=[["Before 2003","Before it had a name"],["2003","Discovery and recognition, 2003–2007"],["2008","Learning how it behaves, 2008–2015"],["2016","The molecular era, 2016–today"]];
   function renderTimeline(filter){
-    const items=D.timeline.filter(t => filter==='all'||t.type===filter); let side=0, html='';
+    const items=D.timeline.filter(t => filter==='all'||t.type===filter); let side=0, html=''; const used=new Set();
     items.forEach(t=>{
-      const era=eras.find(e=>e[0]===t.year); if(era&&filter==='all'){ html+=`<li class="era"><span>${esc(era[1])}</span></li>`; side=0; }
+      const era=eras.find(e=>e[0]===t.year); if(era&&filter==='all'&&!used.has(era[0])){ used.add(era[0]); html+=`<li class="era"><span>${esc(era[1])}</span></li>`; side=0; }
       html+=`<li class="${side%2?'right':'left'}"><span class="dot" aria-hidden="true"></span>
         <div class="card ${esc(t.type)}"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap"><span class="yr">${esc(t.year)}</span><span class="pill ${esc(t.type)}">${typeLabel[t.type]||esc(t.type)}</span></div>
           <h3 style="margin-top:8px">${esc(t.title)}</h3><p class="muted">${esc(t.text)}</p>
