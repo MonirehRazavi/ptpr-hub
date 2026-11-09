@@ -704,7 +704,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     const cs=RM.countries; const vals={}; const lvl=n=>n>=15?'d':n>=5?'c':n>=2?'b':'a'; cs.forEach(c=>vals[c.code]=lvl(c.papers.length));
     const SC={a:'#cdeadb',b:'#94cdac',c:'#55a77a',d:'#2a7048'};
     $('#casecount').textContent=cs.length;
-    $('#rmstatus').textContent=`${RM.total-RM.unplaced} publications placed in ${cs.length} countries${RM.unplaced?`; ${RM.unplaced} more have no author address on record, so they appear only in the Publications list`:''}. Updated from PubMed on ${new Date(RM.built).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'})}.`;
+    $('#rmstatus').textContent=`${RM.total-RM.unplaced} publications placed in ${cs.length} countries${RM.unplaced?`; ${RM.unplaced} more could not be placed because no author address is on record`:''}. Updated from PubMed on ${new Date(RM.built).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'})}.`;
     $('#caselist').innerHTML=cs.map((c,i)=>`<button type="button" aria-pressed="false" data-i="${i}"><b>${esc(c.name)}</b><span>${c.papers.length} publication${c.papers.length>1?'s':''} · ${c.people.length} ${c.people.length===1?'person':'people'}</span></button>`).join('');
     $('#caselist').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) rmDetail(+b.dataset.i);});
     const max=Math.max(...cs.map(c=>c.papers.length));
