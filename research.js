@@ -3,7 +3,7 @@
    country where one of its authors works, according to the affiliations printed in PubMed. */
 (function () {
   const QUERY = '"papillary tumor of the pineal region"[tiab] OR "papillary tumour of the pineal region"[tiab] OR "papillary tumors of the pineal region"[tiab] OR "papillary tumours of the pineal region"[tiab] OR "papillary tumor of pineal region"[tiab] OR "papillary tumour of pineal region"[tiab] OR "papillary tumor of the pineal"[tiab] OR "papillary tumors of pineal"[tiab] OR "papillary pineal tumor"[tiab] OR "papillary tumor of the pineal gland"[tiab] OR (PTPR[tiab] AND pineal[tiab])';
-  const CACHE_KEY = 'ptpr-research-v5', CACHE_DAYS = 3;
+  const CACHE_KEY = 'ptpr-research-v6', CACHE_DAYS = 3;
 
   // [map region code, display name, lat, lng, extra name patterns]
   const C = [
@@ -257,7 +257,7 @@
     });
     // Consensus (consensus.app) results saved on this site; add any paper the two indexes above missed
     try {
-      const cons = await (await fetch('consensus.json')).json(); const short = t => t.slice(0, 60); const seenS = new Set([...seenT].map(k => short(k.split('|')[0])));
+      const cons = await (await fetch('consensus.json?v=6')).json(); const short = t => t.slice(0, 60); const seenS = new Set([...seenT].map(k => short(k.split('|')[0])));
       cons.forEach(x => { const k = tnorm(x.title); if (seenS.has(short(k))) return; seenS.add(short(k));
         const nm = (x.authors || '').replace(/ et al\.?$/, '').trim().split(' ');
         papers.push({ src: x.src || 'Consensus', srcUrl: x.src === 'Crossref' ? 'https://search.crossref.org/?q=' + encodeURIComponent(x.title) : x.url, url: x.url, pmid: '', doi: '', year: x.year, title: x.title, journal: x.journal && x.journal !== 'Unknown Journal' ? x.journal : '',
