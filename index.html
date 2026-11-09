@@ -51,12 +51,13 @@ p{margin:0 0 1em}
 
 /* header */
 header.site{background:linear-gradient(180deg,var(--sky) 0%,var(--surface) 100%);border-bottom:1px solid var(--line)}
-.brand{display:flex;align-items:center;gap:14px;padding:22px 0 14px}
+.brand{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:34px 0 22px}
 .brand .mark{width:40px;height:40px;border-radius:50%;background:var(--accent);display:grid;place-items:center;flex:none;box-shadow:0 0 0 6px var(--accent-soft)}
 .brand .mark span{width:12px;height:12px;border-radius:50%;background:var(--accent-ink)}
-.brand h1{font-size:1.4rem;margin:0} .brand .sub{font-size:.92rem;color:var(--ink-2);margin:0}
+.brand h1{font-size:clamp(2.2rem,5vw,3.4rem);margin:0;letter-spacing:.01em} .brand .sub{font-size:1.02rem;color:var(--ink-2);margin:0;max-width:60ch}
 nav.tabs{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--line)}
-nav.tabs ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.tabs ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;justify-content:center}
+@media (max-width:1000px){nav.tabs ul{justify-content:flex-start}}
 nav.tabs ul::-webkit-scrollbar{display:none}
 nav.tabs a{display:block;padding:12px 13px;color:var(--ink-2);text-decoration:none;font-weight:600;font-size:.93rem;border-bottom:3px solid transparent;white-space:nowrap}
 nav.tabs a:hover{color:var(--ink)} nav.tabs a[aria-current="page"]{color:var(--accent);border-bottom-color:var(--accent)}
@@ -154,12 +155,15 @@ table.plain th,table.plain td{text-align:left;padding:8px 10px;border-bottom:1px
 /* publications split view */
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,420px);gap:20px;align-items:start}
 @media (max-width:900px){.split{grid-template-columns:1fr}.split .pane{position:static}}
-.split .pane{position:sticky;top:64px}
-.pub{display:grid;grid-template-columns:58px 1fr;gap:14px;padding:12px 10px;border-bottom:1px solid var(--line);cursor:pointer;border-radius:8px}
+.split .pane{position:sticky;top:60px;max-height:calc(100vh - 72px);overflow:auto}
+.pub{display:grid;grid-template-columns:minmax(58px,auto) 1fr;gap:14px;padding:12px 10px;border-bottom:1px solid var(--line);cursor:pointer;border-radius:8px}
 .pub:hover{background:var(--surface)} .pub[aria-selected="true"]{background:var(--accent-soft)}
 .pub .yr{font-family:var(--font-display);font-size:1.05rem;color:var(--ink-2);font-variant-numeric:tabular-nums}
 .pub .t{font-weight:700} .pub .m{color:var(--ink-2);font-size:.9rem} .pub .pill{margin-left:8px;vertical-align:middle}
 .pane .card{border-top:5px solid var(--mint-line)} .pane h3{font-size:1.15rem}
+.blk{border-radius:10px;padding:10px 14px;margin:10px 0;border:1px solid;font-size:.95rem} .blk b{display:block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px}
+.blk.sky{background:var(--sky);border-color:var(--sky-line)} .blk.sky b{color:var(--sky-ink)} .blk.butter{background:var(--butter);border-color:var(--butter-line)} .blk.butter b{color:var(--butter-ink)} .blk.mint{background:var(--mint);border-color:var(--mint-line)} .blk.mint b{color:var(--mint-ink)} .blk.blush{background:var(--blush);border-color:var(--blush-line)} .blk.blush b{color:var(--blush-ink)}
+.status{display:inline-block;font-size:.75rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid} .status.rec{background:var(--mint);color:var(--mint-ink);border-color:var(--mint-line)} .status.soon{background:var(--butter);color:var(--butter-ink);border-color:var(--butter-line)} .status.inv{background:var(--sky);color:var(--sky-ink);border-color:var(--sky-line)}
 .pane .kv{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;font-size:.9rem;margin:10px 0}
 .pane .kv dt{color:var(--ink-2)} .pane .kv dd{margin:0}
 .feedstatus{display:flex;align-items:center;gap:10px;font-size:.92rem;color:var(--ink-2);margin:8px 0 12px}
@@ -232,15 +236,63 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     </aside>
   </section>
 
+
+  <section>
+    <p class="eyebrow sky">Where it is, and why it causes symptoms</p>
+    <div class="grid cols-2">
+      <figure class="card" style="margin:0">
+        <svg viewBox="0 0 420 300" width="100%" role="img" aria-labelledby="fig1t" style="display:block">
+          <title id="fig1t">Side view of the brain showing the pineal region at its centre</title>
+          <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--sky)"/><stop offset="1" stop-color="var(--surface-2)"/></linearGradient></defs>
+          <path d="M70 160 C 60 90, 130 40, 210 42 C 300 44, 360 90, 358 160 C 356 210, 320 232, 290 236 C 270 262, 240 268, 222 258 L 214 276 L 190 276 L 186 256 C 150 258, 110 250, 90 222 C 72 204, 66 182, 70 160 Z" fill="url(#g1)" stroke="var(--sky-ink)" stroke-width="2"/>
+          <path d="M120 120 C 160 100, 200 108, 230 96 M 110 160 C 150 150, 190 160, 240 150 M 150 200 C 190 190, 230 200, 270 190" fill="none" stroke="var(--sky-line)" stroke-width="2"/>
+          <path d="M292 232 C 300 250, 300 272, 292 288" fill="none" stroke="var(--sky-ink)" stroke-width="2"/>
+          <ellipse cx="222" cy="158" rx="46" ry="26" fill="var(--surface)" stroke="var(--sky-ink)" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <circle cx="248" cy="160" r="7" fill="var(--blush-ink)"/><circle cx="248" cy="160" r="13" fill="none" stroke="var(--blush-ink)" stroke-width="1.5" opacity=".5"/>
+          <line x1="248" y1="160" x2="290" y2="70" stroke="var(--ink-2)" stroke-width="1"/>
+          <text x="236" y="62" font-size="13" font-weight="700" fill="var(--ink)" font-family="Nunito Sans, sans-serif">Pineal region</text>
+          <text x="236" y="78" font-size="11" fill="var(--ink-2)" font-family="Nunito Sans, sans-serif">deep in the centre</text>
+          <text x="92" y="100" font-size="12" fill="var(--ink-2)" font-family="Nunito Sans, sans-serif">front</text>
+          <text x="366" y="200" font-size="12" fill="var(--ink-2)" font-family="Nunito Sans, sans-serif">back</text>
+          <text x="176" y="151" font-size="11" fill="var(--sky-ink)" font-family="Nunito Sans, sans-serif">fluid spaces</text>
+        </svg>
+        <figcaption class="small muted" style="padding:10px 4px 0">PTPR sits at the very centre of the brain, beside the pineal gland, next to the narrow channel where fluid drains. The drawing is a simplified schematic, not an anatomical atlas.</figcaption>
+      </figure>
+      <figure class="card" style="margin:0">
+        <svg viewBox="0 0 420 300" width="100%" role="img" aria-labelledby="fig2t" style="display:block">
+          <title id="fig2t">How a tumour blocks fluid drainage and raises pressure</title>
+          <g transform="translate(20,20)">
+            <text x="0" y="14" font-size="13" font-weight="700" fill="var(--ink)" font-family="Nunito Sans, sans-serif">Normal</text>
+            <path d="M40 40 C 10 60, 10 120, 60 140 L 100 140 C 150 120, 150 60, 120 40 Z" fill="var(--sky)" stroke="var(--sky-ink)" stroke-width="1.5"/>
+            <rect x="72" y="140" width="16" height="60" rx="8" fill="var(--sky)" stroke="var(--sky-ink)" stroke-width="1.5"/>
+            <path d="M80 150 L80 192" stroke="var(--sky-ink)" stroke-width="2" marker-end="url(#arr)"/>
+            <text x="0" y="236" font-size="11.5" fill="var(--ink-2)" font-family="Nunito Sans, sans-serif">Fluid drains freely</text>
+            <text x="0" y="252" font-size="11.5" fill="var(--ink-2)" font-family="Nunito Sans, sans-serif">through a narrow channel</text>
+          </g>
+          <g transform="translate(230,20)">
+            <text x="0" y="14" font-size="13" font-weight="700" fill="var(--ink)" font-family="Nunito Sans, sans-serif">With PTPR</text>
+            <path d="M30 40 C -10 60, -10 130, 60 150 L 100 150 C 170 130, 170 60, 130 40 Z" fill="var(--sky)" stroke="var(--sky-ink)" stroke-width="2"/>
+            <rect x="72" y="150" width="16" height="50" rx="8" fill="var(--surface-2)" stroke="var(--sky-ink)" stroke-width="1.5"/>
+            <circle cx="80" cy="150" r="16" fill="var(--blush-ink)" opacity=".9"/>
+            <path d="M18 70 L8 60 M142 70 L152 60 M20 130 L10 140 M140 130 L150 140" stroke="var(--butter-ink)" stroke-width="2"/>
+            <text x="0" y="236" font-size="11.5" fill="var(--ink-2)" font-family="Nunito Sans, sans-serif">The tumour narrows the channel;</text>
+            <text x="0" y="252" font-size="11.5" fill="var(--ink-2)" font-family="Nunito Sans, sans-serif">fluid builds up: headache, nausea</text>
+          </g>
+          <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--sky-ink)"/></marker></defs>
+        </svg>
+        <figcaption class="small muted" style="padding:10px 4px 0">Hydrocephalus explains most first symptoms. Relieving it (an ETV or a shunt) is often the first operation, and symptoms frequently ease quickly afterwards.</figcaption>
+      </figure>
+    </div>
+  </section>
   <section>
     <p class="eyebrow sky">Key facts</p>
     <div class="grid cols-3">
       <div class="fact sky"><p class="big">2003</p><p class="lbl">First described by Jouvet and colleagues in Lyon, France (six patients)</p></div>
-      <div class="fact butter"><p class="big">2007</p><p class="lbl">Added to the WHO classification of brain tumours</p></div>
-      <div class="fact mint"><p class="big">Grade 2–3</p><p class="lbl">CNS WHO grade in the current (2021) classification</p></div>
+      <div class="fact sky"><p class="big">2007</p><p class="lbl">Added to the WHO classification of brain tumours</p></div>
+      <div class="fact sky"><p class="big">Grade 2–3</p><p class="lbl">CNS WHO grade in the current (2021) classification</p></div>
       <div class="fact sky"><p class="big">30s</p><p class="lbl">Typical age at diagnosis, though it has been reported from 15 months to the late 60s</p></div>
-      <div class="fact butter"><p class="big">~89%</p><p class="lbl">Of published patients had hydrocephalus (fluid build-up); headache is the most common first symptom</p></div>
-      <div class="fact blush"><p class="big">≈ 50 / 50</p><p class="lbl">Men and women are affected about equally</p></div>
+      <div class="fact sky"><p class="big">~89%</p><p class="lbl">Of published patients had hydrocephalus (fluid build-up); headache is the most common first symptom</p></div>
+      <div class="fact sky"><p class="big">≈ 50 / 50</p><p class="lbl">Men and women are affected about equally</p></div>
     </div>
   </section>
 
@@ -334,8 +386,8 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     <h2>A gift, and a promise</h2>
   </section>
   <section class="story">
-    <p>Almost ten years ago, someone I had not yet met was told he had a brain tumour so rare that the doctors themselves had to look it up. He was young. He went through the scans and the surgery and the long silence afterwards, in which you wait for a machine to tell you whether you can keep making plans. He did it mostly in the dark, because there was almost nothing written for people like him, and what little existed was written for pathologists.</p>
-    <p>I met him last year. By the time he told me about the tumour, I already knew he was the steadiest person I had ever met; I just didn't yet know why. When I finally sat down to read about PTPR, I found what he had found years earlier: a handful of case reports, a few paragraphs of statistics, and nobody speaking to the person actually living it.</p>
+    <p>In 2016, someone I had not yet met was told he had a brain tumour so rare that the doctors themselves had to look it up. He was young. He went through the scans and the surgery and the long silence afterwards, in which you wait for a machine to tell you whether you can keep making plans. He did it mostly in the dark, because there was almost nothing written for people like him, and what little existed was written for pathologists.</p>
+    <p>I met him recently. By the time he told me about the tumour, I already knew he was the steadiest person I had ever met; I just didn't yet know why. When I finally sat down to read about PTPR, I found what he had found years earlier: a handful of case reports, a few paragraphs of statistics, and nobody speaking to the person actually living it.</p>
     <p>So I built this. It is a gift to him, to say how proud I am of the way he has carried something most people never have to carry, and it is a promise to the next person who hears those four words: you will not have to search in the dark the way he did. Everything we could find is here, in plain language, with the sources shown, and with room for your story next to his.</p>
     <p>He is doing well. His scans have been stable for years now, and life has settled into yearly MRIs and everything that happens in between them. That is not a guarantee for anyone else, but it is a true story, and true stories were what we both wished we'd had.</p>
     <p>My thanks go to his parents and his two sisters, who held him up long before I arrived, to his friends, and to the staff at Sunnybrook who have looked after him from the first frightening weeks through every scan since. This site exists because of all of you.</p>
@@ -487,6 +539,8 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     </form>
   </section>
   <section class="prose">
+    <h3>How this site was made</h3>
+    <p class="muted">The site was written and designed by a volunteer with the help of an AI assistant (Anthropic's Claude), which helped gather the literature, draft the plain-language text and build the pages. Every medical statement is drawn from published, peer-reviewed articles, each one linked so you can read the original yourself, and the numbers and case details have been checked against those sources by a person. If you find something that does not match its source, please tell us and it will be corrected.</p>
     <h3>How this site stays current</h3>
     <p class="muted">The Publications page queries PubMed and Europe PMC every time it is opened, so new papers appear without anyone editing the site. The timeline, case registry, publication summaries and support list are edited by hand in plain data files and reviewed against their sources. The date of the last review is shown in the footer.</p>
   </section>
@@ -496,7 +550,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
 
 <footer class="site"><div class="wrap"><div class="row">
   <span>PTPR Hub · an independent, volunteer-run information site · content last reviewed <span data-reviewed></span></span>
-  <span>Not medical advice. Sources are linked where claims are made.</span>
+  <span>Not medical advice. Sources are linked where claims are made. Built by a volunteer with help from an AI assistant; every fact is checked against its published source.</span>
 </div></div></footer>
 
 <script src="data.js"></script>
@@ -588,10 +642,10 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     const ages=shownCases.map(c=>c.age), med=median(ages), f=shownCases.filter(c=>c.sex==='F').length, m=shownCases.filter(c=>c.sex==='M').length;
     const known=shownCases.filter(c=>c.outcome&&c.outcome!=='Not reported'), alive=known.filter(c=>c.outcome!=='Died').length, clear=known.filter(c=>c.outcome==='Alive, no recurrence').length;
     $('#casestats').innerHTML=`
-      <div class="fact mint"><p class="big">${shownCases.length}</p><p class="lbl">individual cases in the registry${shownCases.length!==CASES.length?' (filtered)':''}</p></div>
+      <div class="fact sky"><p class="big">${shownCases.length}</p><p class="lbl">individual cases in the registry${shownCases.length!==CASES.length?' (filtered)':''}</p></div>
       <div class="fact sky"><p class="big">${med!=null?med:'–'}</p><p class="lbl">median age at diagnosis (years)</p></div>
-      <div class="fact butter"><p class="big">${f} / ${m}</p><p class="lbl">women / men</p></div>
-      <div class="fact blush"><p class="big">${known.length?Math.round(alive/known.length*100)+'%':'–'}</p><p class="lbl">alive at last report, where stated (${clear} with no recurrence)</p></div>`;
+      <div class="fact sky"><p class="big">${f} / ${m}</p><p class="lbl">women / men</p></div>
+      <div class="fact sky"><p class="big">${known.length?Math.round(alive/known.length*100)+'%':'–'}</p><p class="lbl">alive at last report, where stated (${clear} with no recurrence)</p></div>`;
     $('#casegrid').innerHTML=shownCases.map((c,i)=>`<button class="case ${outClass(c.outcome)}" data-i="${i}" aria-pressed="false">
       <p class="who">${personLabel(c)}</p>
       <p class="meta">${esc(c.country)} · ${esc(c.year)}</p>
@@ -628,15 +682,26 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     $('#pubcats').innerHTML=cats.map(c=>`<button class="chip" aria-pressed="${c===curCat}" data-cat="${esc(c)}">${c==='all'?'All ('+visiblePubsCount()+')':esc(c)}</button>`).join('');
   }
   function visiblePubsCount(){ const s=curCat, t=q; curCat='all'; q=''; const n=visiblePubs().length; curCat=s; q=t; return n; }
+  function firstSentences(t,n){ if(!t) return ''; const m=t.replace(/\s+/g,' ').match(/[^.!?]+[.!?]+/g)||[t]; return m.slice(0,n).join(' ').trim(); }
+  function whoFromText(t){ if(!t) return ''; const people=[...t.matchAll(/(\d{1,2})[- ]year[- ]old\s+(man|woman|boy|girl|male|female|patient)/gi)].map(m=>`${m[1]}-year-old ${m[2].toLowerCase()}`); const n=t.match(/(\d+)\s+(patients|cases|children|adults)/i); return [...new Set(people)].slice(0,3).join(', ') || (n?`${n[1]} ${n[2].toLowerCase()}`:''); }
+  function guessCategory(p){ const t=(p.title||'').toLowerCase(); if(/review|meta-analysis|consensus|guideline/.test(t)) return 'Review & guidelines'; if(/methylation|molecular|genetic|pten|chromosom/.test(t)) return 'Molecular & genetics'; if(/mri|imaging|radiolog|spectroscopy|cytolog/.test(t)) return 'Imaging & diagnosis'; if(/series|cases/.test(t)) return 'Case series'; if(/radiotherapy|radiosurgery|treatment|outcome|surgery/.test(t)) return 'Treatment & outcomes'; return 'Case report'; }
+  function renderPane(p, abstractText){
+    const isLive=!p.summary; const text=p.summary||abstractText||'';
+    const studied = isLive ? firstSentences(text,2) : p.summary;
+    const who = p.n ? `${p.n} ${p.n===1?'patient':'patients'}` : whoFromText(text) || (p.category==='Review & guidelines'?'Pooled published cases':'Not stated in the abstract');
+    const type = p.category && p.category!=='Latest from PubMed' ? p.category : guessCategory(p);
+    return `<p class="eyebrow mint">${esc(p.year||'')}${p.date&&!/^\d{4}$/.test(p.date)?' · '+esc(p.date):''}</p><h3>${esc(p.title)}</h3>
+      <div class="blk sky"><b>What it is</b>${esc(type)}${isLive?' <span class="small muted">(from the title)</span>':''}</div>
+      <div class="blk butter"><b>Who it involved</b>${esc(who)}</div>
+      <div class="blk mint"><b>Where it was published</b>${esc(p.journal||'Journal not stated')}${p.authors?` · ${esc(p.authors)}`:''}</div>
+      ${studied?`<div class="blk sky"><b>What it did and found</b>${esc(studied)}</div>`:(isLive?`<div class="blk sky"><b>What it did and found</b><span class="muted" id="abs">Loading a short summary from PubMed…</span></div>`:'')}
+      ${p.adds?`<div class="blk blush"><b>What it added to the picture</b>${esc(p.adds)}</div>`:''}
+      <p style="margin:12px 0 0"><a class="btn" href="${esc(p.url)}" target="_blank" rel="noopener">Open the paper</a></p>`;
+  }
   async function showPub(i){ const p=shownPubs[i]; if(!p) return;
     $$('#publist .pub').forEach((el,j)=>el.setAttribute('aria-selected',j===i));
-    const pane=$('#pubpane');
-    pane.innerHTML=`<p class="eyebrow mint">${esc(p.category||'')} · ${esc(p.year||'')}</p><h3>${esc(p.title)}</h3>
-      <dl class="kv"><dt>Authors</dt><dd>${esc(p.authors||'')}</dd><dt>Published in</dt><dd>${esc(p.journal||'')}${p.date?', '+esc(p.date):''}</dd>${p.n?`<dt>Patients</dt><dd>${p.n}</dd>`:''}</dl>
-      ${p.summary?`<p><b>What it found.</b> ${esc(p.summary)}</p>`:'<p class="muted" id="abs">Loading the abstract…</p>'}
-      ${p.adds?`<div class="wash mint" style="padding:12px 14px"><b>What it added.</b> ${esc(p.adds)}</div>`:''}
-      <p style="margin:12px 0 0"><a class="btn" href="${esc(p.url)}" target="_blank" rel="noopener">Open the paper</a></p>`;
-    if(!p.summary && p.pmid){ try{ const x=await fetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&rettype=abstract&retmode=xml&id=${p.pmid}`).then(r=>r.text()); const doc=new DOMParser().parseFromString(x,'text/xml'); const abs=[...doc.querySelectorAll('AbstractText')].map(a=>(a.getAttribute('Label')?a.getAttribute('Label')+': ':'')+a.textContent).join(' '); const el=$('#abs'); if(el) el.innerHTML=abs?`<b>Abstract (from PubMed).</b> ${esc(abs)}`:'No abstract is available for this record.'; }catch(e){ const el=$('#abs'); if(el) el.textContent='The abstract could not be loaded here; open the paper on PubMed.'; } }
+    const pane=$('#pubpane'); pane.innerHTML=renderPane(p, p.abstract||''); pane.scrollTop=0;
+    if(!p.summary && !p.abstract && p.pmid){ try{ const x=await fetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&rettype=abstract&retmode=xml&id=${p.pmid}`).then(r=>r.text()); const doc=new DOMParser().parseFromString(x,'text/xml'); const abs=[...doc.querySelectorAll('AbstractText')].map(a=>a.textContent).join(' '); p.abstract=abs||' '; pane.innerHTML=renderPane(p, abs); }catch(e){ const el=$('#abs'); if(el) el.textContent='The summary could not be loaded here; open the paper on PubMed.'; } }
   }
   $('#publist').addEventListener('click',e=>{const el=e.target.closest('.pub'); if(el) showPub(+el.dataset.i);});
   $('#publist').addEventListener('keydown',e=>{ if(e.key==='Enter'){const el=e.target.closest('.pub'); if(el) showPub(+el.dataset.i);} });
@@ -657,7 +722,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     } catch(e1){
       try {
         const r=await fetch(`https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=${encodeURIComponent(D.europePmcQuery)}&format=json&pageSize=${want}&sort=P_PDATE_D%20desc&resultType=core`).then(r=>r.json());
-        liveItems=(r.resultList.result||[]).map(x=>({ pmid:x.pmid, title:x.title, authors:x.authorString, journal:x.journalTitle, date:x.firstPublicationDate, year:x.pubYear, summary:x.abstractText?x.abstractText.slice(0,900):'', url:x.pmid?`https://pubmed.ncbi.nlm.nih.gov/${x.pmid}/`:`https://europepmc.org/article/${x.source}/${x.id}` }));
+        liveItems=(r.resultList.result||[]).map(x=>({ pmid:x.pmid, title:x.title, authors:x.authorString, journal:x.journalTitle, date:x.firstPublicationDate, year:x.pubYear, abstract:x.abstractText||'', url:x.pmid?`https://pubmed.ncbi.nlm.nih.gov/${x.pmid}/`:`https://europepmc.org/article/${x.source}/${x.id}` }));
         if(!liveItems.length) throw new Error('empty');
         status('#feedstatus','ok',`Live from Europe PMC: ${r.hitCount} articles; the ${liveItems.length} most recent are included below.`); renderPubs(); return;
       } catch(e2){ status('#feedstatus','err','The live feed could not reach PubMed from this page (it is blocked in preview environments and works once the site is on its own address). The curated list below is complete as of the last review; <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22papillary+tumor+of+the+pineal+region%22&sort=date" target="_blank" rel="noopener">this PubMed search</a> shows anything newer.'); }
@@ -667,8 +732,9 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     try {
       const r=await fetch(`https://clinicaltrials.gov/api/v2/studies?query.term=${encodeURIComponent(D.clinicalTrialsQuery)}&filter.overallStatus=RECRUITING,NOT_YET_RECRUITING,ENROLLING_BY_INVITATION&pageSize=15&fields=NCTId,BriefTitle,OverallStatus,LocationCountry`).then(r=>r.json());
       const st=r.studies||[]; if(!st.length){ status('#trialstatus','ok','No recruiting trials mention pineal-region tumours right now. Rare-tumour natural-history studies (such as NCI-CONNECT) are listed under Support.'); return; }
-      $('#trials').innerHTML=st.map(s=>{const p=s.protocolSection, id=p.identificationModule.nctId; const countries=[...new Set(((p.contactsLocationsModule||{}).locations||[]).map(l=>l.country))].slice(0,4).join(', '); return `<div class="pub" style="cursor:default"><div class="yr small">${esc(p.statusModule.overallStatus.replace(/_/g,' ').toLowerCase())}</div><div><div class="t"><a href="https://clinicaltrials.gov/study/${id}" target="_blank" rel="noopener">${esc(p.identificationModule.briefTitle)}</a></div><div class="m">${id}${countries?' · '+esc(countries):''}</div></div></div>`;}).join('');
-      status('#trialstatus','ok',`${st.length} recruiting or upcoming studies on ClinicalTrials.gov mention pineal-region tumours. Few, if any, are PTPR-specific; ask your team whether one fits.`);
+      const stLabel = v => ({RECRUITING:['Recruiting','rec'],NOT_YET_RECRUITING:['Not yet recruiting','soon'],ENROLLING_BY_INVITATION:['By invitation only','inv']}[v]||[String(v||'').replace(/_/g,' ').toLowerCase(),'inv']);
+      $('#trials').innerHTML=st.map(s=>{ const p=s.protocolSection||{}; const id=(p.identificationModule||{}).nctId||s.nctId||''; const title=(p.identificationModule||{}).briefTitle||s.briefTitle||id; const [lab,cls]=stLabel((p.statusModule||{}).overallStatus||s.overallStatus); const countries=[...new Set(((p.contactsLocationsModule||{}).locations||[]).map(l=>l.country).filter(Boolean))].slice(0,4).join(', '); const href=id?`https://clinicaltrials.gov/study/${encodeURIComponent(id)}`:'https://clinicaltrials.gov/search?term=pineal%20region%20tumor'; return `<a class="pub" style="text-decoration:none;color:inherit;display:grid" href="${href}" target="_blank" rel="noopener"><div><span class="status ${cls}">${esc(lab)}</span></div><div><div class="t">${esc(title)}</div><div class="m">${esc(id)}${countries?' · '+esc(countries):''} · opens on ClinicalTrials.gov</div></div></a>`; }).join('');
+      status('#trialstatus','ok',`${st.length} recruiting or upcoming studies on ClinicalTrials.gov mention pineal-region tumours. Few, if any, are PTPR-specific; ask your team whether one fits. Green means recruiting now.`);
     } catch(e){ status('#trialstatus','err','ClinicalTrials.gov could not be reached from this page. <a href="https://clinicaltrials.gov/search?term=pineal%20region%20tumor&aggFilters=status:rec" target="_blank" rel="noopener">Search it directly</a>.'); }
   }
 
