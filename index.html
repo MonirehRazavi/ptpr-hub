@@ -160,7 +160,14 @@ table.plain th,table.plain td{text-align:left;padding:8px 10px;border-bottom:1px
 
 /* publications split view */
 .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,420px);gap:20px;align-items:start}
-@media (max-width:900px){.split{grid-template-columns:1fr}.split .pane{position:static}}
+@media (max-width:900px){.split{grid-template-columns:1fr}.split .pane{display:none}
+  body.sheet-open .split .pane{display:block;position:fixed;left:0;right:0;bottom:0;top:auto;max-height:85vh;overflow:auto;z-index:50;padding:0 12px 12px;background:transparent}
+  body.sheet-open .split .pane .card{border-radius:16px 16px 0 0;box-shadow:0 -10px 40px rgba(0,0,0,.25);padding-top:14px}
+  body.sheet-open::after{content:"";position:fixed;inset:0;background:rgba(27,42,48,.45);z-index:40}
+  body.sheet-open{overflow:hidden}
+  .sheetclose{display:flex;justify-content:flex-end;position:sticky;top:0}
+  .sheetclose button{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font:inherit;font-weight:700;color:var(--ink);cursor:pointer}}
+@media (min-width:901px){.sheetclose{display:none}}
 .split .pane{position:sticky;top:60px;max-height:calc(100vh - 72px);overflow:auto}
 .pub{display:grid;grid-template-columns:minmax(58px,auto) 1fr;gap:14px;padding:12px 10px;border-bottom:1px solid var(--line);cursor:pointer;border-radius:8px}
 .pub:hover{background:var(--surface)} .pub[aria-selected="true"]{background:var(--accent-soft)}
@@ -757,7 +764,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     const studied = isLive ? firstSentences(text,2) : p.summary;
     const who = p.n ? `${p.n} ${p.n===1?'patient':'patients'}` : whoFromText(text) || (p.category==='Review & guidelines'?'Pooled published cases':'Not stated in the abstract');
     const type = p.category && p.category!=='Latest from PubMed' ? p.category : guessCategory(p);
-    return `<p class="eyebrow mint">${esc(p.year||'')}${p.date&&!/^\d{4}$/.test(p.date)?' · '+esc(p.date):''}</p><h3>${esc(p.title)}</h3>
+    return `<div class="sheetclose"><button type="button" data-close>Close ✕</button></div><p class="eyebrow mint">${esc(p.year||'')}${p.date&&!/^\d{4}$/.test(p.date)?' · '+esc(p.date):''}</p><h3>${esc(p.title)}</h3>
       <div class="blk sky"><b>What it is</b>${esc(type)}${isLive?' <span class="small muted">(from the title)</span>':''}</div>
       <div class="blk butter"><b>Who it involved</b>${esc(who)}</div>
       <div class="blk mint"><b>Where it was published</b>${esc(p.journal||'Journal not stated')}${p.authors?` · ${esc(p.authors)}`:''}</div>
@@ -767,10 +774,15 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   }
   async function showPub(i){ const p=shownPubs[i]; if(!p) return;
     $$('#publist .pub').forEach((el,j)=>el.setAttribute('aria-selected',j===i));
-    const pane=$('#pubpane'); pane.innerHTML=renderPane(p, p.abstract||''); pane.scrollTop=0;
+    const pane=$('#pubpane'); pane.innerHTML=renderPane(p, p.abstract||''); pane.scrollTop=0; if(window.matchMedia('(max-width:900px)').matches){ document.body.classList.add('sheet-open'); pane.parentElement.scrollTop=0; }
     if(!p.summary && !p.abstract && p.pmid){ try{ const x=await fetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&rettype=abstract&retmode=xml&id=${p.pmid}`).then(r=>r.text()); const doc=new DOMParser().parseFromString(x,'text/xml'); const abs=[...doc.querySelectorAll('AbstractText')].map(a=>a.textContent).join(' '); p.abstract=abs||' '; pane.innerHTML=renderPane(p, abs); }catch(e){ const el=$('#abs'); if(el) el.textContent='The summary could not be loaded here; open the paper on PubMed.'; } }
   }
   $('#publist').addEventListener('click',e=>{const el=e.target.closest('.pub'); if(el) showPub(+el.dataset.i);});
+  function closeSheet(){ document.body.classList.remove('sheet-open'); }
+  $('#pubpane').addEventListener('click',e=>{ if(e.target.closest('[data-close]')) closeSheet(); });
+  document.addEventListener('click',e=>{ if(document.body.classList.contains('sheet-open') && !e.target.closest('.pane') && !e.target.closest('.pub')) closeSheet(); });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSheet(); });
+  window.addEventListener('hashchange',closeSheet);
   $('#publist').addEventListener('keydown',e=>{ if(e.key==='Enter'){const el=e.target.closest('.pub'); if(el) showPub(+el.dataset.i);} });
   $('#pubcats').addEventListener('click',e=>{const b=e.target.closest('.chip'); if(!b) return; curCat=b.dataset.cat; renderPubs();});
   $('#pubsearch').addEventListener('input',e=>{ q=e.target.value.trim().toLowerCase(); renderPubs(); });
