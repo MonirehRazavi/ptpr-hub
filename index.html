@@ -140,8 +140,8 @@ table.plain th,table.plain td{text-align:left;padding:8px 10px;border-bottom:1px
 
 /* cases */
 .filters{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin:18px 0}
-.filters label{display:grid;gap:4px;font-size:.85rem;font-weight:700;color:var(--ink-2)}
-.filters select{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}
+.filters label{display:grid;gap:4px;font-size:.85rem;font-weight:700;color:var(--ink-2);min-width:0}
+.filters select{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);width:100%;min-width:0;max-width:100%}
 .casegrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
 .case{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;border-left:6px solid var(--line);cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
 .case:hover{box-shadow:var(--shadow)}
