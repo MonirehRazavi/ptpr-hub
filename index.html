@@ -151,6 +151,7 @@ dl.gloss{display:grid;grid-template-columns:max-content 1fr;gap:8px 20px;margin:
 .rm-papers .yr{font-weight:700;color:var(--mint-ink);margin-right:6px}
 .rm-papers .m{display:block;color:var(--ink-2);font-size:.86rem}
 #casedetail h4{margin:18px 0 4px}
+.rm-legend{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:8px 2px 0}.rm-legend span{display:inline-flex;align-items:center;gap:5px}.rm-legend i{width:14px;height:14px;border-radius:3px;display:inline-block}
 table.plain{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
 table.plain th,table.plain td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line)} table.plain td:last-child,table.plain th:last-child{text-align:right}
 
@@ -492,7 +493,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     <p class="small muted" id="rmstatus" aria-live="polite">Loading the latest list from PubMed…</p>
   </section>
   <section class="maplayout">
-    <div><div class="map" id="map" role="img" aria-label="World map shaded by the number of PTPR publications from each country"></div><div id="casedetail" class="card detail" hidden></div></div>
+    <div><div class="map" id="map" role="img" aria-label="World map shaded by the number of PTPR publications from each country"></div><p class="small muted rm-legend" id="rmlegend"></p><div id="casedetail" class="card detail" hidden></div></div>
     <div><p class="eyebrow mint">Countries (<span id="casecount">…</span>)</p><div class="sidelist" id="caselist"></div></div>
   </section>
   <section class="prose">
@@ -700,7 +701,8 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     $$('#caselist button').forEach((b,j)=>b.setAttribute('aria-pressed',j===i));
     if(window.innerWidth<900) el.scrollIntoView({behavior:'smooth',block:'start'}); }
   function drawResearchMap(){
-    const cs=RM.countries; const vals={}; cs.forEach(c=>vals[c.code]=c.papers.length);
+    const cs=RM.countries; const vals={}; const lvl=n=>n>=15?'d':n>=5?'c':n>=2?'b':'a'; cs.forEach(c=>vals[c.code]=lvl(c.papers.length));
+    const SC={a:'#cdeadb',b:'#94cdac',c:'#55a77a',d:'#2a7048'};
     $('#casecount').textContent=cs.length;
     $('#rmstatus').textContent=`${RM.total} publications from ${cs.length} countries${RM.unplaced?` (${RM.unplaced} more could not be placed because no address was printed)`:''}. Updated from PubMed ${new Date(RM.built).toLocaleDateString()}.`;
     $('#caselist').innerHTML=cs.map((c,i)=>`<button type="button" aria-pressed="false" data-i="${i}"><b>${esc(c.name)}</b><span>${c.papers.length} publication${c.papers.length>1?'s':''} · ${c.people.length} ${c.people.length===1?'person':'people'}</span></button>`).join('');
@@ -708,12 +710,13 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     const max=Math.max(...cs.map(c=>c.papers.length));
     try { new jsVectorMap({ selector:'#map', map:'world', zoomButtons:true, zoomOnScroll:false, backgroundColor:'transparent',
         regionStyle:{ initial:{ fill: tok('--surface-2'), stroke: tok('--line'), strokeWidth:0.6 }, hover:{ fillOpacity:.8, cursor:'pointer' } },
-        series:{ regions:[{ attribute:'fill', scale:[tok('--mint'), tok('--mint-ink')], normalizeFunction:'polynomial', values:vals }] },
+        series:{ regions:[{ attribute:'fill', scale:SC, values:vals }] },
         markers: cs.map(c=>({ name:c.name+' · '+c.papers.length+' publications', coords:c.coords, style:{ initial:{ r: Math.round(4+8*Math.sqrt(c.papers.length/max)) } } })),
         markerStyle:{ initial:{ fill: tok('--accent'), stroke:'#ffffff', strokeWidth:2, r:6 }, hover:{ fillOpacity:.85 } },
         onRegionClick:(e,code)=>{ const i=cs.findIndex(c=>c.code===code); if(i>=0) rmDetail(i); },
         onRegionTooltipShow:(e,tip,code)=>{ const c=cs.find(x=>x.code===code); if(!c){ e.preventDefault(); return; } tip.text(c.name+' · '+c.papers.length+' publication'+(c.papers.length>1?'s':''), true); } });
-      delegateMarkers('#map', rmDetail); }
+      delegateMarkers('#map', rmDetail);
+      $('#rmlegend').innerHTML='Publications: '+[['a','1'],['b','2–4'],['c','5–14'],['d','15 or more']].map(([k,t])=>`<span><i style="background:${SC[k]}"></i>${t}</span>`).join(''); }
     catch(err){ $('#map').innerHTML='<p class="muted" style="padding:20px">The map could not be drawn in this browser; the list beside it has the same information.</p>'; }
   }
   function drawCentresFallback(){
