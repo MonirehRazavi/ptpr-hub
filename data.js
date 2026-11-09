@@ -198,6 +198,17 @@ window.PTPR_DATA = {
       sources: ["Santoro 2011", "Lancia 2019", "Cuccia 2025"] }
   ],
 
+  /* Running totals of PTPR cases counted in published literature reviews.
+     Add a point whenever a new review publishes a new total. */
+  caseCountHistory: [
+    { year: 2003, count: 6,   source: "Jouvet et al. 2003 (first series)", url: "https://pubmed.ncbi.nlm.nih.gov/12657936/" },
+    { year: 2006, count: 31,  source: "Fèvre-Montange et al. 2006 (multicentre series)", url: "https://doi.org/10.1097/01.jnen.0000240462.80263.13" },
+    { year: 2009, count: 58,  source: "Sharma et al. 2009 / Matyja et al. 2011 reviews", url: "https://pubmed.ncbi.nlm.nih.gov/?term=%22Papillary+tumor+of+the+pineal+region%22+review+2009" },
+    { year: 2011, count: 79,  source: "Gutenberg et al. 2011", url: "https://pubmed.ncbi.nlm.nih.gov/?term=%22Common+molecular+cytogenetic+pathway+in+papillary+tumors+of+the+pineal+region%22" },
+    { year: 2015, count: 93,  source: "Hua et al. 2015 review", url: "https://pubmed.ncbi.nlm.nih.gov/26622493/" },
+    { year: 2024, count: 108, source: "Pang et al. 2024 (105 literature + 3 new)", url: "https://pubmed.ncbi.nlm.nih.gov/?term=%22Determination+of+Optimal+Treatment+Plan+for+Papillary+Tumor+of+the+Pineal+Region%22" }
+  ],
+
   /* Regional breakdown from the 2016 Shiraz literature review (73 patients). */
   regionSummary: {
     source: { label: "Nasrollahi H et al. Rep Radiother Oncol 2016", url: "https://brieflands.com/articles/rro-68372" },

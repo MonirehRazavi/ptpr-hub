@@ -61,6 +61,10 @@ nav.tabs ul{list-style:none;margin:0;padding:0;display:flex;gap:2px;overflow-x:a
 nav.tabs ul::-webkit-scrollbar{display:none}
 nav.tabs a{display:block;padding:12px 13px;color:var(--ink-2);text-decoration:none;font-weight:600;font-size:.93rem;border-bottom:3px solid transparent;white-space:nowrap}
 nav.tabs a:hover{color:var(--ink)} nav.tabs a[aria-current="page"]{color:var(--accent);border-bottom-color:var(--accent)}
+nav.tabs ul.sub{background:var(--accent-soft);border-top:1px solid var(--line);justify-content:center}
+nav.tabs ul.sub a{padding:9px 13px;font-size:.88rem;border-bottom-color:transparent;color:var(--ink-2)}
+nav.tabs ul.sub a[aria-current="page"]{color:var(--accent);background:var(--surface);border-radius:8px 8px 0 0;border-bottom-color:var(--accent)}
+@media (max-width:1000px){nav.tabs ul.sub{justify-content:flex-start}}
 
 /* views */
 .view{display:none;padding:40px 0 64px} .view.active{display:block}
@@ -204,18 +208,16 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
       <p class="small muted" id="langnote" style="margin:0;max-width:60ch;display:none">Opens an automatic machine translation by Google Translate in a new tab. It is usually good, but not perfect: please rely on the English original or your medical team for anything important.</p>
     </div>
   </div>
-  <nav class="tabs" aria-label="Sections"><div class="wrap"><ul>
-    <li><a href="#home" data-view="home">Just diagnosed</a></li>
-    <li><a href="#why" data-view="why">Why this exists</a></li>
-    <li><a href="#timeline" data-view="timeline">Timeline</a></li>
-    <li><a href="#cases" data-view="cases">Reported cases</a></li>
-    <li><a href="#map" data-view="map">Research map</a></li>
-    <li><a href="#publications" data-view="publications">Publications</a></li>
-    <li><a href="#support" data-view="support">Support</a></li>
-    <li><a href="#stories" data-view="stories">Stories</a></li>
-    <li><a href="#contribute" data-view="contribute">Contribute</a></li>
-    <li><a href="#legal" data-view="legal">Disclaimer</a></li>
-  </ul></div></nav>
+  <nav class="tabs" aria-label="Sections"><div class="wrap">
+    <ul id="nav1">
+      <li><a href="#home" data-group="home">Just diagnosed</a></li>
+      <li><a href="#why" data-group="why">Our story</a></li>
+      <li><a href="#timeline" data-group="research">Research</a></li>
+      <li><a href="#cases" data-group="people">People</a></li>
+      <li><a href="#contribute" data-group="involved">Get involved</a></li>
+    </ul>
+    <ul id="nav2" class="sub" hidden></ul>
+  </div></nav>
 </header>
 
 <main class="wrap">
@@ -382,9 +384,6 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     </dl>
   </section>
 
-  <section class="prose">
-    <div class="notice"><strong>About this information.</strong> This site is kept by one person, with help from everyone who writes in, not by a hospital. It summarises published research and is checked against the sources shown, but it cannot know your situation. Please make decisions with your own medical team, and if you spot an error, <a href="#contribute">tell us</a>.</div>
-  </section>
 </div>
 
 <!-- ============================ WHY ============================ -->
@@ -429,6 +428,20 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     <p class="eyebrow mint">Reported cases</p>
     <h2>The people behind the papers</h2>
     <p class="muted">Every case here is a real person described in a published medical report: how old they were, what was done, and how they were doing when the report was written. It is not a complete registry (most people with PTPR are never written up, and pooled studies rarely give individual details), but it is the closest thing to "people like me" that exists. Add a case through the <a href="#contribute">Contribute</a> page.</p>
+  </section>
+  <section class="prose">
+    <h3>How many people have had PTPR?</h3>
+    <p class="muted">Nobody knows the true number. There is no registry anywhere in the world, and most people who are diagnosed are never written about. What can be counted is the medical literature: each time doctors publish a review, they tally every case reported so far. Those tallies, plotted below, are the best available picture, and they only ever go up as older cases are re-examined and new ones are published.</p>
+    <div class="card" style="padding:16px 18px">
+      <svg id="countchart" viewBox="0 0 640 260" width="100%" role="img" aria-label="Cumulative number of PTPR cases counted in published literature reviews, by year"></svg>
+      <p class="small muted" style="margin:10px 0 0" id="countnote"></p>
+    </div>
+    <div class="grid cols-3" style="margin-top:16px">
+      <div class="fact mint"><p class="big" id="cnt-lit">–</p><p class="lbl">cases counted in the most recent published review (<span id="cnt-lit-yr"></span>)</p></div>
+      <div class="fact mint"><p class="big" id="cnt-reg">–</p><p class="lbl">individual patients with details in this site's registry</p></div>
+      <div class="fact mint"><p class="big" id="cnt-pub">–</p><p class="lbl">articles on PubMed mentioning PTPR (<span id="cnt-pub-note">updates automatically</span>)</p></div>
+    </div>
+    <p class="small muted" style="margin-top:10px">A fair summary for a newly diagnosed person: a few hundred cases have been described worldwide since 2003, perhaps 10 to 20 new reports a year, and the real number of people living with PTPR is certainly higher. To keep this up to date, add a new point in <code>data.js</code> whenever a review publishes a new total.</p>
   </section>
   <section>
     <div class="grid cols-4" id="casestats"></div>
@@ -608,7 +621,11 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   function show(){
     let v = (location.hash || '#home').slice(1); if (!views.includes(v)) v='home';
     $$('.view').forEach(el => el.classList.toggle('active', el.id==='view-'+v));
-    $$('nav.tabs a').forEach(a => a.dataset.view===v ? a.setAttribute('aria-current','page') : a.removeAttribute('aria-current'));
+    const groups={home:[['home','Just diagnosed']], why:[['why','Our story']], research:[['timeline','Timeline'],['publications','Publications'],['map','Research map']], people:[['cases','Reported cases'],['stories','Stories'],['support','Support']], involved:[['contribute','Contribute'],['legal','Disclaimer']]};
+    const gname=Object.keys(groups).find(g=>groups[g].some(x=>x[0]===v));
+    $$('#nav1 a').forEach(a => a.dataset.group===gname ? a.setAttribute('aria-current','page') : a.removeAttribute('aria-current'));
+    const sub=$('#nav2'); const items=groups[gname]||[];
+    if(items.length>1){ sub.hidden=false; sub.innerHTML=items.map(([id,label])=>`<li><a href="#${id}" ${id===v?'aria-current="page"':''}>${label}</a></li>`).join(''); } else { sub.hidden=true; sub.innerHTML=''; }
     if (v==='map' && !mapBuilt) buildMap();
     if (v==='cases' && !caseMapBuilt) buildCases();
     if (v==='publications' && !feedStarted) { feedStarted=true; loadFeed(); loadTrials(); }
@@ -700,7 +717,26 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
         onMarkerClick:(e,i)=>caseDetail(markers[+i]._i), onRegionTooltipShow:(e)=>{ e.preventDefault(); } });
     } catch(err){ $('#casemap').innerHTML='<p class="muted" style="padding:20px">The map could not be drawn here; the cards below carry the same information.</p>'; }
   }
-  function buildCases(){ caseMapBuilt=true;
+  function drawCountChart(){
+    const H=D.caseCountHistory||[]; const svg=$('#countchart'); if(!svg||!H.length) return;
+    const W=640,HH=260,pl=46,pr=16,pt=18,pb=38; const xs=H.map(h=>h.year), ys=H.map(h=>h.count);
+    const x0=Math.min(...xs)-1, x1=Math.max(...xs)+1, y1=Math.ceil(Math.max(...ys)/20)*20;
+    const X=v=>pl+(v-x0)/(x1-x0)*(W-pl-pr), Y=v=>pt+(1-v/y1)*(HH-pt-pb);
+    let g='';
+    for(let v=0;v<=y1;v+=20){ g+=`<line x1="${pl}" x2="${W-pr}" y1="${Y(v)}" y2="${Y(v)}" stroke="${tok('--line')}" stroke-width="1"/><text x="${pl-8}" y="${Y(v)+4}" font-size="11" text-anchor="end" fill="${tok('--ink-2')}" font-family="Nunito Sans, sans-serif">${v}</text>`; }
+    for(let yr=Math.ceil(x0);yr<=x1;yr++){ if(yr%3===0) g+=`<text x="${X(yr)}" y="${HH-pb+18}" font-size="11" text-anchor="middle" fill="${tok('--ink-2')}" font-family="Nunito Sans, sans-serif">${yr}</text>`; }
+    const pts=H.map(h=>`${X(h.year)},${Y(h.count)}`).join(' ');
+    g+=`<polyline points="${pts}" fill="none" stroke="${tok('--mint-ink')}" stroke-width="2.5" stroke-linejoin="round"/>`;
+    g+=`<polygon points="${X(H[0].year)},${Y(0)} ${pts} ${X(H[H.length-1].year)},${Y(0)}" fill="${tok('--mint')}" opacity=".6"/>`;
+    H.forEach(h=>{ g+=`<circle cx="${X(h.year)}" cy="${Y(h.count)}" r="4.5" fill="${tok('--surface')}" stroke="${tok('--mint-ink')}" stroke-width="2.5"><title>${esc(h.year)}: ${h.count} cases (${esc(h.source)})</title></circle>`; });
+    const last=H[H.length-1]; g+=`<text x="${X(last.year)-8}" y="${Y(last.count)-10}" font-size="12" font-weight="700" text-anchor="end" fill="${tok('--mint-ink')}" font-family="Nunito Sans, sans-serif">${last.count} cases (${last.year})</text>`;
+    g+=`<text x="${pl}" y="${HH-6}" font-size="11" fill="${tok('--ink-2')}" font-family="Nunito Sans, sans-serif">Cases counted in published reviews · hover a point for its source</text>`;
+    svg.innerHTML=g;
+    $('#countnote').innerHTML='Sources: '+H.map(h=>`<a href="${esc(h.url)}" target="_blank" rel="noopener">${esc(h.source)}</a>`).join(' · ');
+    $('#cnt-lit').textContent=last.count; $('#cnt-lit-yr').textContent=last.year; $('#cnt-reg').textContent=CASES.length;
+    fetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=0&term=${encodeURIComponent(D.pubmedQuery)}`).then(r=>r.json()).then(j=>{ $('#cnt-pub').textContent=j.esearchresult.count; $('#cnt-pub-note').textContent='live from PubMed today'; }).catch(()=>{ $('#cnt-pub').textContent='100+'; $('#cnt-pub-note').textContent='live count loads once the site is hosted'; });
+  }
+  function buildCases(){ caseMapBuilt=true; drawCountChart();
     const tx=[...new Set(CASES.flatMap(c=>c.treatment||[]))].sort();
     $('#f-tx').innerHTML='<option value="all">Any</option>'+tx.map(t=>`<option>${esc(t)}</option>`).join('');
     ['#f-age','#f-sex','#f-out','#f-tx'].forEach(s=>$(s).addEventListener('change',renderCases));
