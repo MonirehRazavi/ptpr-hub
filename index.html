@@ -489,7 +489,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   <section class="prose">
     <p class="eyebrow mint">Where it's studied</p>
     <h2>A map of the research</h2>
-    <p class="muted">Every paper, book chapter and conference abstract we can find on papillary tumour of the pineal region is placed in each country where its authors work. The list is gathered automatically from <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed</a> and <a href="https://openalex.org/" target="_blank" rel="noopener">OpenAlex</a> (an open index that also covers journals PubMed does not), together with the papers reviewed on this site, and was cross-checked against <a href="https://consensus.app/" target="_blank" rel="noopener">Consensus</a>. Click a country, on the map or in the list, to see the doctors and researchers there, their hospitals and universities, and what they have published.</p>
+    <p class="muted">Every paper, book chapter and conference abstract we can find on papillary tumour of the pineal region is placed in each country where its authors work. The list is gathered automatically from <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">PubMed</a> and <a href="https://openalex.org/" target="_blank" rel="noopener">OpenAlex</a> (an open index that also covers journals, books and conference abstracts PubMed does not), together with the papers reviewed on this site, and was cross-checked against <a href="https://consensus.app/" target="_blank" rel="noopener">Consensus</a>, <a href="https://europepmc.org/" target="_blank" rel="noopener">Europe PMC</a> and <a href="https://www.crossref.org/" target="_blank" rel="noopener">Crossref</a>. Click a country, on the map or in the list, to see the doctors and researchers there, their hospitals and universities, and what they have published.</p>
     <p class="small muted" id="rmstatus" aria-live="polite">Loading the latest list from PubMed…</p>
   </section>
   <section class="maplayout">
@@ -617,7 +617,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
 <script src="data.js"></script>
 <script src="cases.js"></script>
 <script src="pubs.js"></script>
-<script src="research.js?v=3"></script>
+<script src="research.js?v=4"></script>
 <script src="vendor/jsvectormap.min.js"></script>
 <script src="vendor/world.js"></script>
 <script>
@@ -700,7 +700,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     const cs=RM.countries; const vals={}; const lvl=n=>n>=15?'d':n>=5?'c':n>=2?'b':'a'; cs.forEach(c=>vals[c.code]=lvl(c.papers.length));
     const SC={a:'#cdeadb',b:'#94cdac',c:'#55a77a',d:'#2a7048'};
     $('#casecount').textContent=cs.length;
-    $('#rmstatus').textContent=`${RM.total-RM.unplaced} publications placed in ${cs.length} countries (${RM.pubmed||0} from PubMed, ${RM.openalex||0} more from OpenAlex, ${(RM.consensus||0)+(RM.extra||0)} more from Consensus and this site's reviewed list)${RM.unplaced?`; ${RM.unplaced} more could not be placed because no author address is on record`:''}. Updated from PubMed on ${new Date(RM.built).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'})}.`;
+    $('#rmstatus').textContent=`${RM.total-RM.unplaced} publications placed in ${cs.length} countries (${RM.pubmed||0} from PubMed, ${RM.openalex||0} more from OpenAlex, ${(RM.consensus||0)+(RM.extra||0)} more from Consensus, Crossref and this site's reviewed list)${RM.unplaced?`; ${RM.unplaced} more could not be placed because no author address is on record`:''}. Updated from PubMed on ${new Date(RM.built).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'})}.`;
     $('#caselist').innerHTML=cs.map((c,i)=>`<button type="button" aria-pressed="false" data-i="${i}"><b>${esc(c.name)}</b><span>${c.papers.length} publication${c.papers.length>1?'s':''} · ${c.people.length} ${c.people.length===1?'person':'people'}</span></button>`).join('');
     $('#caselist').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) rmDetail(+b.dataset.i);});
     const max=Math.max(...cs.map(c=>c.papers.length));

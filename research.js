@@ -3,7 +3,7 @@
    country where one of its authors works, according to the affiliations printed in PubMed. */
 (function () {
   const QUERY = '"papillary tumor of the pineal region"[tiab] OR "papillary tumour of the pineal region"[tiab] OR "papillary tumors of the pineal region"[tiab] OR "papillary tumours of the pineal region"[tiab] OR "papillary tumor of pineal region"[tiab] OR "papillary tumour of pineal region"[tiab] OR "papillary tumor of the pineal"[tiab] OR "papillary tumors of pineal"[tiab] OR "papillary pineal tumor"[tiab] OR "papillary tumor of the pineal gland"[tiab] OR (PTPR[tiab] AND pineal[tiab])';
-  const CACHE_KEY = 'ptpr-research-v3', CACHE_DAYS = 3;
+  const CACHE_KEY = 'ptpr-research-v4', CACHE_DAYS = 3;
 
   // [map region code, display name, lat, lng, extra name patterns]
   const C = [
@@ -251,11 +251,12 @@
     try {
       const cons = await (await fetch('consensus.json')).json(); const short = t => t.slice(0, 60); const seenS = new Set([...seenT].map(k => short(k.split('|')[0])));
       cons.forEach(x => { const k = tnorm(x.title); if (seenS.has(short(k))) return; seenS.add(short(k));
-        papers.push({ src: 'Consensus', srcUrl: x.url, url: x.url, pmid: '', doi: '', year: x.year, title: x.title, journal: x.journal && x.journal !== 'Unknown Journal' ? x.journal : '',
-          authors: [{ last: (x.authors || '').replace(/ et al\.?$/, '').split(' ').slice(-1)[0], first: '', affs: x.code ? [{ text: '', code: x.code }] : [] }] }); });
+        const nm = (x.authors || '').replace(/ et al\.?$/, '').trim().split(' ');
+        papers.push({ src: x.src || 'Consensus', srcUrl: x.src === 'Crossref' ? 'https://search.crossref.org/?q=' + encodeURIComponent(x.title) : x.url, url: x.url, pmid: '', doi: '', year: x.year, title: x.title, journal: x.journal && x.journal !== 'Unknown Journal' ? x.journal : '',
+          authors: nm[0] ? [{ last: nm.slice(-1)[0], first: nm.slice(0, -1).join(' '), affs: x.code ? [{ text: x.aff || '', code: x.code }] : [] }] : [] }); });
     } catch (e) {}
     const data = aggregate(papers, extras(seenDoi, seenT));
-    data.pubmed = pmids.size; data.consensus = papers.filter(p => p.src === 'Consensus').length; data.openalex = papers.length - pmids.size - data.consensus;
+    data.pubmed = pmids.size; data.consensus = papers.filter(p => p.src === 'Consensus' || p.src === 'Crossref').length; data.openalex = papers.length - pmids.size - data.consensus;
     try { localStorage.setItem(CACHE_KEY, JSON.stringify(data)); } catch (e) {}
     return data;
   }
