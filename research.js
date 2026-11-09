@@ -3,7 +3,7 @@
    country where one of its authors works, according to the affiliations printed in PubMed. */
 (function () {
   const QUERY = '"papillary tumor of the pineal region"[tiab] OR "papillary tumour of the pineal region"[tiab] OR "papillary tumors of the pineal region"[tiab] OR "papillary tumours of the pineal region"[tiab] OR "papillary tumor of pineal region"[tiab] OR "papillary tumour of pineal region"[tiab] OR "papillary tumor of the pineal"[tiab] OR "papillary tumors of pineal"[tiab] OR "papillary pineal tumor"[tiab] OR "papillary tumor of the pineal gland"[tiab] OR (PTPR[tiab] AND pineal[tiab])';
-  const CACHE_KEY = 'ptpr-research-v4', CACHE_DAYS = 3;
+  const CACHE_KEY = 'ptpr-research-v5', CACHE_DAYS = 3;
 
   // [map region code, display name, lat, lng, extra name patterns]
   const C = [
@@ -183,7 +183,7 @@
     await Promise.all(OA_QUERIES.map(async q => {
       let cursor = '*', guard = 0;
       while (cursor && guard++ < 10) {
-        const u = 'https://api.openalex.org/works?per_page=200&cursor=' + encodeURIComponent(cursor) + '&filter=title_and_abstract.search:' + encodeURIComponent(q) + '&select=id,doi,ids,title,publication_year,type,primary_location,authorships';
+        const u = 'https://api.openalex.org/works?per_page=200&cursor=' + encodeURIComponent(cursor) + '&filter=title_and_abstract.search:' + encodeURIComponent(q) + '&select=id,doi,ids,title,publication_year,type,primary_location,authorships,abstract_inverted_index';
         const r = await (await fetch(u)).json();
         (r.results || []).forEach(w => works.set(w.id, w));
         if (!(r.results || []).length) break; cursor = r.meta && r.meta.next_cursor;
@@ -203,6 +203,14 @@
         return { last: parts.slice(-1)[0] || nm, first: parts.slice(0, -1).join(' '), affs };
       }).filter(x => x.last)
     };
+  }
+  const PTPR_RE = /papillary\s+tumou?rs?\s+(of\s+)?(the\s+)?pineal|papillary\s+pineal|pineal\s+(region\s+)?papillary|\bPTPRs?\b/i;
+  function oaRelevant(w) {
+    const t = (w.title || '').replace(/<[^>]+>/g, ' ');
+    if (PTPR_RE.test(t)) return true;
+    const inv = w.abstract_inverted_index; if (!inv) return false;
+    const words = []; Object.keys(inv).forEach(k => inv[k].forEach(i => { words[i] = k; }));
+    return PTPR_RE.test(words.join(' '));
   }
   const tnorm = t => (t || '').toLowerCase().replace(/<[^>]+>/g, '').replace(/[^a-z0-9]/g, '');
 
@@ -242,7 +250,7 @@
     const pmids = new Set(papers.map(p => p.pmid));
     oa.forEach(w => {
       const id = w.ids && w.ids.pmid ? String(w.ids.pmid).replace(/\D/g, '') : '';
-      if ((id && pmids.has(id)) || !OA_TYPES.has(w.type) || !w.title) return;
+      if ((id && pmids.has(id)) || !OA_TYPES.has(w.type) || !w.title || !oaRelevant(w)) return;
       const q = oaToPaper(w); const k = tnorm(q.title) + '|' + q.year;
       if ((q.doi && seenDoi.has(q.doi)) || seenT.has(k)) return;
       if (q.doi) seenDoi.add(q.doi); seenT.add(k); papers.push(q);
