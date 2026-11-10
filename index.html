@@ -141,6 +141,8 @@ dl.gloss{display:grid;grid-template-columns:max-content 1fr;gap:8px 20px;margin:
 .sidelist button:hover,.sidelist button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
 .sidelist b{display:block} .sidelist span{font-size:.85rem;color:var(--ink-2)}
 .detail{margin-top:18px}
+.counttip{position:absolute;z-index:5;max-width:300px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:0 8px 24px rgba(0,0,0,.14)}
+.cdot:focus{outline:none;stroke:var(--accent);stroke-width:2}
 .rm-note{background:var(--butter);border-radius:10px;padding:10px 12px;font-size:.86rem;color:var(--ink-2);margin:10px 0 14px}
 .rm-filter{width:100%;padding:8px 12px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);font:inherit;margin:6px 0 10px}
 .rm-people,.rm-papers{list-style:none;margin:0;padding:0}
@@ -315,8 +317,8 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
       <div class="fact sky"><p class="big">2003</p><p class="lbl">First described by Jouvet and colleagues in Lyon, France (six patients)</p></div>
       <div class="fact sky"><p class="big">2007</p><p class="lbl">Added to the WHO classification of brain tumours</p></div>
       <div class="fact sky"><p class="big">Grade 2–3</p><p class="lbl">CNS WHO grade in the current (2021) classification</p></div>
-      <div class="fact sky"><p class="big">30s</p><p class="lbl">Typical age at diagnosis, though it has been reported from 15 months to the late 60s</p></div>
-      <div class="fact sky"><p class="big">~89%</p><p class="lbl">Of published patients had hydrocephalus (fluid build-up); headache is the most common first symptom</p></div>
+      <div class="fact sky"><p class="big">30s</p><p class="lbl">Typical age at diagnosis (average 33), though it has been reported from 15 months to 73 years</p></div>
+      <div class="fact sky"><p class="big">80%</p><p class="lbl">Of published patients had headache as a first symptom, usually from hydrocephalus (fluid build-up)</p></div>
       <div class="fact sky"><p class="big">≈ 50 / 50</p><p class="lbl">Men and women are affected about equally</p></div>
     </div>
   </section>
@@ -327,31 +329,31 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     <p class="muted">These are the questions people type into search engines at 2 a.m. The numbers come from the largest pooled studies, but please hold them loosely: they describe small groups of patients, many treated 10 to 20 years ago, before molecular testing and modern radiotherapy. They cannot predict one person's path.</p>
     <details class="faq"><summary>How long do people live with this?</summary><div class="body">
       <p><span class="num">73%</span> of patients were alive five years after diagnosis in the first multicentre series (31 patients, 2006), and the same study's authors later followed 44 patients, 32 of whom were alive after a median of more than five years. A 2019 analysis pooling every published case found <span class="num">83.5%</span> alive at three years.</p>
-      <p>Behind those averages are individual stories of people well 7, 10 and 15 years after surgery, some with no further treatment at all.</p>
+      <p>The most recent pooled analysis (108 patients, 2024) found <span class="num">87.5%</span> alive at five years and <span class="num">80.2%</span> at ten. Behind those averages are individual published stories: people with no progression more than 7, 9 and 10 years after diagnosis, and one person alive 18 years on despite several recurrences.</p>
       <div class="hope">What the numbers can't tell you: they describe patients diagnosed mostly between 2003 and 2017. Methylation profiling, proton therapy and targeted drugs barely existed then. Nobody can tell you your number, and that uncertainty cuts both ways.</div>
-      <p class="small">Sources: <a href="https://doi.org/10.1097/01.jnen.0000240462.80263.13" target="_blank" rel="noopener">Fèvre-Montange 2006</a> · <a href="https://doi.org/10.1007/s11060-013-1050-5" target="_blank" rel="noopener">Fauchon 2013</a> · <a href="https://doi.org/10.1093/neuros/nyz062" target="_blank" rel="noopener">Yamaki 2019</a></p>
+      <p class="small">Sources: <a href="https://doi.org/10.1097/01.jnen.0000240462.80263.13" target="_blank" rel="noopener">Fèvre-Montange 2006</a> · <a href="https://doi.org/10.1007/s11060-013-1050-5" target="_blank" rel="noopener">Fauchon 2013</a> · <a href="https://doi.org/10.1093/neuros/nyz062" target="_blank" rel="noopener">Yamaki 2019</a> · <a href="https://doi.org/10.14791/btrt.2024.0021" target="_blank" rel="noopener">Pang 2024</a> · individual stories are in the <a href="#cases">case registry</a></p>
     </div></details>
     <details class="faq"><summary>Does it come back?</summary><div class="body">
-      <p>Often, yes, and this is the single most important thing to understand about PTPR. In the pooled analysis, <span class="num">57%</span> of patients had a recurrence, at a median of 28 months. In the 2024 molecular series the median time without progression was <span class="num">63 months</span>. Recurrence is almost always local, in the same place, and sometimes appears years later. That is why your team will keep scanning you for a long time.</p>
+      <p>Often, yes, and this is the single most important thing to understand about PTPR. In the pooled analysis, <span class="num">57%</span> of patients had a recurrence, at a median of 29 months. In the 2024 molecular series, 14 of the 31 patients with follow-up had progressed, and the median time without progression was <span class="num">63 months</span>. Recurrence is almost always local, in the same place, and sometimes appears years later. That is why your team will keep scanning you for a long time.</p>
       <div class="hope">A recurrence is not a death sentence. The literature is full of people treated again, with a second operation, radiosurgery, radiotherapy or, more recently, targeted drugs, and then stable for years. Being followed closely is the point: it catches regrowth when it is small.</div>
       <p class="small">Sources: <a href="https://doi.org/10.1093/neuros/nyz062" target="_blank" rel="noopener">Yamaki 2019</a> · <a href="https://doi.org/10.1186/s40478-024-01781-4" target="_blank" rel="noopener">Wu 2024</a></p>
     </div></details>
     <details class="faq"><summary>Do people die from it?</summary><div class="body">
-      <p>Some do. In a review of 73 published patients, <span class="num">3</span> had died at the time their reports were written, and <span class="num">50</span> had no recurrence at all. Deaths in the literature cluster around repeated recurrences, tumours that could not be fully removed, and surgical complications in the earliest years. Most people in published reports were alive at their last follow-up.</p>
+      <p>Some do. In a review of 73 published patients, <span class="num">3</span> had died at the time their reports were written, and <span class="num">50</span> had no sign of recurrence. Deaths in the literature cluster around repeated recurrences, tumours that could not be fully removed, and surgical complications in the earliest years. Most people in published reports were alive at their last follow-up.</p>
       <div class="hope">The overall picture is of a tumour people live with, under surveillance, more often than one they die from. Several doctors who have written about PTPR describe it as unpredictable rather than aggressive.</div>
-      <p class="small">Source: <a href="https://brieflands.com/articles/rro-68372" target="_blank" rel="noopener">Nasrollahi 2016</a></p>
+      <p class="small">Source: <a href="https://waocp.com/journal/index.php/Reports-of-Radiotherapy-and-Onco/article/download/2327/3275/" target="_blank" rel="noopener">Nasrollahi 2016</a></p>
     </div></details>
     <details class="faq"><summary>Is it cancer?</summary><div class="body">
-      <p>It sits in between. CNS WHO grade 2 or 3 means it is not benign (grade 1), because it can regrow and, rarely, spread through the spinal fluid, but it is not grade 4 like glioblastoma. Doctors treat it seriously and follow it for years for exactly that reason. The grade itself is less settled than for other tumours: the WHO says precise grading criteria for PTPR are not yet established.</p>
-      <p class="small">Source: <a href="https://pubmed.ncbi.nlm.nih.gov/34185076/" target="_blank" rel="noopener">WHO CNS5, 2021</a></p>
+      <p>It sits in between. CNS WHO grade 2 or 3 means it is not benign (grade 1), because it can regrow and, rarely, spread through the spinal fluid, but it is not grade 4 like glioblastoma. Doctors treat it seriously and follow it for years for exactly that reason. The grade itself is less settled than for other tumours: when the WHO first listed PTPR it noted that precise grading criteria "remain to be defined".</p>
+      <p class="small">Sources: <a href="https://doi.org/10.1007/s00401-007-0243-4" target="_blank" rel="noopener">WHO 2007 summary</a> · <a href="https://doi.org/10.1093/neuonc/noab106" target="_blank" rel="noopener">WHO CNS5, 2021</a></p>
     </div></details>
     <details class="faq"><summary>Does it spread?</summary><div class="body">
       <p>Usually it stays where it is. Spread through the cerebrospinal fluid to the spine or the lining of the brain (leptomeningeal seeding) has been reported in a minority of cases, which is why an MRI of the whole spine is part of the standard work-up at diagnosis and sometimes during follow-up.</p>
-      <p class="small">Sources: <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Papillary+tumor+of+pineal+region+presenting+with+leptomeningeal+seeding%22" target="_blank" rel="noopener">Kim 2010</a> · <a href="https://pubmed.ncbi.nlm.nih.gov/?term=%22Late+dissemination+via+cerebrospinal+fluid+of+papillary+tumor+of+the+pineal+region%22" target="_blank" rel="noopener">Nowicka 2016</a></p>
+      <p class="small">Sources: <a href="https://doi.org/10.1111/j.1440-1789.2010.01108.x" target="_blank" rel="noopener">Kim 2010</a> · <a href="https://doi.org/10.5114/fn.2016.58918" target="_blank" rel="noopener">Nowicka 2016</a></p>
     </div></details>
     <details class="faq"><summary>If it was completely removed, am I done?</summary><div class="body">
-      <p>Complete removal (gross total resection) is the factor most consistently linked to longer survival, and there are published patients who had their tumour fully removed, no further treatment, and no recurrence after nearly five years. But even after complete removal, recurrence happens: around <span class="num">39%</span> of children in one review, and comparable rates in adults. So "done" means "done with this chapter": follow-up scans continue, often yearly, for a decade or more.</p>
-      <p class="small">Sources: <a href="https://doi.org/10.1007/s11060-013-1050-5" target="_blank" rel="noopener">Fauchon 2013</a> · <a href="https://onlinelibrary.wiley.com/doi/10.1111/ajco.70010" target="_blank" rel="noopener">Balci Topuz 2026</a></p>
+      <p>In the largest multicentre study (44 patients), complete removal (gross total resection) was linked to longer survival, although a later pooled analysis did not find a clear extra benefit over partial removal. There are published patients who had their tumour fully removed, no further treatment, and no recurrence after nearly five years. But even after complete removal, recurrence happens: around <span class="num">39%</span> of children in one review, and in the multicentre study complete removal did not lengthen the time before the tumour came back. So "done" means "done with this chapter": follow-up scans continue, often yearly, for a decade or more.</p>
+      <p class="small">Sources: <a href="https://doi.org/10.1007/s11060-013-1050-5" target="_blank" rel="noopener">Fauchon 2013</a> · <a href="https://doi.org/10.1093/neuros/nyz062" target="_blank" rel="noopener">Yamaki 2019</a> · <a href="https://doi.org/10.1016/j.neucir.2018.03.003" target="_blank" rel="noopener">Cañizares-Méndez 2019</a> · <a href="https://doi.org/10.1111/ajco.70010" target="_blank" rel="noopener">Balci Topuz 2026</a></p>
     </div></details>
     <details class="faq"><summary>Did I do something to cause this?</summary><div class="body">
       <p>No. There are no known lifestyle, environmental or dietary risk factors for PTPR. It is not caused by stress, phones, diet or anything you did or didn't do. In almost every case it is not inherited either; a handful of recent reports describe inherited changes in a gene called PTEN in people with PTPR, which is a research lead, not a reason for most families to worry.</p>
@@ -443,17 +445,18 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
   <section class="prose">
     <p class="eyebrow mint">People with PTPR</p>
     <h2>How many people have had PTPR?</h2>
-    <p class="muted">Nobody knows the true number. There is no registry anywhere in the world, and most people who are diagnosed are never written about. What can be counted is the medical literature: each time doctors publish a review, they tally every case reported so far. Those tallies, plotted below, are the best available picture, and they only ever go up as older cases are re-examined and new ones are published.</p>
-    <div class="card" style="padding:16px 18px">
-      <svg id="countchart" viewBox="0 0 640 260" width="100%" role="img" aria-label="Cumulative number of PTPR cases counted in published literature reviews, by year"></svg>
+    <p class="muted">Nobody knows the true number. There is no registry anywhere in the world, and most people who are diagnosed are never written about. What can be counted is the medical literature: from time to time doctors publish a review that counts the cases reported so far. The largest of those counts are plotted below. Hover over or tap a dot to see which article it comes from.</p>
+    <div class="card" style="padding:16px 18px;position:relative" id="countcard">
+      <svg id="countchart" viewBox="0 0 640 260" width="100%" role="img" aria-label="Number of PTPR cases counted in published reviews, by year"></svg>
+      <div id="counttip" class="counttip" hidden></div>
       <p class="small muted" style="margin:10px 0 0" id="countnote"></p>
     </div>
     <div class="grid cols-3" style="margin-top:16px">
-      <div class="fact mint"><p class="big" id="cnt-lit">–</p><p class="lbl">cases counted in the most recent published review (<span id="cnt-lit-yr"></span>)</p></div>
+      <div class="fact mint"><p class="big" id="cnt-lit">–</p><p class="lbl">patients in the largest published review so far (<span id="cnt-lit-yr"></span>)</p></div>
       <div class="fact mint"><p class="big" id="cnt-reg">–</p><p class="lbl">individual patients with details in this site's registry</p></div>
       <div class="fact mint"><p class="big" id="cnt-pub">–</p><p class="lbl">articles on PubMed mentioning PTPR (<span id="cnt-pub-note">updates automatically</span>)</p></div>
     </div>
-    <p class="small muted" style="margin-top:10px">A fair summary for a newly diagnosed person: a few hundred cases have been described worldwide since 2003, perhaps 10 to 20 new reports a year, and the real number of people living with PTPR is certainly higher. This chart is extended whenever a new review publishes a new total.</p>
+    <p class="small muted" style="margin-top:10px">A fair summary for a newly diagnosed person: a few hundred cases have been described worldwide since 2003, PubMed has added between 2 and 11 new papers a year since 2019, and the real number of people living with PTPR is certainly higher. Reviews count differently: a 2024 analysis (<a href="https://doi.org/10.14791/btrt.2024.0021" target="_blank" rel="noopener">Pang et al.</a>) included only the 108 patients whose treatment and outcome were fully described, so it is not shown as a running total.</p>
   </section>
 </div>
 <!-- ============================ CASES ============================ -->
@@ -790,10 +793,23 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     const pts=H.map(h=>`${X(h.year)},${Y(h.count)}`).join(' ');
     g+=`<polyline points="${pts}" fill="none" stroke="${tok('--mint-ink')}" stroke-width="2.5" stroke-linejoin="round"/>`;
     g+=`<polygon points="${X(H[0].year)},${Y(0)} ${pts} ${X(H[H.length-1].year)},${Y(0)}" fill="${tok('--mint')}" opacity=".6"/>`;
-    H.forEach(h=>{ g+=`<circle cx="${X(h.year)}" cy="${Y(h.count)}" r="4.5" fill="${tok('--surface')}" stroke="${tok('--mint-ink')}" stroke-width="2.5"><title>${esc(h.year)}: ${h.count} cases (${esc(h.source)})</title></circle>`; });
-    const last=H[H.length-1]; g+=`<text x="${X(last.year)-8}" y="${Y(last.count)-10}" font-size="12" font-weight="700" text-anchor="end" fill="${tok('--mint-ink')}" font-family="Nunito Sans, sans-serif">${last.count} cases (${last.year})</text>`;
-    g+=`<text x="${pl}" y="${HH-6}" font-size="11" fill="${tok('--ink-2')}" font-family="Nunito Sans, sans-serif">Cases counted in published reviews · hover a point for its source</text>`;
+    H.forEach((h,i)=>{ g+=`<circle cx="${X(h.year)}" cy="${Y(h.count)}" r="5" fill="${tok('--surface')}" stroke="${tok('--mint-ink')}" stroke-width="2.5"/><circle class="cdot" data-i="${i}" tabindex="0" role="button" aria-label="${esc(h.year)}: ${h.count} cases, ${esc(h.source)}" cx="${X(h.year)}" cy="${Y(h.count)}" r="15" fill="transparent" style="cursor:pointer"/>`; });
+    const last=H[H.length-1]; g+=`<text x="${X(last.year)-16}" y="${Y(last.count)+4}" font-size="12" font-weight="700" text-anchor="end" fill="${tok('--mint-ink')}" font-family="Nunito Sans, sans-serif">${last.count} cases (${last.year})</text>`;
+    g+=`<text x="${pl}" y="${HH-6}" font-size="11" fill="${tok('--ink-2')}" font-family="Nunito Sans, sans-serif">Cases counted in published reviews · hover or tap a dot for its source</text>`;
     svg.innerHTML=g;
+    const tip=$('#counttip'), card=$('#countcard'); let pinned=false, hov=-1;
+    const showTip=(i)=>{ const h=H[i], dot=svg.querySelector(`.cdot[data-i="${i}"]`); if(!h||!dot) return;
+      tip.innerHTML=`<p class="eyebrow mint" style="margin:0">${esc(h.year)} · ${h.count} cases</p><p style="margin:4px 0 2px;font-weight:700">${esc(h.title)}</p><p class="small muted" style="margin:0">${esc(h.source)} · <i>${esc(h.journal)}</i></p><p class="small" style="margin:6px 0">${esc(h.what)}</p><a class="small" href="${esc(h.url)}" target="_blank" rel="noopener">Open the article →</a>`;
+      tip.hidden=false; const c=card.getBoundingClientRect(), d=dot.getBoundingClientRect(); const tw=tip.offsetWidth, th=tip.offsetHeight;
+      let left=d.left-c.left+d.width/2-tw/2; left=Math.max(8,Math.min(left,c.width-tw-8)); let top=d.top-c.top-th-6; if(top<4) top=d.top-c.top+d.height+6;
+      tip.style.left=left+'px'; tip.style.top=top+'px'; };
+    const hideTip=()=>{ if(!pinned) tip.hidden=true; };
+    svg.querySelectorAll('.cdot').forEach(d=>{ const i=+d.dataset.i;
+      d.addEventListener('mouseenter',()=>{ hov=i; showTip(i); }); d.addEventListener('mouseleave',()=>{ hov=-1; setTimeout(()=>{ if(hov<0&&!tip.matches(':hover')) hideTip(); },150); });
+      d.addEventListener('focus',()=>showTip(i)); d.addEventListener('click',e=>{ e.stopPropagation(); pinned=true; showTip(i); });
+      d.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); pinned=true; showTip(i); } if(e.key==='Escape'){ pinned=false; tip.hidden=true; } }); });
+    tip.addEventListener('mouseleave',hideTip); tip.addEventListener('click',e=>e.stopPropagation());
+    document.addEventListener('click',()=>{ pinned=false; tip.hidden=true; });
     $('#countnote').innerHTML='Sources: '+H.map(h=>`<a href="${esc(h.url)}" target="_blank" rel="noopener">${esc(h.source)}</a>`).join(' · ');
     $('#cnt-lit').textContent=last.count; $('#cnt-lit-yr').textContent=last.year; $('#cnt-reg').textContent=CASES.length;
     fetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=0&term=${encodeURIComponent(D.pubmedQuery)}`).then(r=>r.json()).then(j=>{ $('#cnt-pub').textContent=j.esearchresult.count; $('#cnt-pub-note').textContent='live from PubMed today'; }).catch(()=>{ $('#cnt-pub').textContent='100+'; $('#cnt-pub-note').textContent='live count loads once the site is hosted'; });

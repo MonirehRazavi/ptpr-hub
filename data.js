@@ -46,22 +46,22 @@ window.PTPR_DATA = {
       year: "2007",
       type: "who",
       title: "Added to the WHO Classification of CNS Tumours (4th edition)",
-      text: "The World Health Organization formally recognises PTPR as a new tumour type, listed among pineal parenchymal tumours with the ICD-O code 9395/3. The WHO definition: 'a rare neuroepithelial tumor of the pineal region in adults, characterized by papillary architecture and epithelial cytology, immunopositivity for cytokeratin and ultrastructural features suggesting ependymal differentiation'. Grading criteria were left open (grade II or III).",
+      text: "The World Health Organization formally recognises PTPR as a new tumour type, listed among tumours of the pineal region with the ICD-O code 9395/3. The WHO summary describes it as a rare neuroepithelial tumour of the pineal region that occurs in children and adults (mean age 32), with papillary architecture and epithelial-looking cells. Its behaviour 'may correspond to WHO grades II or III', with precise grading criteria still to be defined.",
       source: { label: "Louis DN et al. Acta Neuropathol 2007;114:97-109", url: "https://doi.org/10.1007/s00401-007-0243-4" }
     },
     {
       year: "2008",
       type: "science",
-      title: "Characteristic MRI appearance described",
-      text: "Radiologists describe what PTPR tends to look like on MRI: a well-defined pineal-region mass, often with cysts, variable T1 signal and heterogeneous contrast enhancement. There is no single 'pathognomonic' sign, so tissue diagnosis remains essential.",
-      source: { label: "Chang AH et al. AJNR Am J Neuroradiol 2008;29:187-189", url: "https://pubmed.ncbi.nlm.nih.gov/?term=%22MR+imaging+of+papillary+tumor+of+the+pineal+region%22" }
+      title: "First MRI description",
+      text: "Radiologists report the MRI scans of four patients. In each, the tumour sat in the posterior commissure or pineal region and was bright on T1-weighted images. MRI can suggest PTPR, but a firm diagnosis still needs tissue.",
+      source: { label: "Chang AH et al. AJNR Am J Neuroradiol 2008;29:187-189", url: "https://doi.org/10.3174/ajnr.A0784" }
     },
     {
       year: "2011",
       type: "molecular",
       title: "A shared chromosomal signature",
-      text: "Cytogenetic work shows that PTPRs share a common pattern of chromosomal gains and losses, supporting the idea that they are one biological entity rather than a mixed bag of look-alikes.",
-      source: { label: "Gutenberg A et al. Brain Pathol 2011", url: "https://pubmed.ncbi.nlm.nih.gov/?term=%22Common+molecular+cytogenetic+pathway+in+papillary+tumors+of+the+pineal+region%22" }
+      text: "Cytogenetic work on three patients' tumours suggests that PTPRs share a common pattern of chromosomal gains and losses, supporting the idea that they are one biological entity rather than a mixed bag of look-alikes.",
+      source: { label: "Gutenberg A et al. Brain Pathol 2011", url: "https://doi.org/10.1111/j.1750-3639.2011.00493.x" }
     },
     {
       year: "2013",
@@ -71,17 +71,17 @@ window.PTPR_DATA = {
       source: { label: "Fauchon F et al. J Neurooncol 2013;112:223-231", url: "https://pubmed.ncbi.nlm.nih.gov/23314823/" }
     },
     {
-      year: "2013",
+      year: "2014",
       type: "science",
       title: "Proliferation predicts behaviour",
-      text: "Higher mitotic and proliferative activity under the microscope is associated with a worse prognosis, giving pathologists a first handle on which PTPRs are more likely to behave aggressively.",
-      source: { label: "Heim S et al. Am J Surg Pathol 2014;38:106-110", url: "https://pubmed.ncbi.nlm.nih.gov/?term=%22Increased+mitotic+and+proliferative+activity+are+associated+with+worse+prognosis+in+papillary+tumors+of+the+pineal+region%22" }
+      text: "In a series of 21 patients, higher mitotic and proliferative activity under the microscope is associated with a worse prognosis, giving pathologists a first handle on which PTPRs are more likely to behave aggressively.",
+      source: { label: "Heim S et al. Am J Surg Pathol 2014;38:106-110", url: "https://doi.org/10.1097/PAS.0b013e31829e492d" }
     },
     {
       year: "2016",
       type: "molecular",
       title: "PTPR is 'a distinct molecular entity'",
-      text: "DNA methylation profiling of 24 tumours shows PTPR has its own molecular fingerprint, clearly separable from ependymoma and other pineal tumours. Loss of chromosome 10 was found in every tumour tested. Two methylation subgroups (later called PTPR-A and PTPR-B) are described; group B tends toward shorter progression-free survival.",
+      text: "DNA methylation profiling of 24 tumours shows PTPR has its own molecular fingerprint, clearly separable from ependymoma and other pineal tumours. Loss of chromosome 10 was found in all 13 tumours tested for it. Two methylation subgroups (later called PTPR-A and PTPR-B) are described; group B tends toward shorter progression-free survival.",
       source: { label: "Heim S et al. Brain Pathol 2016;26:199-205", url: "https://pubmed.ncbi.nlm.nih.gov/26113311/" }
     },
     {
@@ -95,7 +95,7 @@ window.PTPR_DATA = {
       year: "2019",
       type: "treatment",
       title: "Patient-level meta-analysis of all published cases",
-      text: "A Brazilian team pools every published case with individual data (2003 to 2017). About 89% presented with hydrocephalus; surgery was performed in 82% and total removal achieved in 71%. Roughly 57% recurred, at a median of 28 months. Tumour size and having surgery were associated with 36-month survival.",
+      text: "A Brazilian team pools every published case with individual data (2003 to 2017). The analysis covered 177 patients; raised pressure in the head and hydrocephalus were the usual presentation. Surgery was performed in 82% and total removal achieved in 71%. Roughly 57% recurred, at a median of 29 months. Tumour size and having surgery were associated with 36-month survival.",
       source: { label: "Yamaki VN et al. Neurosurgery 2019", url: "https://pubmed.ncbi.nlm.nih.gov/30989225/" }
     },
     {
@@ -103,7 +103,7 @@ window.PTPR_DATA = {
       type: "treatment",
       title: "Systematic review of radiotherapy",
       text: "Italian radiation oncologists review all reports of radiotherapy for PTPR. About 72% of published patients had received radiation in some form, but schedules and timing varied widely and no consensus existed.",
-      source: { label: "Lancia A et al. Clin Neurol Neurosurg 2020;190:105646", url: "https://www.sciencedirect.com/science/article/abs/pii/S0303846719304421" }
+      source: { label: "Lancia A et al. Clin Neurol Neurosurg 2020;190:105646", url: "https://doi.org/10.1016/j.clineuro.2019.105646" }
     },
     {
       year: "2021",
@@ -130,8 +130,8 @@ window.PTPR_DATA = {
       year: "2026",
       type: "science",
       title: "Review of every reported child with PTPR",
-      text: "A review collects 35 paediatric cases published to date. Even after gross total resection, recurrence or regrowth was reported in about 39-44% of children, and the authors argue for long-term adjuvant strategies and risk stratification in younger patients.",
-      source: { label: "Balci Topuz et al. Asia-Pac J Clin Oncol 2026;22:625-639", url: "https://onlinelibrary.wiley.com/doi/10.1111/ajco.70010" }
+      text: "A review collects 35 paediatric cases published to date. Even after gross total resection, recurrence was reported in about 39% of children (and in 60% after partial removal), and the authors argue for long-term adjuvant strategies and risk stratification in younger patients.",
+      source: { label: "Balci Topuz et al. Asia-Pac J Clin Oncol 2026;22:625-639", url: "https://doi.org/10.1111/ajco.70010" }
     }
   ],
 
@@ -201,17 +201,16 @@ window.PTPR_DATA = {
   /* Running totals of PTPR cases counted in published literature reviews.
      Add a point whenever a new review publishes a new total. */
   caseCountHistory: [
-    { year: 2003, count: 6,   source: "Jouvet et al. 2003 (first series)", url: "https://pubmed.ncbi.nlm.nih.gov/12657936/" },
-    { year: 2006, count: 31,  source: "Fèvre-Montange et al. 2006 (multicentre series)", url: "https://doi.org/10.1097/01.jnen.0000240462.80263.13" },
-    { year: 2009, count: 58,  source: "Sharma et al. 2009 / Matyja et al. 2011 reviews", url: "https://pubmed.ncbi.nlm.nih.gov/?term=%22Papillary+tumor+of+the+pineal+region%22+review+2009" },
-    { year: 2011, count: 79,  source: "Gutenberg et al. 2011", url: "https://pubmed.ncbi.nlm.nih.gov/?term=%22Common+molecular+cytogenetic+pathway+in+papillary+tumors+of+the+pineal+region%22" },
-    { year: 2015, count: 93,  source: "Hua et al. 2015 review", url: "https://pubmed.ncbi.nlm.nih.gov/26622493/" },
-    { year: 2024, count: 108, source: "Pang et al. 2024 (105 literature + 3 new)", url: "https://pubmed.ncbi.nlm.nih.gov/?term=%22Determination+of+Optimal+Treatment+Plan+for+Papillary+Tumor+of+the+Pineal+Region%22" }
+    { year: 2003, count: 6,   source: "Jouvet et al. 2003", title: "Papillary tumor of the pineal region", journal: "American Journal of Surgical Pathology", what: "The first description: six patients (four women and two men, aged 19 to 53).", url: "https://doi.org/10.1097/00000478-200304000-00011" },
+    { year: 2006, count: 31,  source: "Fèvre-Montange et al. 2006", title: "Prognosis and histopathologic features in papillary tumors of the pineal region: a retrospective multicenter study of 31 cases", journal: "Journal of Neuropathology & Experimental Neurology", what: "The first multicentre series: 31 patients aged 5 to 66.", url: "https://doi.org/10.1097/01.jnen.0000240462.80263.13" },
+    { year: 2011, count: 74,  source: "Poulgrain et al. 2011", title: "Papillary tumour of the pineal region", journal: "Journal of Clinical Neuroscience", what: "A literature review that tabulated 74 published cases (this total is the one quoted for it in the 2015 review by Hua and colleagues).", url: "https://doi.org/10.1016/j.jocn.2010.12.027" },
+    { year: 2015, count: 93,  source: "Hua et al. 2015", title: "Papillary tumor of the pineal region: A case report and review of the literature", journal: "Experimental and Therapeutic Medicine", what: "Counted 93 published cases: the 74 tabulated in 2011 plus 19 reported afterwards.", url: "https://doi.org/10.3892/etm.2015.2696" },
+    { year: 2019, count: 177, source: "Yamaki et al. 2019", title: "Papillary Tumor of the Pineal Region: Systematic Review and Analysis of Prognostic Factors", journal: "Neurosurgery", what: "A systematic review of everything published from January 2003 to June 2017: 177 patients from 71 publications.", url: "https://doi.org/10.1093/neuros/nyz062" }
   ],
 
   /* Regional breakdown from the 2016 Shiraz literature review (73 patients). */
   regionSummary: {
-    source: { label: "Nasrollahi H et al. Rep Radiother Oncol 2016", url: "https://brieflands.com/articles/rro-68372" },
+    source: { label: "Nasrollahi H et al. Rep Radiother Oncol 2016", url: "https://waocp.com/journal/index.php/Reports-of-Radiotherapy-and-Onco/article/download/2327/3275/" },
     rows: [
       ["Europe", 25], ["North America", 21], ["Asia", 18],
       ["Australia", 3], ["Brazil", 2], ["Middle East (Saudi Arabia)", 1], ["Country not stated", 3]
@@ -225,16 +224,16 @@ window.PTPR_DATA = {
   keyPapers: [
     { year: 2003, authors: "Jouvet A, Fauchon F, Liberski P, et al.", title: "Papillary tumor of the pineal region.", journal: "Am J Surg Pathol 27:505-512", url: "https://pubmed.ncbi.nlm.nih.gov/12657936/", tag: "First description" },
     { year: 2006, authors: "Fèvre-Montange M, Hasselblatt M, Figarella-Branger D, et al.", title: "Prognosis and histopathologic features in papillary tumors of the pineal region: a retrospective multicenter study of 31 cases.", journal: "J Neuropathol Exp Neurol 65:1004-1011", url: "https://doi.org/10.1097/01.jnen.0000240462.80263.13", tag: "Prognosis" },
-    { year: 2008, authors: "Chang AH, Fuller GN, Debnam JM, et al.", title: "MR imaging of papillary tumor of the pineal region.", journal: "AJNR Am J Neuroradiol 29:187-189", url: "https://pubmed.ncbi.nlm.nih.gov/?term=%22MR+imaging+of+papillary+tumor+of+the+pineal+region%22", tag: "Imaging" },
-    { year: 2012, authors: "Abela L, Rushing EJ, Ares C, et al.", title: "Pediatric papillary tumors of the pineal region: to observe or to treat following gross total resection?", journal: "Childs Nerv Syst", url: "https://pubmed.ncbi.nlm.nih.gov/?term=%22Pediatric+papillary+tumors+of+the+pineal+region%3A+to+observe+or+to+treat+following+gross+total+resection%22", tag: "Children" },
+    { year: 2008, authors: "Chang AH, Fuller GN, Debnam JM, et al.", title: "MR imaging of papillary tumor of the pineal region.", journal: "AJNR Am J Neuroradiol 29:187-189", url: "https://doi.org/10.3174/ajnr.A0784", tag: "Imaging" },
+    { year: 2012, authors: "Abela L, Rushing EJ, Ares C, et al.", title: "Pediatric papillary tumors of the pineal region: to observe or to treat following gross total resection?", journal: "Childs Nerv Syst", url: "https://doi.org/10.1007/s00381-012-1935-1", tag: "Children" },
     { year: 2013, authors: "Fauchon F, Hasselblatt M, Jouvet A, et al.", title: "Role of surgery, radiotherapy and chemotherapy in papillary tumors of the pineal region: a multicenter study.", journal: "J Neurooncol 112:223-231", url: "https://doi.org/10.1007/s11060-013-1050-5", tag: "Treatment" },
-    { year: 2014, authors: "Heim S, Beschorner R, Mittelbronn M, et al.", title: "Increased mitotic and proliferative activity are associated with worse prognosis in papillary tumors of the pineal region.", journal: "Am J Surg Pathol 38:106-110", url: "https://pubmed.ncbi.nlm.nih.gov/?term=%22Increased+mitotic+and+proliferative+activity+are+associated+with+worse+prognosis+in+papillary+tumors+of+the+pineal+region%22", tag: "Prognosis" },
+    { year: 2014, authors: "Heim S, Beschorner R, Mittelbronn M, et al.", title: "Increased mitotic and proliferative activity are associated with worse prognosis in papillary tumors of the pineal region.", journal: "Am J Surg Pathol 38:106-110", url: "https://doi.org/10.1097/PAS.0b013e31829e492d", tag: "Prognosis" },
     { year: 2016, authors: "Heim S, Sill M, Jones DTW, et al.", title: "Papillary tumor of the pineal region: a distinct molecular entity.", journal: "Brain Pathol 26:199-205", url: "https://doi.org/10.1111/bpa.12282", tag: "Molecular" },
     { year: 2019, authors: "Yamaki VN, Solla DJF, Ribeiro RR, et al.", title: "Papillary tumor of the pineal region: systematic review and analysis of prognostic factors.", journal: "Neurosurgery", url: "https://doi.org/10.1093/neuros/nyz062", tag: "Meta-analysis" },
-    { year: 2020, authors: "Lancia A, Becherini C, Detti B, et al.", title: "Radiotherapy for papillary tumor of the pineal region: a systematic review of the literature.", journal: "Clin Neurol Neurosurg 190:105646", url: "https://www.sciencedirect.com/science/article/abs/pii/S0303846719304421", tag: "Radiotherapy" },
+    { year: 2020, authors: "Lancia A, Becherini C, Detti B, et al.", title: "Radiotherapy for papillary tumor of the pineal region: a systematic review of the literature.", journal: "Clin Neurol Neurosurg 190:105646", url: "https://doi.org/10.1016/j.clineuro.2019.105646", tag: "Radiotherapy" },
     { year: 2021, authors: "Louis DN, Perry A, Wesseling P, et al.", title: "The 2021 WHO Classification of Tumors of the Central Nervous System: a summary.", journal: "Neuro-Oncology 23:1231-1251", url: "https://pubmed.ncbi.nlm.nih.gov/34185076/", tag: "WHO classification" },
     { year: 2024, authors: "Wu Z, Dazelle K, Aldape K, et al.", title: "Papillary tumor of the pineal region: analysis of DNA methylation profiles and clinical outcomes in 76 cases.", journal: "Acta Neuropathol Commun", url: "https://doi.org/10.1186/s40478-024-01781-4", tag: "Molecular" },
-    { year: 2026, authors: "Balci Topuz et al.", title: "Papillary tumors of the pineal region (PTPR) in pediatric population: a case report and literature review.", journal: "Asia-Pac J Clin Oncol 22:625-639", url: "https://onlinelibrary.wiley.com/doi/10.1111/ajco.70010", tag: "Children" }
+    { year: 2026, authors: "Balci Topuz et al.", title: "Papillary tumors of the pineal region (PTPR) in pediatric population: a case report and literature review.", journal: "Asia-Pac J Clin Oncol 22:625-639", url: "https://doi.org/10.1111/ajco.70010", tag: "Children" }
   ],
 
   /* Search terms used for the live feed. */
