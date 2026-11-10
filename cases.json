@@ -1746,8 +1746,8 @@
  {
   "id": "sato-2009-1",
   "year": 2009,
-  "age": 18,
-  "ageText": "18",
+  "age": null,
+  "ageText": "boy (exact age not stated in the abstract)",
   "sex": "M",
   "country": "Japan",
   "city": "",
@@ -1878,7 +1878,7 @@
   "year": 2012,
   "age": 47,
   "ageText": "47",
-  "sex": "M",
+  "sex": "?",
   "country": "Italy",
   "city": "Rome",
   "coords": [
@@ -2285,7 +2285,7 @@
   "year": 2024,
   "age": 16,
   "ageText": "16",
-  "sex": "F",
+  "sex": "?",
   "country": "India",
   "city": "",
   "coords": [
@@ -2295,12 +2295,10 @@
   "presentation": "Not reported",
   "hydrocephalus": true,
   "treatment": [
-   "Surgery (gross total)",
-   "ETV",
-   "Radiotherapy"
+   "Surgery (gross total)"
   ],
-  "outcome": "Alive, stable disease",
-  "outcomeText": "Stable with no neurological deficits after complete removal and radiotherapy.",
+  "outcome": "Not reported",
+  "outcomeText": "No neurological deficits after surgery, and MRI confirmed complete removal. Longer-term follow-up is not given in the report.",
   "notes": "",
   "source": {
    "label": "Dhandapani et al., 2024",
