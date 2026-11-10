@@ -49,7 +49,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Hasan et al., 2025, Middle Eastern Cancer and Oncology Journal",
    "url": "https://doi.org/10.61706/mecoj16005"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "bromfield-2020-1",
@@ -75,7 +76,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Bromfield et al., 2020, Egyptian Journal of Neurology, Psychiatry and Neurosurgery",
    "url": "https://doi.org/10.1186/s41983-020-00188-x"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "anvari-2024-1",
@@ -103,7 +105,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Anvari et al., 2024, Middle East Journal of Cancer",
    "url": "https://doi.org/10.30476/mejc.2023.98435.1897"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "khaled-2023-1",
@@ -128,7 +131,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Khaled et al., 2023, Pulse",
    "url": "https://doi.org/10.3329/pulse.v14i1-3.66834"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "yamaki-2018-1",
@@ -155,7 +159,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Yamaki et al., 2018, Arquivos Brasileiros de Neurocirurgia",
    "url": "https://doi.org/10.1055/s-0038-1670695"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "reghin-2025-1",
@@ -182,7 +187,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Reghin et al., 2025, Journal of Neurological Surgery Part B",
    "url": "https://doi.org/10.1055/s-0045-1803846"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "inoue-2008-1",
@@ -548,7 +554,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Mohiuddin et al., 2016, Journal of Medical and Scientific Research",
    "url": "https://doi.org/10.17727/jmsr.2016/4-037"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "mohiuddin-2016-2",
@@ -573,7 +580,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Mohiuddin et al., 2016, Journal of Medical and Scientific Research",
    "url": "https://doi.org/10.17727/jmsr.2016/4-037"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "nemir-2022-1",
@@ -827,7 +835,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Koshy et al., 2022, Neuro-Oncology (abstract)",
    "url": "https://doi.org/10.1093/neuonc/noac209.785"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "schwartz-2024-1",
@@ -853,7 +862,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Schwartz et al., 2024, Journal of Neuropathology and Experimental Neurology",
    "url": "https://doi.org/10.1093/jnen/nlae099"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "mobark-2022-1",
@@ -1110,7 +1120,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Zaimoğlu et al., 2017, International Surgery Journal",
    "url": "https://doi.org/10.18203/2349-2902.isj20175414"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "bechri-2021-1",
@@ -1158,7 +1169,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Suryadevara et al., 2025, Journal of Neurological Surgery Part B",
    "url": "https://doi.org/10.1055/s-0045-1803470"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "gupta-r-2020-1",
@@ -1183,7 +1195,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Gupta R et al., 2020, Indian Journal of Medical and Paediatric Oncology",
    "url": "https://doi.org/10.4103/ijmpo.ijmpo_191_18"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "kawahara-2007-1",
@@ -1231,7 +1244,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Abraham et al., 2019, Journal of Evolution of Medical and Dental Sciences",
    "url": "https://doi.org/10.14260/jemds/2019/265"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "boco-2008-1",
@@ -1282,7 +1296,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Nasrollahi et al., 2018, Middle East Journal of Cancer",
    "url": "https://doi.org/10.30476/mejc.2018.42110"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "choque-velasquez-2018-1",
@@ -1517,7 +1532,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Santiago et al., 2026, Philippine Journal of Science",
    "url": "https://doi.org/10.56899/155.04.02"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "iranmehr-2026-1",
@@ -1670,7 +1686,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Gupta S et al., 2019, Indian Journal of Medical and Paediatric Oncology",
    "url": "https://doi.org/10.4103/ijmpo.ijmpo_251_17"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "oneal-2025-1",
@@ -1998,7 +2015,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Jiang et al., 2014, Chinese Journal of Contemporary Neurology and Neurosurgery",
    "url": "https://doi.org/10.3969/j.issn.1672-6731.2014.07.010"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "patel-2012-1",
@@ -2076,7 +2094,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Wong et al., 2012, Brain Pathology",
    "url": "https://doi.org/10.1111/j.1750-3639.2012.00570.x"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "magalhaes-2012-1",
@@ -2146,7 +2165,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Momii et al., 2018, Neurology (abstract)",
    "url": "https://doi.org/10.1212/wnl.90.15_supplement.p6.135"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "marfia-2020-1",
@@ -2201,7 +2221,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Kaloshi et al., 2010, Journal of Neuro-Oncology",
    "url": "https://doi.org/10.1007/s11060-010-0198-5"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "vaghela-2010-1",
@@ -2252,7 +2273,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Kamamoto et al., 2016, Brain Tumor Pathology",
    "url": "https://doi.org/10.1007/s10014-016-0270-8"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "heim-2013-1",
@@ -2278,7 +2300,8 @@ window.PTPR_CASES = [
   "source": {
    "label": "Heim et al., 2013, Journal of Neuro-Oncology",
    "url": "https://doi.org/10.1007/s11060-013-1202-7"
-  }
+  },
+  "unchecked": true
  },
  {
   "id": "dhandapani-2024-1",

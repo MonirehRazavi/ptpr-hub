@@ -30,7 +30,8 @@
   "category": "Case report",
   "summary": "A 42-year-old man had combined ETV and biopsy through a single burr hole. The ETV later failed and a shunt was needed, after which he was discharged well.",
   "adds": "Describes a minimally invasive way to diagnose PTPR and treat hydrocephalus at once.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2026,
@@ -52,7 +53,8 @@
   "category": "Case report",
   "summary": "A 4-year-old boy with hydrocephalus had a shunt, complete tumour removal and then radiotherapy to the tumour bed. Six months later there was no recurrence and no neurological deficit. The authors stress careful radiotherapy planning in young children to protect brain development.",
   "adds": "Adds a rare preschool-age case treated with surgery plus adjuvant radiotherapy.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2025,
@@ -63,7 +65,8 @@
   "category": "Case report",
   "summary": "Follows a 29-year-old man over about eight years: complete removal in 2016, recurrence at four years treated with radiotherapy, further growth two years later requiring re-operation. The authors conclude that lifelong neurological follow-up is essential.",
   "adds": "A long individual timeline showing recurrence even after apparently complete removal.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2025,
@@ -107,7 +110,8 @@
   "category": "Case report",
   "summary": "An operative video of a 46-year-old man with a grade 2 PTPR removed through a right occipital transtentorial approach, explaining the anatomical landmarks used.",
   "adds": "Teaching material on one surgical route to the pineal region.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2025,
@@ -162,7 +166,8 @@
   "category": "Molecular & genetics",
   "summary": "Methylation and copy-number analysis of 64 adult PTPRs confirmed the A and B subtypes and found that tumours with shorter progression-free survival had hypermethylation of GPCR signalling genes and signs of accelerated epigenetic ageing.",
   "adds": "Points to new prognostic markers beyond the A/B subtype split.",
-  "n": 64
+  "n": 64,
+  "unchecked": true
  },
  {
   "year": 2024,
@@ -173,7 +178,8 @@
   "category": "Case report",
   "summary": "A 46-year-old man had surgery and radiotherapy, but 14 months later the tumour had spread along the brain and spinal coverings. Chemotherapy with vincristine and carboplatin halted progression for at least six months.",
   "adds": "Shows that chemotherapy can stabilise PTPR that has spread through the cerebrospinal fluid.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2024,
@@ -228,7 +234,8 @@
   "category": "Molecular & genetics",
   "summary": "A 52-year-old woman had ETV and biopsy. DNA methylation profiling confirmed PTPR and placed it in the less aggressive subtype A, which led the team to monitor rather than operate aggressively.",
   "adds": "Illustrates how methylation subtyping can directly change a treatment decision.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2024,
@@ -250,7 +257,8 @@
   "category": "Case report",
   "summary": "A short report of a 27-year-old woman whose pineal tumour was removed and proved to be PTPR on microscopy and immunostaining. It reviews how PTPR fits among pineal region tumours.",
   "adds": "Adds a case from Bangladesh to the world literature.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2023,
@@ -261,7 +269,8 @@
   "category": "Case report",
   "summary": "A case report and literature review noting that PTPR has few specific clinical features, so a definite diagnosis before surgery is usually not possible.",
   "adds": "Reiterates the difficulty of pre-operative diagnosis.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2023,
@@ -305,7 +314,8 @@
   "category": "Case report",
   "summary": "A 41-year-old man had recurrence in the cerebellar coverings treated with craniospinal proton therapy, then a new deposit inside the temporal lobe treated with surgery, Gamma Knife and temozolomide. He was well 21 months later.",
   "adds": "First description of PTPR spreading into brain tissue away from the pineal region, and a successful salvage strategy.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2022,
@@ -426,7 +436,8 @@
   "category": "Case report",
   "summary": "Reports a 24-year-old man who presented unusually with seizures and reduced consciousness from a large solid-cystic pineal tumour. The paper discusses how PTPR can be mistaken for ependymoma or choroid plexus papilloma, and argues for early aggressive treatment because of the risk of spread.",
   "adds": "Adds an African case with an atypical seizure presentation and a poor outcome.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2020,
@@ -470,7 +481,8 @@
   "category": "Pathology",
   "summary": "A 25-year-old man's tumour showed an unusual membranous and dot-like keratin staining pattern on immunohistochemistry and electron microscopy.",
   "adds": "Expands the range of staining patterns pathologists may encounter.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2020,
@@ -514,7 +526,8 @@
   "category": "Case report",
   "summary": "A 40-year-old woman presented with failing vision, incontinence and confusion; scans showed a 3 cm pineal mass with hydrocephalus.",
   "adds": "Adds an Indian case with an advanced presentation.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2019,
@@ -525,7 +538,8 @@
   "category": "Case report",
   "summary": "A letter reporting PTPR in a 15-year-old, noting fewer than 100 cases published at the time.",
   "adds": "Adds an adolescent Indian case.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2019,
@@ -547,7 +561,8 @@
   "category": "Case report",
   "summary": "A 36-year-old woman with a year of headache and double vision needed an emergency shunt, then partial tumour removal. She did well but a local recurrence appeared 3.5 years later and was treated with radiotherapy. The review stresses that most patients present with raised pressure and that local recurrence is common.",
   "adds": "Illustrates late local recurrence after partial removal and the typical presentation.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2018,
@@ -569,7 +584,8 @@
   "category": "Case report",
   "summary": "A 6-year-old boy was treated after biopsy with radiotherapy (54 Gy) and chemotherapy rather than removal. The tumour shrank slightly and he was well and at school four years later.",
   "adds": "Supports radical radiotherapy as a main treatment option when surgery is not pursued.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2018,
@@ -591,7 +607,8 @@
   "category": "Case report",
   "summary": "A 46-year-old man had repeated radiosurgery over years, then spread to the brain and spine. After temozolomide, he was treated with bevacizumab plus etoposide and later carboplatin, achieving stable disease for about a year.",
   "adds": "Suggests bevacizumab-based chemotherapy for heavily pre-treated, disseminated PTPR.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2017,
@@ -602,7 +619,8 @@
   "category": "Case report",
   "summary": "A 21-year-old woman had complete removal through a supracerebellar infratentorial approach. The authors discuss surgical approach and recommend adjuvant treatment because recurrence rates are high.",
   "adds": "Adds a Turkish case with surgical detail.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2017,
@@ -624,7 +642,8 @@
   "category": "Case series",
   "summary": "Two patients with headache and eye-movement problems were initially thought to have ependymoma on rapid intra-operative smears. Both tumours recurred within a year of surgery.",
   "adds": "Highlights the diagnostic pitfalls and early recurrence after surgery alone.",
-  "n": 2
+  "n": 2,
+  "unchecked": true
  },
  {
   "year": 2016,
@@ -646,7 +665,8 @@
   "category": "Case report",
   "summary": "An addendum providing long-term follow-up of the Siena patient first reported by Cerase and colleagues in 2009.",
   "adds": "Extends the follow-up of one of the best-documented natural-history cases.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2016,
@@ -701,7 +721,8 @@
   "category": "Case report",
   "summary": "A man followed from age 22 to 37 had several diagnoses before PTPR was confirmed, with repeated partial removals, chemotherapy and radiotherapy. Temozolomide plus bevacizumab produced a partial response lasting over 14 months.",
   "adds": "First report of temozolomide-bevacizumab response in PTPR.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2015,
@@ -800,7 +821,8 @@
   "category": "Case report",
   "summary": "A 57-year-old man had complete removal of a grade 2-3 PTPR and received no radiotherapy or chemotherapy; he had no deficit or recurrence at 12 months. The paper discusses look-alike tumours.",
   "adds": "Adds a Chinese case treated with surgery alone.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2014,
@@ -855,7 +877,8 @@
   "category": "Pathology",
   "summary": "A 59-year-old woman's PTPR contained an anaplastic small-cell component with very high proliferation. It regrew within two months of surgery and responded to single-session robotic radiosurgery.",
   "adds": "First PTPR with an anaplastic component, showing malignant potential.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2012,
@@ -888,7 +911,8 @@
   "category": "Case report",
   "summary": "A 45-year-old man managed with a shunt was observed for 15 years as his tumour slowly grew, then had near-total removal confirming PTPR.",
   "adds": "Documents extremely slow growth over 15 years.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2012,
@@ -921,7 +945,8 @@
   "category": "Review & guidelines",
   "summary": "An overview of PTPR covering its origin, imaging (notably T1 brightness), high local recurrence (up to 70%), rare spinal spread (up to 7%) and treatment with surgery followed by radiotherapy.",
   "adds": "Compact reference summary of diagnosis and treatment.",
-  "n": null
+  "n": null,
+  "unchecked": true
  },
  {
   "year": 2011,
@@ -998,7 +1023,8 @@
   "category": "Case report",
   "summary": "A 29-year-old man's tumour, first called ependymoma, grew aggressively within eight months of partial removal. He improved on chemotherapy and radiotherapy. The authors argue that PTPR's variable growth reflects a wide spectrum of differentiation.",
   "adds": "A short natural-history example contrasting with slow-growing cases.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2010,
@@ -1020,7 +1046,8 @@
   "category": "Review & guidelines",
   "summary": "A review describing PTPR as a newly recognised tumour that affects children and adults, is often bright on T1 MRI, and must be distinguished from pineal, choroid plexus, ependymal and meningeal tumours. It recommends careful surgery followed by radiotherapy because of the high local recurrence risk.",
   "adds": "An early accessible overview of diagnosis and treatment.",
-  "n": null
+  "n": null,
+  "unchecked": true
  },
  {
   "year": 2009,
@@ -1064,7 +1091,8 @@
   "category": "Pathology",
   "summary": "Describes the distinctive features of PTPR on intra-operative smear preparations and matches them to the tissue biopsy.",
   "adds": "Helps rapid intra-operative recognition of PTPR.",
-  "n": 1
+  "n": 1,
+  "unchecked": true
  },
  {
   "year": 2009,

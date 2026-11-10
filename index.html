@@ -141,6 +141,7 @@ dl.gloss{display:grid;grid-template-columns:max-content 1fr;gap:8px 20px;margin:
 .sidelist button:hover,.sidelist button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
 .sidelist b{display:block} .sidelist span{font-size:.85rem;color:var(--ink-2)}
 .detail{margin-top:18px}
+.recheck{background:var(--butter);border-radius:8px;padding:8px 10px;color:var(--ink-2);margin:10px 0}
 .counttip{position:absolute;z-index:5;max-width:300px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:0 8px 24px rgba(0,0,0,.14)}
 .cdot:focus{outline:none;stroke:var(--accent);stroke-width:2}
 .rm-note{background:var(--butter);border-radius:10px;padding:10px 12px;font-size:.86rem;color:var(--ink-2);margin:10px 0 14px}
@@ -456,7 +457,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
       <div class="fact mint"><p class="big" id="cnt-reg">–</p><p class="lbl">individual patients with details in this site's registry</p></div>
       <div class="fact mint"><p class="big" id="cnt-pub">–</p><p class="lbl">articles on PubMed mentioning PTPR (<span id="cnt-pub-note">updates automatically</span>)</p></div>
     </div>
-    <p class="small muted" style="margin-top:10px">A fair summary for a newly diagnosed person: a few hundred cases have been described worldwide since 2003, PubMed has added between 2 and 11 new papers a year since 2019, and the real number of people living with PTPR is certainly higher. Reviews count differently: a 2024 analysis (<a href="https://doi.org/10.14791/btrt.2024.0021" target="_blank" rel="noopener">Pang et al.</a>) included only the 108 patients whose treatment and outcome were fully described, so it is not shown as a running total.</p>
+    <p class="small muted" style="margin-top:10px">A fair summary for a newly diagnosed person: a few hundred cases have been described worldwide since 2003, PubMed has added between 2 and 11 new papers a year since 2019, and the real number of people living with PTPR is certainly higher. Reviews count differently: a 2024 analysis (<a href="https://doi.org/10.14791/btrt.2024.0021" target="_blank" rel="noopener">Pang et al.</a>) included only the 108 patients whose treatment and outcome were fully described, so it appears as a separate dot rather than as part of the running total.</p>
   </section>
 </div>
 <!-- ============================ CASES ============================ -->
@@ -748,6 +749,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
       <p><b>Treatment:</b> ${(c.treatment||[]).map(esc).join(', ')||'Not reported'}</p>
       <p><b>Outcome at last report:</b> <span class="${outClass(c.outcome)}"><span class="out" style="font-weight:700">${esc(c.outcome)}</span></span>. ${esc(c.outcomeText||'')}</p>
       ${c.notes?`<p class="muted">${esc(c.notes)}</p>`:''}
+      ${c.unchecked?'<p class="small recheck">Not yet re-checked: this entry could not be compared against the article in the November 2026 accuracy review because the text was not freely available. Please open the article and read it yourself.</p>':''}
       <p class="small" style="margin:0">Source: <a href="${esc(c.source.url)}" target="_blank" rel="noopener">${esc(c.source.label)}</a></p>`;
     $$('#casegrid .case').forEach(b=>b.setAttribute('aria-pressed','true'));
     $('#casedetail2').scrollIntoView({behavior:'smooth',block:'nearest'});
@@ -783,8 +785,8 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     } catch(err){ $('#casemap').innerHTML='<p class="muted" style="padding:20px">The map could not be drawn here; the cards below carry the same information.</p>'; }
   }
   function drawCountChart(){
-    const H=D.caseCountHistory||[]; const svg=$('#countchart'); if(!svg||!H.length) return;
-    const W=640,HH=260,pl=46,pr=16,pt=18,pb=38; const xs=H.map(h=>h.year), ys=H.map(h=>h.count);
+    const HA=D.caseCountHistory||[]; const H=HA.filter(h=>!h.separate), SEP=HA.filter(h=>h.separate); const svg=$('#countchart'); if(!svg||!H.length) return;
+    const W=640,HH=260,pl=46,pr=16,pt=18,pb=38; const xs=HA.map(h=>h.year), ys=HA.map(h=>h.count);
     const x0=Math.min(...xs)-1, x1=Math.max(...xs)+1, y1=Math.ceil(Math.max(...ys)/20)*20;
     const X=v=>pl+(v-x0)/(x1-x0)*(W-pl-pr), Y=v=>pt+(1-v/y1)*(HH-pt-pb);
     let g='';
@@ -794,11 +796,12 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
     g+=`<polyline points="${pts}" fill="none" stroke="${tok('--mint-ink')}" stroke-width="2.5" stroke-linejoin="round"/>`;
     g+=`<polygon points="${X(H[0].year)},${Y(0)} ${pts} ${X(H[H.length-1].year)},${Y(0)}" fill="${tok('--mint')}" opacity=".6"/>`;
     H.forEach((h,i)=>{ g+=`<circle cx="${X(h.year)}" cy="${Y(h.count)}" r="5" fill="${tok('--surface')}" stroke="${tok('--mint-ink')}" stroke-width="2.5"/><circle class="cdot" data-i="${i}" tabindex="0" role="button" aria-label="${esc(h.year)}: ${h.count} cases, ${esc(h.source)}" cx="${X(h.year)}" cy="${Y(h.count)}" r="15" fill="transparent" style="cursor:pointer"/>`; });
+    SEP.forEach((h,j)=>{ const i=H.length+j; g+=`<circle cx="${X(h.year)}" cy="${Y(h.count)}" r="5" fill="${tok('--butter')}" stroke="${tok('--ink-2')}" stroke-width="2" stroke-dasharray="3 2"/><text x="${X(h.year)-10}" y="${Y(h.count)+4}" font-size="11" text-anchor="end" fill="${tok('--ink-2')}" font-family="Nunito Sans, sans-serif">${h.count} (${h.year}, counted differently)</text><circle class="cdot" data-i="${i}" tabindex="0" role="button" aria-label="${esc(h.year)}: ${h.count} cases, ${esc(h.source)}" cx="${X(h.year)}" cy="${Y(h.count)}" r="15" fill="transparent" style="cursor:pointer"/>`; });
     const last=H[H.length-1]; g+=`<text x="${X(last.year)-16}" y="${Y(last.count)+4}" font-size="12" font-weight="700" text-anchor="end" fill="${tok('--mint-ink')}" font-family="Nunito Sans, sans-serif">${last.count} cases (${last.year})</text>`;
     g+=`<text x="${pl}" y="${HH-6}" font-size="11" fill="${tok('--ink-2')}" font-family="Nunito Sans, sans-serif">Cases counted in published reviews · hover or tap a dot for its source</text>`;
     svg.innerHTML=g;
     const tip=$('#counttip'), card=$('#countcard'); let pinned=false, hov=-1;
-    const showTip=(i)=>{ const h=H[i], dot=svg.querySelector(`.cdot[data-i="${i}"]`); if(!h||!dot) return;
+    const showTip=(i)=>{ const h=H.concat(SEP)[i], dot=svg.querySelector(`.cdot[data-i="${i}"]`); if(!h||!dot) return;
       tip.innerHTML=`<p class="eyebrow mint" style="margin:0">${esc(h.year)} · ${h.count} cases</p><p style="margin:4px 0 2px;font-weight:700">${esc(h.title)}</p><p class="small muted" style="margin:0">${esc(h.source)} · <i>${esc(h.journal)}</i></p><p class="small" style="margin:6px 0">${esc(h.what)}</p><a class="small" href="${esc(h.url)}" target="_blank" rel="noopener">Open the article →</a>`;
       tip.hidden=false; const c=card.getBoundingClientRect(), d=dot.getBoundingClientRect(); const tw=tip.offsetWidth, th=tip.offsetHeight;
       let left=d.left-c.left+d.width/2-tw/2; left=Math.max(8,Math.min(left,c.width-tw-8)); let top=d.top-c.top-th-6; if(top<4) top=d.top-c.top+d.height+6;
@@ -810,7 +813,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
       d.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); pinned=true; showTip(i); } if(e.key==='Escape'){ pinned=false; tip.hidden=true; } }); });
     tip.addEventListener('mouseleave',hideTip); tip.addEventListener('click',e=>e.stopPropagation());
     document.addEventListener('click',()=>{ pinned=false; tip.hidden=true; });
-    $('#countnote').innerHTML='Sources: '+H.map(h=>`<a href="${esc(h.url)}" target="_blank" rel="noopener">${esc(h.source)}</a>`).join(' · ');
+    $('#countnote').innerHTML='Sources: '+HA.map(h=>`<a href="${esc(h.url)}" target="_blank" rel="noopener">${esc(h.source)}</a>`).join(' · ');
     $('#cnt-lit').textContent=last.count; $('#cnt-lit-yr').textContent=last.year; $('#cnt-reg').textContent=CASES.length;
     fetch(`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi?db=pubmed&retmode=json&retmax=0&term=${encodeURIComponent(D.pubmedQuery)}`).then(r=>r.json()).then(j=>{ $('#cnt-pub').textContent=j.esearchresult.count; $('#cnt-pub-note').textContent='live from PubMed today'; }).catch(()=>{ $('#cnt-pub').textContent='100+'; $('#cnt-pub-note').textContent='live count loads once the site is hosted'; });
   }
@@ -850,6 +853,7 @@ footer.site .row{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space
       <div class="blk mint"><b>Where it was published</b>${esc(p.journal||'Journal not stated')}${p.authors?` · ${esc(p.authors)}`:''}</div>
       ${studied?`<div class="blk sky"><b>What it did and found</b>${esc(studied)}</div>`:(isLive?`<div class="blk sky"><b>What it did and found</b><span class="muted" id="abs">Loading a short summary from PubMed…</span></div>`:'')}
       ${p.adds?`<div class="blk blush"><b>What it added to the picture</b>${esc(p.adds)}</div>`:''}
+      ${p.unchecked?'<p class="small recheck">Not yet re-checked: this entry could not be compared against the article in the November 2026 accuracy review because the text was not freely available. Please open the article and read it yourself.</p>':''}
       <p style="margin:12px 0 0"><a class="btn" href="${esc(p.url)}" target="_blank" rel="noopener">Open the paper</a></p>`;
   }
   async function showPub(i){ const p=shownPubs[i]; if(!p) return;
